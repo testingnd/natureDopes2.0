@@ -2,9 +2,9 @@
 
 import React from 'react'
 import Image from 'next/image';
-import arrow from '../../../../public/images/icons8-arrow-100.png'
+import arrow from '../../../public/images/icons8-arrow-100.png'
 
-import {imageArray} from '../flowerList'
+import {imageArray} from '../../finder/flowerList'
 import styles from './question.module.css'
 import { Indie_Flower } from 'next/font/google'
 

@@ -1,8 +1,8 @@
 'use client'
 
-import ndLogo from '../../../public/images/logomini.png'
+import ndLogo from '../../public/images/logomini.png'
 import Image from 'next/image'
-import styles from '../../layout.module.css'
+import styles from '../layout.module.css'
 import {motion} from 'framer-motion'
 
 

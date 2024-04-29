@@ -1,13 +1,13 @@
 
 import { Indie_Flower } from 'next/font/google'
-import {LoginButton, LogoutButton} from '../../auth'
+import {LoginButton, LogoutButton} from '../auth'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 
 import style from './finder.module.css'
 
 import Image from 'next/image'
-import ndLogo from '../../../public/images/logomini.png'
+import ndLogo from '../../public/images/logomini.png'
 
 
 

@@ -6,15 +6,15 @@ import React, { JSXElementConstructor } from 'react'
 
 import images, { imageArray } from './flowerList'
 
-import Question from './questions/question'
-import Congratulations from './congratualtions/congratulations'
+import Question from '../components/questions/question'
+import Congratulations from '../components/congratualtions/congratulations'
 import Link from 'next/link'
 
 import {AnimatePresence, motion, useInView} from 'framer-motion'
 import { Indie_Flower } from 'next/font/google'
 
-import GoButton from '../buttons/GoButton'
-import LoadingIcon from './loadingIcon'
+import GoButton from '../components/buttons/GoButton'
+import LoadingIcon from '../components/loadingIcon'
 
 const indie = Indie_Flower({
   weight: '400',
