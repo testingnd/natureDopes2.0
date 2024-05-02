@@ -5,27 +5,27 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import mapStyle from './map.module.css'
 import { cache, use } from "react";
+import Loading from "../finder/loading";
 import { Suspense } from "react";
 
-const getImageData = cache(() =>
-    fetch("http://localhost:3000/map/api").then((res) => res.json()));
+//const getImageData = cache(() =>
+ //   fetch("http://localhost:3000/map/api").then((res) => res.json()));
  
   
 
-export default function MapUpload(){
+export default function MapUpload({getImageData}){
 
-const imageData = use(getImageData()) 
- 
+//const imageData = use(getImageData()) 
 
+const [lng] = React.useState<number>(-1.17);
+const [lat] = React.useState<number>(48);
+const [zoom] = React.useState<number>(4);
 const mapContainer = React.useRef(null);
 const map = React.useRef(null);
-const [lng] = React.useState(139.753);
-const [lat] = React.useState(35.6844);
-const [zoom] = React.useState(14);
-const [API_KEY] = React.useState('CMRIccwlZz6zI6QR2E5I');
+const [API_KEY] = React.useState<string>('CMRIccwlZz6zI6QR2E5I');
 
 
-const [data, setData] = React.useState(imageData)
+const [data, setData] = React.useState(getImageData)
 
 
 
@@ -35,17 +35,11 @@ React.useEffect(() => {
       map.current = new maplibregl.Map({
       container: mapContainer.current,
       style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${API_KEY}`,
-      center: [lng, lat],
-      zoom: zoom
+      center: [-1.17, 48],
+      zoom: 4
     });
 
-   /* data.map((d) => {
-      new maplibregl.Marker({color: "#FF0000"})
-      .setLngLat([d.gps_long, d.gps_lat])
-      .addTo(map.current);
 
- 
-  })*/
 
   for (let i in data){
     new maplibregl.Marker({color: "#FF0000"})
@@ -58,15 +52,15 @@ React.useEffect(() => {
 
 
  return(
-
-  <Suspense>
-
-     <div className={mapStyle.mapWrap}>
+     
+     <>
+     
+       <div ref={mapContainer} className={mapStyle.map} />  <div/>
+     
+    
       
-        <div ref={mapContainer} className={mapStyle.map} /><div/>
-   
-    </div>
-  </Suspense>
+     </> 
+        
    
     
  );
