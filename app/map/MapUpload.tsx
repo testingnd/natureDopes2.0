@@ -20,8 +20,8 @@ export default function MapUpload({getImageData}){
 const [lng] = React.useState<number>(-1.17);
 const [lat] = React.useState<number>(48);
 const [zoom] = React.useState<number>(4);
-const mapContainer = React.useRef(null);
-const map = React.useRef(null);
+const mapContainer = React.useRef<any>(null);
+const map = React.useRef<any>(null);
 const [API_KEY] = React.useState<string>('CMRIccwlZz6zI6QR2E5I');
 
 

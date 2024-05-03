@@ -1,15 +1,16 @@
 'use server'
 
- export async function GetData(){
-         
+        export async function GetImage(){
         
-  
+        const headers = new Headers();
+        headers.set("x-api-key", process.env.IAGON_API); 
+        headers.set("Content-Type", "application/json");  
+     
         const res = await fetch("https://gw.iagon.com/api/v2/storage/download", {
             method: 'POST',
-            headers: {"x-api-key": process.env.IAGON_API,
-                      "Content-Type": "application/json" 
-            },
-            body: JSON.stringify({id: '6628e223ed109dea7651a844',
+            headers: headers,
+            
+            body: JSON.stringify({id: '6634a451ed109dea7696f493',
                     password: process.env.IAGON_PASS})
         })
         

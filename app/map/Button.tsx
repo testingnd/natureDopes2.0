@@ -1,16 +1,17 @@
 'use client'
-import React from "react";
-import { GetData } from "./GetImage";
+import React, { DetailedHTMLProps } from "react";
+import { GetImage } from "./GetImage";
+import style from './map.module.css'
 
 
 export default function Button(){
 
-    const [iagImage, setIagImage] = React.useState(null)
+    const [iagImage, setIagImage] = React.useState<string | null>(null)
 
     async function handleData(){
         
         setIagImage('Sending Api...')
-        const data = await GetData()
+        const data = await GetImage()
         setIagImage(data)
         
     }
@@ -18,7 +19,7 @@ export default function Button(){
     return(
         <>
         <button onClick={handleData}>Get That Data</button>
-        <img src={`data:image/png;base64,${iagImage}`} alt={iagImage} />
+        <img className={style.IAGONimage} src={`data:image/png;base64,${iagImage}`} />
         
         </>
     )
