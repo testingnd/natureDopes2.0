@@ -19,7 +19,7 @@ export default function Button(){
     return(
         <>
         <button onClick={handleData}>Get That Data</button>
-        <img className={style.IAGONimage} src={`data:image/png;base64,${iagImage}`} />
+        <img className={style.IAGONimage} src={`data:image/png;base64,${iagImage}`} alt={iagImage} />
         
         </>
     )
