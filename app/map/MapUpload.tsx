@@ -9,13 +9,12 @@ import Loading from "../finder/loading";
 import { Suspense } from "react";
 
 import { GetImage } from "./GetImage";
-import { get } from "https";
+
 
 
 //const getImageData = cache(() =>
  //   fetch("http://localhost:3000/map/api").then((res) => res.json()));
  
-  
 
 export default function MapUpload({getImageData}){
 
@@ -30,7 +29,7 @@ const [API_KEY] = React.useState<string>('CMRIccwlZz6zI6QR2E5I');
 
 
 const [data, setData] = React.useState(getImageData)
-const [iagImages, setIagImages] = React.useState([])
+
 
 
 React.useEffect(() => {
@@ -43,41 +42,12 @@ React.useEffect(() => {
       zoom: 4
     });
 
-    async function imageHandler(){
-      const id = '6634a451ed109dea7696f493'
-      const getPath = await GetImage()
-      console.log(getPath[0])
-      setIagImages((prevImages) => [
-        ...prevImages,
-        {
-          imageId: id,
-          path: getPath
-            
-        }
-      ])
-    
-      const imageIndex = iagImages.findIndex((base64) => base64 === getPath)
-    return null
-      //imagePath = `<img width="100" height="100" src='data:image/png;base64,${iagImages[imageIndex]}'>`
-    }   
-    
-
-
 
    // `<img width="100" height="100" src='data:image/png;base64,${iagImages[0]}'>`
   
   for (let i in data){
    
-    let imagePath = ''
-    let index = iagImages.findIndex(i => i.imageId === data[i].image_path)
-    console.log(index)
-    if(index == -1){
-      imagePath = 'No Photo'
-
-    } else {
-      imagePath = iagImages[0].imageId
-    }
-
+  
     const marker = new maplibregl.Marker({color: "#FF0000"})
     .setLngLat([data[i].gps_long, data[i].gps_lat])
     
@@ -101,7 +71,7 @@ React.useEffect(() => {
     
   }
   
-  }, [API_KEY, lng, lat, zoom, data, iagImages]);
+  }, [API_KEY, lng, lat, zoom, data]);
 
 
 
@@ -109,9 +79,8 @@ React.useEffect(() => {
      
      <>
      
-       <div ref={mapContainer} className={mapStyle.map} />  <div/>
+      <div ref={mapContainer} className={mapStyle.map} />  <div/>
      
-    
       
      </> 
         

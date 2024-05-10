@@ -11,11 +11,12 @@ import { cache } from "react"
 import style from './map.module.css'
 
 import MapUpload from "./MapUpload"
+import Loading from "../loading"
 
 async function getData() {
     const res = await fetch('http://localhost:3000/map/api')
     // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
+  
    
     if (!res.ok) {
       // This will activate the closest `error.js` Error Boundary
@@ -36,12 +37,15 @@ export default async function Map(){
         <Button />
         <Button />
 
-
-        <div className={style.mapWrap}>
-            <MapUpload getImageData={getImageData} />
-
-        </div>
         
+        <div className={style.mapWrap}>
+          
+            <MapUpload getImageData={getImageData} />
+          
+           
+          
+        </div>
+       
         
       
         </>

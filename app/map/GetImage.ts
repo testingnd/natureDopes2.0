@@ -14,6 +14,7 @@
                     password: process.env.IAGON_PASS})
         })
         
+        
        
         console.log(res.status)
         const arrayBuffer = await res.arrayBuffer()
