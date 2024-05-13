@@ -1,0 +1,24 @@
+.createAccount{
+    display: flex;
+}
+
+.registerForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 2%;
+}
+
+.input{
+
+    padding: 2%;
+    margin: 2%;
+    background-color: aquamarine;
+
+}
+
+.backToSignIn{
+    display: flex;
+}
+

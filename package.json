@@ -13,6 +13,7 @@
     "@emotion/react": "^11.11.1",
     "@next/bundle-analyzer": "^14.1.0",
     "@prisma/client": "^5.5.2",
+    "@radix-ui/themes": "^3.0.3",
     "@types/pg": "^8.10.7",
     "bcrypt": "^5.1.1",
     "cross-env": "^7.0.3",

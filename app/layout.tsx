@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Providers } from './providers';
+import { Theme } from '@radix-ui/themes'
 
-
+import '@radix-ui/themes/styles.css';
 import './globals.css'
 
 
@@ -24,6 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Theme>
       <body>
 
         <nav>
@@ -39,6 +41,7 @@ export default function RootLayout({
       
       
       </body>
+      </Theme>
     </html>
   )
 }
