@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Theme>
+     
       <body>
 
         <nav>
@@ -41,7 +41,7 @@ export default function RootLayout({
       
       
       </body>
-      </Theme>
+    
     </html>
   )
 }
