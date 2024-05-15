@@ -30,4 +30,14 @@ model users {
   password String  @db.VarChar(100)
   email    String  @unique(map: "users_email_idx") @db.VarChar(100)
   token    String? @db.VarChar(250)
+  passResetToken passResetToken[]
+}
+
+model passResetToken{
+  id        Int       @id @default(autoincrement())
+  token     String    @unique
+  CreatedAt DateTime  @default(now())
+  resetAt   DateTime?
+  user  users @relation(fields: [userId], references: [id])
+  userId    Int
 }
