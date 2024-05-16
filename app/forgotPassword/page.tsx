@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 import { Theme } from "@radix-ui/themes";
 import { Card, Flex, Button, TextField } from "@radix-ui/themes";
@@ -8,7 +9,7 @@ import { randomUUID } from "crypto";
 import {prisma} from '@/app/prisma'
 
 import {sendMail} from '../_lib/nodemailer'
-import { redirect } from "next/dist/server/api-utils";
+
 
 const DOMAIN = process.env.DOMAIN || 'localhost:3000'
 const PROTOCOL = process.env.NODE_ENV === 'production' ? 'https' : 'http'
@@ -55,7 +56,7 @@ export default function ForgotPassword(){
         }
 
         await sendMail(mailOptions)
-        redirect('/forgotPassword/success', 'replace')
+        redirect('/forgotPassword/success')
     }
 
     return(
@@ -68,10 +69,12 @@ export default function ForgotPassword(){
                         <h1> Reset Password</h1>
                         <p>Enter your email address here, a link will be sent to your inbox, click the link to reset your password</p>
 
-                        <TextField.Root name='email' type='email' size='3' placeholder='Your email...'>
-
-
-                        </TextField.Root>
+                        <TextField.Root 
+                        name='email' 
+                        type='email' 
+                        size='3' 
+                        placeholder='Your email...'
+                        />
                         
                         <Button>Send</Button>
                         
