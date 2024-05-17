@@ -51,11 +51,12 @@ export default function ForgotPassword(){
             from: 'naturedopes@gmx.fr',
             to: user.email,
             subject: 'Reset Password Link - NatureDopes' ,
-            text: `Hello ${user.username} please find password rest link, click here: ${PROTOCOL}://${DOMAIN}/password-reset/${token.token}`,
+            text: `Hello ${user.username} please find password reset link, click here: ${PROTOCOL}://${DOMAIN}/forgotPassword/password-reset/${token.token} . This link will remain valid for 4 hours. `,
             
         }
 
         await sendMail(mailOptions)
+        console.log('reset email sent')
         redirect('/forgotPassword/success')
     }
 
