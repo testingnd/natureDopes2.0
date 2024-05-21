@@ -12,14 +12,14 @@ export async function resetPassword(token: string, data: FormData){
     const confirmPassword = data.get('confirm')
 
     if(!password || typeof password !== "string" || password !== confirmPassword){
-        console.log('error1')
+      
         return{
         
             error: 'The passwords did not match, please try again '
         }
 
     }
-    console.log('error2')
+    
 
     const passwordResetToken = await prisma.passResetToken.findUnique({
         where: {
@@ -37,7 +37,7 @@ export async function resetPassword(token: string, data: FormData){
     }
 
     const encrypted = await hash(password, 10)
-    console.log('error3')
+    
     const updateUser = prisma.users.update({
         where: {
             id: passwordResetToken.userId,
@@ -56,7 +56,7 @@ export async function resetPassword(token: string, data: FormData){
         }
     })
 
-    console.log('1')
+   
     try {
         await prisma.$transaction([updateUser, updateToken])
     } catch(err) {
@@ -65,7 +65,7 @@ export async function resetPassword(token: string, data: FormData){
             error: 'An unexpected error has occured, please retry. If the problem persists please reach out to us.'
         }
     }
-    console.log('2')
+  
 
     redirect('/forgotPassword/successpassReset')
 
