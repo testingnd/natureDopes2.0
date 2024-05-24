@@ -37,6 +37,7 @@ export default function ForgotPassword(){
                         placeholder='Your email...'
                         />
                         {error && <p className={styles.errorMessage}>{error}</p>}
+
                         <SubmitButton>Send</SubmitButton>
                         
                     </form>

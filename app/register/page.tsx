@@ -14,10 +14,12 @@ import styles from './register.module.css'
 export default function RegisterPage(){
 
     const [ error, setError] = React.useState<string>('')
+    const [success, setSuccess] = React.useState<string>('')
 
     const submit = async (data: FormData) => {
-        const {error} = await registerUser(data)
+        const {error, success} = await registerUser(data)
         setError(error)
+        setSuccess(success)
     }
 
     return(
@@ -37,7 +39,7 @@ export default function RegisterPage(){
                     </Flex>        
                 </Flex>
                 {error && <p className={styles.errorMessages}>{error}</p>}
-                            
+                { success && <p className={styles.successMessage}>{success}</p>}         
                 <div className={styles.backToSignIn}>
                     <h3>Have an account already?</h3>
                     <Link href='/api/auth/signin'>Sign in</Link>

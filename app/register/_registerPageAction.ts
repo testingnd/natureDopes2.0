@@ -48,6 +48,7 @@ import { Prisma } from "@prisma/client";
                 email,
                 password: passwordHash
             }
+         
         })
         } catch(e: any) {
             if (e instanceof Prisma.PrismaClientKnownRequestError)
@@ -61,6 +62,10 @@ import { Prisma } from "@prisma/client";
                     error: 'Technical issue, please contact us'
             }   
 
+        }
+
+        return {
+            success: 'Thank you, an account for ' + username + ' has been created'
         }
        
     }

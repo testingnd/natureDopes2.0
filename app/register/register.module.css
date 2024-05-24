@@ -25,3 +25,7 @@
 .errorMessages{
     color: crimson;
 }
+
+.successMessage{
+    color: green;
+}
