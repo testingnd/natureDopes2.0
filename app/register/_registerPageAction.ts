@@ -54,7 +54,7 @@ import { Prisma } from "@prisma/client";
                 console.log(e.message, e.code)
                 if(e.code == 'P2002'){
                     return {
-                        error: 'This account already exists, please login or reset your password if you are the account owner '
+                        error: 'This account already exists, please use different information or login if you are the account owner '
                     }
                 }
                 return {
