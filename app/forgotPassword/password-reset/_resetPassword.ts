@@ -19,6 +19,13 @@ export async function resetPassword(token: string, data: FormData){
         }
 
     }
+
+    
+    if(password.length < 8){
+        return {
+            error: 'Passwords must be at least 8 characters long'
+        }
+    }
     
 
     const passwordResetToken = await prisma.passResetToken.findUnique({
@@ -35,6 +42,8 @@ export async function resetPassword(token: string, data: FormData){
             error: 'Invalid token reset request. Your token may have expired, in this case please restart the process. If the problem persists please reach out to us'
         }
     }
+
+
 
     const encrypted = await hash(password, 10)
     

@@ -1,53 +1,37 @@
+'use client'
+
 import React from "react";
 import Link from "next/link";
-import { hash } from "bcrypt";
-import {prisma} from '@/app/prisma'
-import { Prisma } from "@prisma/client";
+
+import {registerUser} from './_registerPageAction'
 
 import styles from './register.module.css'
 
 
-
 export default function RegisterPage(){
 
-    async function registerUser(data: FormData){
-        'use server'
+    const [ error, setError] = React.useState<string>('')
 
-        const password = await hash(data.get('Password') as string, 10)
-
-        try {
-
-            const user = await prisma.users.create({
-            data: {
-                username: data.get('Username') as string,
-                email: data.get('Email') as string,
-                password
-            }
-        })
-        } catch(error) {
-            if (error instanceof Prisma.PrismaClientKnownRequestError)
-                console.log(error.message, error.code)
-                 // 
-              
-
-        }
-       
+    const submit = async (data: FormData) => {
+        const {error} = await registerUser(data)
+        setError(error)
     }
-
 
     return(
 
         <div>
             <div className={styles.createAccount}>
                 <h1> Create your account </h1>
-                <form className={styles.registerForm} action={registerUser}>
+                <form className={styles.registerForm} action={submit}>
                     <input className={styles.input} placeholder="Username" name='Username' />
                     <input className={styles.input} placeholder="Email" name='Email' type='email' />
                     <input className={styles.input} placeholder="Password" name='Password' type='password' />
+                    <input className={styles.input} placeholder="Confirm Password" name='Confirm' type='password' />
                     <button type='submit'>Register</button>
                 </form>
 
             </div>
+            {error && <p>{error}</p>}
             
             <div className={styles.backToSignIn}>
                 <h3>Have an account already?</h3>
