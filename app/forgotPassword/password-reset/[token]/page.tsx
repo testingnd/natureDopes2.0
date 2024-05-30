@@ -2,7 +2,7 @@
 
 import { Theme } from "@radix-ui/themes";
 import { Card, Flex, Button, TextField } from "@radix-ui/themes";
-import { SubmitButton } from "@/app/components/buttons/SubmitButton";
+import { SubmitButton } from "@/app/_components/buttons/SubmitButton";
 import styles from '../../passwordStyles.module.css'
 
 import { useState } from "react";

@@ -1,5 +1,5 @@
 
-import LoadingIcon from './components/loadingIcon'
+import LoadingIcon from './_components/loadingIcon'
 
 import styles from './layout.module.css'
 

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import ndLogo from '../public/images/logomini.png'
 import { Indie_Flower } from 'next/font/google'
-import GoButton from './components/buttons/GoButton'
+import GoButton from './_components/buttons/GoButton'
 import { getServerSession } from 'next-auth'
 import { authOptions } from './api/auth/[...nextauth]/route'
 

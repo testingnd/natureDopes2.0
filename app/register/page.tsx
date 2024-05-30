@@ -7,7 +7,7 @@ import {registerUser} from './_registerPageAction'
 
 import { Theme } from "@radix-ui/themes";
 import { Card, Flex, Button, TextField } from "@radix-ui/themes";
-import {SubmitButton} from '../components/buttons/SubmitButton' 
+import {SubmitButton} from '../_components/buttons/SubmitButton' 
 import styles from './register.module.css'
 
 

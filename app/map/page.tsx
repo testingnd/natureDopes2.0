@@ -1,17 +1,19 @@
 
-
 import React from "react"
 import Button from "./Button"
 import Head from "next/head"
-import Script from "next/script"
-import { Suspense } from "react"
-import { cache } from "react"
+
 
 // css imports
 import style from './map.module.css'
 
+//map libre build
 import MapUpload from "./MapUpload"
-import Loading from "../loading"
+
+//google map react build
+import Gmap from './GMap'
+
+
 
 async function getData() {
     const res = await fetch('http://localhost:3000/map/api')
@@ -27,8 +29,12 @@ async function getData() {
   }
 
 export default async function Map(){
+
+
+
    
-   const getImageData = await getData()
+  const getImageData = await getData()
+
     
     return (
         <>
@@ -37,14 +43,14 @@ export default async function Map(){
         <Button />
         <Button />
 
-        
-        <div className={style.mapWrap}>
+               
+       
           
-            <MapUpload getImageData={getImageData} />
+            <Gmap getImageData={getImageData} />
           
            
           
-        </div>
+      
        
         
       

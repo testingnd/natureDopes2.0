@@ -1,6 +1,6 @@
 'use client'
 
-import React from "react";
+import React, { useRef } from "react";
 import maplibregl, { Popup } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import mapStyle from './map.module.css'
@@ -9,6 +9,8 @@ import Loading from "../finder/loading";
 import { Suspense } from "react";
 
 import { GetImage } from "./GetImage";
+
+import MapMarker from './_components/MapMarker'
 
 
 
@@ -20,15 +22,32 @@ export default function MapUpload({getImageData}){
 
 //const imageData = use(getImageData()) 
 
-const [lng] = React.useState<number>(-1.17);
-const [lat] = React.useState<number>(48);
-const [zoom] = React.useState<number>(4);
+//const [lng] = React.useState<number>(-1.17);
+//const [lat] = React.useState<number>(48);
+//const [zoom] = React.useState<number>(4);
 const mapContainer = React.useRef<any>(null);
 const map = React.useRef<any>(null);
+const ref = React.useRef({mapContainer, map})
+
 const [API_KEY] = React.useState<string>('CMRIccwlZz6zI6QR2E5I');
 
+const [imageData, setImageData] = React.useState(getImageData)
+const [searchParams, setSearchParams] = React.useState('')
 
-const [data, setData] = React.useState(getImageData)
+
+const handleSearchEvent = (event) => {
+  setSearchParams(event.target.value)
+  
+  setImageData((imageData) => imageData.filter((_, index) => index !== 0));
+  console.log('change1')
+}
+
+const handleSubmit = (e) =>{
+  e.preventDefault();
+  
+  console.log('change2')
+}
+
 
 
 
@@ -41,45 +60,66 @@ React.useEffect(() => {
       center: [-1.17, 48],
       zoom: 4
     });
-
-
-   // `<img width="100" height="100" src='data:image/png;base64,${iagImages[0]}'>`
   
-  for (let i in data){
+},[map, mapContainer])
+
+React.useEffect(() => {
+   //`<img width="100" height="100" src='data:image/png;base64,${iagImages[0]}'>`
+  
+  for (let i in imageData){
    
   
     const marker = new maplibregl.Marker({color: "#FF0000"})
-    .setLngLat([data[i].gps_long, data[i].gps_lat])
+    .setLngLat([imageData[i].gps_long, imageData[i].gps_lat])
     
     //.off('click', imageHandler)
     .addTo(map.current);
 
     
-   marker.getElement().addEventListener('click', async () =>{
+   marker.getElement().addEventListener('onmouseover', () => {
+      let popUp = new maplibregl.Popup()
+     
+      marker.setPopup(popUp)
+      popUp.setHTML(`<p key=${imageData[i].id}>${imageData[i].species_name}</p>`)
+     }) 
+
+  marker.getElement().addEventListener('click', async () =>{
       
       let popUp = new maplibregl.Popup()
       marker.setPopup(popUp)
-      popUp.setHTML('<p>Awaiting photo<p/>')
+      popUp.setHTML('<p >Awaiting photo...</p>')
     
       const getPath = await GetImage()
       //const imagePath = `<img width="100" height="100" src='data:image/png;base64,${getPath}`
      
       
-      popUp.setHTML(`<img width="100" height="100" src="data:image/png;base64,${getPath}" alt="${data[i].species_name}">`)
+      popUp.setHTML(`<img  width="100" height="100" src="data:image/png;base64,${getPath}" alt="${imageData[i].species_name}">`)
       
     } )
     
   }
   
-  }, [API_KEY, lng, lat, zoom, data]);
+  }, [imageData, searchParams]);
 
 
 
  return(
      
      <>
+
+          <form onSubmit={handleSubmit}>
+
+              <label >Search</label><br />
+              <input name='searchSpecies' type='text' value={searchParams} placeholder="Search for species here... " onChange={handleSearchEvent}/>
+          </form>
+         <p>{searchParams}</p>
+          {imageData.map((item: any) => (
+            <p key={item.id}>{item.species_name}</p>
+          )) }
      
-      <div ref={mapContainer} className={mapStyle.map} />  <div/>
+      <div ref={mapContainer} className={mapStyle.map} />  
+          
+      <div/>
      
       
      </> 
