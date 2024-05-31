@@ -59,10 +59,7 @@ const onClickRemove = (item: any, index: number) => {
   list.splice(index, 1);
   setflowerPics(list)
   
- 
-  
 }
-
 
 // removes element from clicked state into found state. updates views and pointTotal state 
 const handlesetFoundPics = (item: string, array: imageArray) => {

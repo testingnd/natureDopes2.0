@@ -39,7 +39,7 @@ export default function Gmap({getImageData}){
       >
    
       {imageData.map((data) => (
-        <MapMarker key={data.id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} />
+        <MapMarker key={data.id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} path={data.path} />
       ))}  
 
       </GoogleMapReact>
