@@ -25,13 +25,13 @@ const [iagonPath, setIagonPath]= React.useState(null)
        
         
        let i = await GetImage()
-       let path = 'data:image/png;base64,' + i
-        setIagonPath(path)
+       let path: string = 'data:image/png;base64,' + i
+    setIagonPath(path)
 
     }
 
-    function changePointer(e) {
-        e.target.style.cursor = 'pointer';
+    function changePointer(event: React.ChangeEvent<EventTarget>): void {
+        event.target.style.cursor = 'pointer';
         setIsShown(true)
       }
 
