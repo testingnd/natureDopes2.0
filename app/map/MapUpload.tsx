@@ -35,18 +35,7 @@ const [imageData, setImageData] = React.useState(getImageData)
 const [searchParams, setSearchParams] = React.useState('')
 
 
-const handleSearchEvent = (event) => {
-  setSearchParams(event.target.value)
-  
-  setImageData((imageData) => imageData.filter((_, index) => index !== 0));
-  console.log('change1')
-}
 
-const handleSubmit = (e) =>{
-  e.preventDefault();
-  
-  console.log('change2')
-}
 
 
 

@@ -2,31 +2,34 @@
 
 
 import React from "react";
+import Image from "next/image";
 import maplibregl, { Popup } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import mapStyle from './map.module.css'
+import style from './mapMarker.module.css'
 
-import { ImageIcon } from "@radix-ui/react-icons";
+
+import imageIcon from "@/public/images/icons8-flower-32.png";
 
 import { GetImage } from "../GetImage";
 
 
 export interface mapMarkerProps {
     text: string,
-    path: string
+    path: string,
+    loadingGif: string
 }
 
-export default function MapMarker({text, path}: mapMarkerProps){
+export default function MapMarker({text, path, loadingGif}: mapMarkerProps){
 
 const [isShown, setIsShown] = React.useState(false);
 const [iagonPath, setIagonPath]= React.useState(null)
 
     async function getImageApi(){
        
-        
+        setIagonPath(loadingGif)
        let i = await GetImage()
        let path: string = 'data:image/png;base64,' + i
-    setIagonPath(path)
+        setIagonPath(path)
 
     }
 
@@ -42,9 +45,15 @@ const [iagonPath, setIagonPath]= React.useState(null)
  
     return(
         <div onMouseEnter={changePointer} onMouseLeave={leavePointer} onClick={getImageApi}>
-            <ImageIcon />
+            
+            <Image
+            src={imageIcon}
+            unoptimized={true}
+            
+            
+            />
             {isShown ? <div>{text}</div>: <div></div>}
-            {iagonPath ? <img  width="100" height="100" src={iagonPath} alt="${imageData[i].species_name}"></img>: null }
+            {iagonPath ? <Image width={100} height={100} src={iagonPath} alt='Awaiting image...'/>: null }
         </div>
         
     )

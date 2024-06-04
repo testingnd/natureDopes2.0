@@ -4,6 +4,8 @@ import Button from "./Button"
 import Head from "next/head"
 
 
+import loadingGif from '@/public/images/loadingplant.gif'
+
 // css imports
 import style from './map.module.css'
 
@@ -38,18 +40,10 @@ export default async function Map(){
     
     return (
         <>
-        
-    
-        <Button />
-        <Button />
-
-               
+     
        
           
-            <Gmap getImageData={getImageData} />
-          
-           
-          
+            <Gmap getImageData={getImageData} loadingGif={loadingGif} />
       
        
         
