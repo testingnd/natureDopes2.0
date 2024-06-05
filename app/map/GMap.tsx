@@ -1,23 +1,22 @@
 'use client'
 
 
-import React from "react";
+import { Suspense, useState } from 'react';
 
 import GoogleMapReact from 'google-map-react';
 import MapMarker from './_components/MapMarker'
+
+import Loading from '@/app/loading'
 
 
 export default function Gmap({getImageData, loadingGif}){
 
 
-  const [imageData, setImageData] = React.useState(getImageData)
+  const [imageData, setImageData] = useState<Array>(getImageData)
 
-  const [searchParams, setSearchParams] = React.useState('')
+  const [searchParams, setSearchParams] = useState<string>('')
 
 
-  const handleApiLoaded = (map, maps) => {
-    // use map and maps objects
-  };
 
   /*const handleSearchEvent = (event) => {
     setImageData([getImageData])
@@ -28,7 +27,7 @@ export default function Gmap({getImageData, loadingGif}){
     }*/
   
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.ChangeEvent<EventTarget>): void => {
     event.preventDefault();
     /* let tempArray = imageData.filter((data) => data.species_name.includes(searchParams));
     setImageData(tempArray);
@@ -58,13 +57,14 @@ export default function Gmap({getImageData, loadingGif}){
       </form>
       <p>{searchParams}</p>
       
+      <Suspense fallback={<Loading/>}>
       <div style={{ height: '90vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI}}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
           yesIWantToUseGoogleMapApiInternals
-          onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+         
         >
     
         {imageData.filter(data => {
@@ -79,6 +79,7 @@ export default function Gmap({getImageData, loadingGif}){
 
         </GoogleMapReact>
       </div>
+      </Suspense>
     </>
   );
  

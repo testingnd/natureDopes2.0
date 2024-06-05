@@ -21,8 +21,8 @@ export interface mapMarkerProps {
 
 export default function MapMarker({text, path, loadingGif}: mapMarkerProps){
 
-const [isShown, setIsShown] = React.useState(false);
-const [iagonPath, setIagonPath]= React.useState(null)
+const [isShown, setIsShown] = React.useState<boolean>(false);
+const [iagonPath, setIagonPath]= React.useState<string|null>(null)
 
     async function getImageApi(){
        
@@ -38,7 +38,7 @@ const [iagonPath, setIagonPath]= React.useState(null)
         setIsShown(true)
       }
 
-      function leavePointer() {
+      function leavePointer(): void {
         
         setIsShown(false)
       }
@@ -49,7 +49,7 @@ const [iagonPath, setIagonPath]= React.useState(null)
             <Image
             src={imageIcon}
             unoptimized={true}
-            
+            alt='Flower icon'
             
             />
             {isShown ? <div>{text}</div>: <div></div>}
