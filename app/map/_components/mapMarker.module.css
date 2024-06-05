@@ -1,5 +1,11 @@
 .imageDiv{
-    background-color: aliceblue;
-    width: 100px;
-    height: 100px;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    left: -16px;
+    top: -16px;
+ 
+   
+    width: 32px;
+    height: 32px;
 }

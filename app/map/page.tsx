@@ -31,12 +31,18 @@ async function getData() {
     return res.json()
   }
 
+export interface ImageData{
+  id: number,
+  species_name: string,
+  gps_lat: number,
+  gps_long: number,
+  path: string
+}
+
 export default async function Map(){
 
-
-
    
-  const getImageData = await getData()
+  const getImageData: ImageData[] = await getData()
 
     
     return (

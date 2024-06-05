@@ -7,12 +7,15 @@ import GoogleMapReact from 'google-map-react';
 import MapMarker from './_components/MapMarker'
 
 import Loading from '@/app/loading'
+ import { ImageData } from './page';
+import { StaticImageData } from 'next/image';
 
 
-export default function Gmap({getImageData, loadingGif}){
+
+export default function Gmap({getImageData, loadingGif}: {getImageData: ImageData, loadingGif: StaticImageData}) {
 
 
-  const [imageData, setImageData] = useState<Array>(getImageData)
+  const [imageData, setImageData] = useState<ImageData>(getImageData)
 
   const [searchParams, setSearchParams] = useState<string>('')
 

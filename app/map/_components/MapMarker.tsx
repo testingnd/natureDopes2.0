@@ -8,7 +8,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import style from './mapMarker.module.css'
 
 
-import imageIcon from "@/public/images/icons8-flower-32.png";
+import imageIcon from '@/public/images/icons8-flower-32.png';
 
 import { GetImage } from "../GetImage";
 
@@ -44,11 +44,12 @@ const [iagonPath, setIagonPath]= React.useState<string|null>(null)
       }
  
     return(
-        <div onMouseEnter={changePointer} onMouseLeave={leavePointer} onClick={getImageApi}>
+        <div className={style.imageDiv} onMouseEnter={changePointer} onMouseLeave={leavePointer} onClick={getImageApi}>
             
             <Image
             src={imageIcon}
-            unoptimized={true}
+            width={32}
+            height={32}
             alt='Flower icon'
             
             />
