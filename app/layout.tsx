@@ -41,16 +41,16 @@ export default async function RootLayout({
     <html lang="en">
       
       <body>
-        <Providers> 
-      
+       
+      <Providers>   
          
           <nav className={style.layoutNav}>
               <section>
-              <Theme accentColor='grass'>
+              <Theme data-is-root-theme='False' accentColor='grass'>
               
               {!session? <LoginButton/>:<LogoutButton/>  }
               </Theme>
-              <pre>Logged in as {session.user.name}</pre>
+              {session? <pre>Logged in as {session.user.name}</pre>: null }
               </section>
               
               <section className={inter.className}>
@@ -59,7 +59,7 @@ export default async function RootLayout({
                
           
           </nav>
-          
+         
             {children}
         </Providers>
       
