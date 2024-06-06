@@ -1,19 +1,20 @@
 'use client'
 
-
+import { Theme, Button, Flex } from '@radix-ui/themes'
+import '@radix-ui/themes/styles.css';
 
 import { signIn, signOut } from "next-auth/react"
 
 export const LoginButton = () => {
 
-    return <button onClick={ () => signIn()}>Sign In</button>
+    return (<Flex><Button onClick={ () => signIn()}>Sign In</Button></Flex>)
 }
 
 export const LogoutButton = () => {
 
     
 
-    return <button onClick={() => signOut()}> Sign Out</button>
+    return(<Flex><Button onClick={() => signOut()}> Sign Out</Button></Flex>)
 
 }
 

@@ -1,8 +1,13 @@
 /* Root layout CSS */
+.layoutNav{
+
+  display: flex;
+  justify-content: space-between;
+  max-height: 75px;
+}
 
 
-
-  /* Loading state CSS */
+/* Loading state CSS */
 
   .loadingWrapper{
     margin-top: 10%;
@@ -24,7 +29,7 @@
 /* Root page css   */
 
 .rootPageWrapper{
-  margin-top: 10%;
+  margin-top: 3%;
   width: 100%;
   display: flex;
   flex-direction: column;

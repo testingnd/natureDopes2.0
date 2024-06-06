@@ -1,7 +1,18 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Providers } from './providers';
-import { Theme } from '@radix-ui/themes'
+
+
+// Radix UI themes
+import { Theme, Button, Flex } from '@radix-ui/themes'
+
+
+import style from './layout.module.css'
+
+// Next auth  imports
+import { getServerSession } from 'next-auth';
+import { authOptions } from './api/auth/[...nextauth]/route'
+import { LoginButton, LogoutButton } from './auth'
 
 import '@radix-ui/themes/styles.css';
 import './globals.css'
@@ -18,30 +29,44 @@ export const metadata: Metadata = {
   description: 'Nature Dopes - mini-game app - Flower Finder ',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+  const session: any = await getServerSession(authOptions)
+
   return (
     <html lang="en">
-     
+      
       <body>
-
-        <nav>
-          <section className={inter.className}>
-            <a href='https://www.naturedopes.com'>Main Site</a>
-          </section>
-
-        </nav>
-        <Providers>
+        <Providers> 
+      
+         
+          <nav className={style.layoutNav}>
+              <section>
+              <Theme accentColor='grass'>
+              
+              {!session? <LoginButton/>:<LogoutButton/>  }
+              </Theme>
+              <pre>Logged in as {session.user.name}</pre>
+              </section>
+              
+              <section className={inter.className}>
+                <a href='https://www.naturedopes.com'>Main Site</a>
+              </section>
+               
+          
+          </nav>
+          
             {children}
         </Providers>
       
       
       
       </body>
-    
+  
     </html>
   )
 }

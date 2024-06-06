@@ -1,9 +1,7 @@
 'use client'
 
 import React, { useRef } from "react";
-import maplibregl, { Popup } from 'maplibre-gl';
-import 'maplibre-gl/dist/maplibre-gl.css';
-import mapStyle from './map.module.css'
+
 import { cache, use } from "react";
 import Loading from "../finder/loading";
 import { Suspense } from "react";

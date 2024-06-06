@@ -10,8 +10,14 @@ import { Card, Flex, Button, TextField } from "@radix-ui/themes";
 import {SubmitButton} from '../_components/buttons/SubmitButton' 
 import styles from './passwordStyles.module.css'
 
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]/route'
+
+
 
 export default function ForgotPassword(){
+
+ 
 
     const [error, setError] = useState<string>('')
 
@@ -46,7 +52,7 @@ export default function ForgotPassword(){
                 </Flex>
 
             </Card>
-        </Theme> 
+        </Theme>
         </main>
        
     )
