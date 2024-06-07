@@ -10,14 +10,20 @@ import Loading from '@/app/loading'
  import { ImageData } from './page';
 import { StaticImageData } from 'next/image';
 
+import * as SwitchPrimitive from '@radix-ui/react-switch';
+import { Switch, Theme } from '@radix-ui/themes';
+import { Label } from '@radix-ui/themes/src/components/context-menu.jsx';
 
 
-export default function Gmap({getImageData, loadingGif}: {getImageData: ImageData, loadingGif: StaticImageData}) {
+
+export default function Gmap({getImageData, loadingGif, session}: {getImageData: ImageData, loadingGif: StaticImageData, session: number}) {
 
 
   const [imageData, setImageData] = useState<ImageData>(getImageData)
 
   const [searchParams, setSearchParams] = useState<string>('')
+
+  const [allChecked, setAllChecked]  = useState<boolean>(false)
 
 
 
@@ -58,7 +64,16 @@ export default function Gmap({getImageData, loadingGif}: {getImageData: ImageDat
       <label >Search</label><br />
         <input name='searchSpecies' type='text' placeholder="Search for species here... " onChange={event => setSearchParams(event.target.value)}/>
       </form>
-      <p>{searchParams}</p>
+
+    <Theme accentColor='grass' data-is-root-theme='false'>
+      <label>All finds</label>
+      <Switch checked={allChecked} onCheckedChange={() => setAllChecked(allChecked => !allChecked)} />
+      <label>Your finds</label>
+     
+
+    </Theme>
+
+
       
       <Suspense fallback={<Loading/>}>
       <div style={{ height: '90vh', width: '100%' }}>
@@ -71,6 +86,17 @@ export default function Gmap({getImageData, loadingGif}: {getImageData: ImageDat
         >
     
         {imageData.filter(data => {
+          if(!allChecked){
+            if(data.user_id == session.user.id){
+              return data
+            } else {
+              return
+            }
+          } else {
+            return data
+          }
+        })
+        .filter(data => {
           if(data === ''){
             return data
           } else if(data.species_name.toLowerCase().includes(searchParams.toLowerCase())) {

@@ -50,7 +50,7 @@ export default async function RootLayout({
               
               {!session? <LoginButton/>:<LogoutButton/>  }
               </Theme>
-              {session? <pre>Logged in as {session.user.name}</pre>: null }
+              {session? <pre>Logged in as {JSON.stringify(session)}</pre>: null }
               </section>
               
               <section className={inter.className}>
