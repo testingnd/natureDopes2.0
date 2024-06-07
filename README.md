@@ -1,5 +1,5 @@
 
-nd-finder is a minigame which i'm creating for my NatureDopes project. It will be wildflower finding game, for users to find a basket of wildflowers whilst out walking. It's being developed with NextJs and will display state management design principles.
+Nature Dopes 2.0 is a rebuild of the orginal nature dopes site. Built in NextJS. It offers expanded features such as location mapping, mini games and more.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
