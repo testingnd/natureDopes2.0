@@ -7,7 +7,7 @@ import GoogleMapReact from 'google-map-react';
 import MapMarker from './_components/MapMarker'
 
 import Loading from '@/app/loading'
- import { ImageData } from './page';
+
 import { StaticImageData } from 'next/image';
 
 import * as SwitchPrimitive from '@radix-ui/react-switch';
@@ -23,7 +23,7 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
 
   const [searchParams, setSearchParams] = useState<string>('')
 
-  const [allChecked, setAllChecked]  = useState<boolean>(false)
+  const [allChecked, setAllChecked]  = useState<boolean>(true)
 
 
 
@@ -66,9 +66,10 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
       </form>
 
     <Theme accentColor='grass' data-is-root-theme='false'>
-      <label>All finds</label>
-      <Switch checked={allChecked} onCheckedChange={() => setAllChecked(allChecked => !allChecked)} />
-      <label>Your finds</label>
+      { !session ? null :<><label>All finds</label>
+      <Switch checked={!allChecked} onCheckedChange={() => setAllChecked(allChecked => !allChecked)} />
+      <label>Your finds</label></>
+      }
      
 
     </Theme>
@@ -87,7 +88,7 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
     
         {imageData.filter(data => {
           if(!allChecked){
-            if(data.user_id == session.user.id){
+            if(data.user_id == session){
               return data
             } else {
               return

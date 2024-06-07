@@ -37,12 +37,18 @@ export default async function Map(){
   const getImageData = await getData()
   console.log(getImageData[0])
   const session: any = await getServerSession(authOptions)
+
+ let userId = null
+
+  if(session){
+    userId = session.user.id
+  }
     
     return (
         <>
      
 
-              <Gmap getImageData={getImageData} loadingGif={loadingGif} session={session} />
+              <Gmap getImageData={getImageData} loadingGif={loadingGif} session={userId} />
        
        
         
