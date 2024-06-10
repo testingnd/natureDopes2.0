@@ -5,14 +5,15 @@ import { Suspense, useState } from 'react';
 
 import GoogleMapReact from 'google-map-react';
 import MapMarker from './MapMarker'
+import ImageUploadForm from './forms/ImageUploadForm';
 
 import Loading from '@/app/loading'
 
 import { StaticImageData } from 'next/image';
 
-import * as SwitchPrimitive from '@radix-ui/react-switch';
+
 import { Switch, Theme } from '@radix-ui/themes';
-import { Label } from '@radix-ui/themes/src/components/context-menu.jsx';
+
 
 
 
@@ -25,26 +26,23 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
 
   const [allChecked, setAllChecked]  = useState<boolean>(true)
 
+  // state for long/ lat positons for onclickMap function
+  const[gps_lat, setLat] = useState<number>(0)
+  const[gps_long, setLong] = useState<number>(0)
 
 
-  /*const handleSearchEvent = (event) => {
-    setImageData([getImageData])
-    setSearchParams(event.target.value)
-    let tempArray = imageData.filter((data) => data.species_name.includes(searchParams));
-    setImageData(tempArray);
-   
-    }*/
-  
+
 
   const handleSubmit = (event: React.ChangeEvent<EventTarget>): void => {
     event.preventDefault();
-    /* let tempArray = imageData.filter((data) => data.species_name.includes(searchParams));
-    setImageData(tempArray);
-    if(searchParams.length < 1){
-    setImageData(getImageData)
-     
-  }*/
+ 
 }
+
+// on click function for googleMap
+function onClickMap({lat, lng}) {
+  setLong(lng)
+  setLat(lat)
+  console.log(lat, lng)}
 
 
   // starting view of map
@@ -78,13 +76,15 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
       
       <Suspense fallback={<Loading/>}>
       <div style={{ height: '90vh', width: '100%' }}>
+        <ImageUploadForm lng={gps_long} lat={gps_lat}/>
         <GoogleMapReact
           bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI}}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
           yesIWantToUseGoogleMapApiInternals
-         
+          onClick={onClickMap}
         >
+        
     
         {imageData.filter(data => {
           if(!allChecked){
