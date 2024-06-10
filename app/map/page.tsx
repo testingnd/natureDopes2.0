@@ -12,7 +12,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route'
 
 //google map react build
-import Gmap from './GMap'
+import Gmap from './_components/GMap'
 
 
 

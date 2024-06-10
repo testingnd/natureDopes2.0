@@ -3,12 +3,12 @@
 import React, { useRef } from "react";
 
 import { cache, use } from "react";
-import Loading from "../finder/loading";
+import Loading from "../../finder/loading";
 import { Suspense } from "react";
 
-import { GetImage } from "./GetImage";
+import { GetImage } from "../_lib/GetImage";
 
-import MapMarker from './_components/MapMarker'
+import MapMarker from './MapMarker'
 
 
 

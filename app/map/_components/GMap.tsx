@@ -4,7 +4,7 @@
 import { Suspense, useState } from 'react';
 
 import GoogleMapReact from 'google-map-react';
-import MapMarker from './_components/MapMarker'
+import MapMarker from './MapMarker'
 
 import Loading from '@/app/loading'
 

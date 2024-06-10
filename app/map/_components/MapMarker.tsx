@@ -10,7 +10,7 @@ import style from './mapMarker.module.css'
 
 import imageIcon from '@/public/images/icons8-flower-32.png';
 
-import { GetImage } from "../GetImage";
+import { GetImage } from "../_lib/GetImage";
 
 
 export interface mapMarkerProps {
