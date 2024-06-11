@@ -17,7 +17,7 @@ import Gmap from './_components/GMap'
 
 
 async function getData() {
-    const res = await fetch('http://localhost:3000/map/api', { next: { revalidate: 10 } })
+    const res = await fetch('http://localhost:3000/map/api', { next: { revalidate: 1000 } })
     // The return value is *not* serialized
 
    
@@ -35,7 +35,7 @@ export default async function Map(){
 
    
   const getImageData = await getData()
-  console.log(getImageData[0])
+
   const session: any = await getServerSession(authOptions)
 
  let userId = null

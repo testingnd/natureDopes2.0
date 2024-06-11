@@ -6,11 +6,12 @@ import { Theme } from "@radix-ui/themes";
 import { Card, Flex, Button, TextField } from "@radix-ui/themes";
 
 import { iagonUpload } from "../../_lib/uploadImageIagon";
+import { registerImageData } from "../../_lib/registerImageData";
 
 import { SubmitButton } from "@/app/_components/buttons/SubmitButton";
 
 
-export default function imageUploadForm({lng, lat}: {lng: number, lat: number}){
+export default function imageUploadForm({lng, lat, session}: {lng: number, lat: number, session: number}){
 
     const [ error, setError] = useState<string>('')
     const [success, setSuccess] = useState<string>('')
@@ -19,9 +20,17 @@ export default function imageUploadForm({lng, lat}: {lng: number, lat: number}){
     const submit = async (data: FormData) => {
         
         const {error, path} = await iagonUpload(data)
-        setError(error)
-
-        setSuccess(path)
+        
+        if(error){
+            setError(error)
+            return
+        } else {
+             const {errorPrisma, success} = await registerImageData(data, path, session)
+             setError(errorPrisma)
+             setSuccess(success)
+        }
+       
+        
     }
 
 
@@ -40,6 +49,7 @@ export default function imageUploadForm({lng, lat}: {lng: number, lat: number}){
                     </form>
                     {error && <p>{error}</p>}
                     { success && <p >{success}</p>}  
+                    <p>{session}</p>
                 </Flex>
             </Card>
         </Theme>

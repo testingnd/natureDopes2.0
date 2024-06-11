@@ -3,8 +3,9 @@
 export async function iagonUpload(data: FormData){
 
     let imageFile = data.get('image_file') as File
-    let imageName = data.get('species') as string
+    let imageName = data.get('species') as string   
     console.log(data)
+    
     try{
         const headers = new Headers();
         
@@ -16,7 +17,7 @@ export async function iagonUpload(data: FormData){
         formdata.append("file", imageFile);
         formdata.append("filename", imageName);
         formdata.append("visibility", "private");
-        formdata.append("directoryId", "6634a342ed109dea7696eaaa")
+        formdata.append("directoryId", "6634a342ed109dea7696eaaa")                              
         formdata.append("password", process.env.IAGON_PASS)
 
 
@@ -29,13 +30,13 @@ export async function iagonUpload(data: FormData){
 
          const result = await res.json()
          console.log(result)
-         const successId = result.data.id
+         const successId = result.data._id
          return {
-            path: 'good',
+            path: successId
         }
 
     } catch (e: any) {
-        console.log(e)
+        console.log(e.error)
         return {
             error: 'bad'
         }

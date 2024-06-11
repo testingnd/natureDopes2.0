@@ -60,7 +60,7 @@ import { Prisma } from "@prisma/client";
                 }
                 return {
                     error: 'Technical issue, please contact us'
-            }   
+                }   
 
         }
 

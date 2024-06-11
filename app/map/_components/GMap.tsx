@@ -76,7 +76,7 @@ function onClickMap({lat, lng}) {
       
       <Suspense fallback={<Loading/>}>
       <div style={{ height: '90vh', width: '100%' }}>
-        <ImageUploadForm lng={gps_long} lat={gps_lat}/>
+        <ImageUploadForm lng={gps_long} lat={gps_lat} session={session}/>
         <GoogleMapReact
           bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI}}
           defaultCenter={defaultProps.center}
