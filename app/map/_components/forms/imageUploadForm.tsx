@@ -25,9 +25,9 @@ export default function imageUploadForm({lng, lat, session}: {lng: number, lat: 
             setError(error)
             return
         } else {
-             const {errorPrisma, success} = await registerImageData(data, path, session)
-             setError(errorPrisma)
-             setSuccess(success)
+              const {errorPrisma, success} = await registerImageData(data, path, session)
+                setError(errorPrisma)
+                setSuccess(success)
         }
        
         

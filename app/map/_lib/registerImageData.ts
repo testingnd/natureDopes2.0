@@ -1,13 +1,17 @@
-
+'use server'
 import {prisma} from '@/app/prisma'
 import { Prisma } from "@prisma/client";
 
 
-export async function registerImageData(data: FormData, image_path: string, user_id: number){
+export async function registerImageData(data: FormData, image_path: string, user_ids: number){
 
  const species_name = data.get('species') as string
- const gps_long = data.get('gps_long') as number
- const gps_lat = data.get('gps_lat') as number
+ const gps_longs = data.get('gps_long') as string
+ const gps_lats = data.get('gps_lat') as string
+
+ const gps_long = Number(gps_longs)
+ const gps_lat = Number(gps_lats)
+ const user_id = Number(user_ids)
 
     try{
 
@@ -22,8 +26,10 @@ export async function registerImageData(data: FormData, image_path: string, user
             }
         })
 
-    } catch(e:any){
-        console.log(e.message)
+        console.log(imageData)
+
+    } catch(error :any){
+        console.log(error)
         return {
             errorPrisma: 'error'
         }
