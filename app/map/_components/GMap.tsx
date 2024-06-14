@@ -42,7 +42,8 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
 function onClickMap({lat, lng}) {
   setLong(lng)
   setLat(lat)
-  console.log(lat, lng)}
+  console.log(lat, lng)
+}
 
 
   // starting view of map
@@ -74,9 +75,11 @@ function onClickMap({lat, lng}) {
 
 
       
-      <Suspense fallback={<Loading/>}>
+      
       <div style={{ height: '90vh', width: '100%' }}>
-        <ImageUploadForm lng={gps_long} lat={gps_lat} session={session}/>
+
+        
+        <Suspense fallback={<Loading/>}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI}}
           defaultCenter={defaultProps.center}
@@ -84,7 +87,7 @@ function onClickMap({lat, lng}) {
           yesIWantToUseGoogleMapApiInternals
           onClick={onClickMap}
         >
-        
+        <ImageUploadForm lng={gps_long} lat={gps_lat} session={session}/>
     
         {imageData.filter(data => {
           if(!allChecked){
@@ -108,8 +111,9 @@ function onClickMap({lat, lng}) {
         ))}  
 
         </GoogleMapReact>
-      </div>
       </Suspense>
+      </div>
+      
     </>
   );
  

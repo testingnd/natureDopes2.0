@@ -30,14 +30,16 @@ export async function registerImageData(data: FormData, image_path: string, user
 
     } catch(error :any){
         console.log(error)
+        if(error instanceof Prisma.PrismaClientKnownRequestError){
+        console.log(error.code, error.message)}
         return {
-            errorPrisma: 'error'
+            errorPrisma: 'Database error, if problem persists please contact us.'
         }
 
     }
 
     return {
-        success: 'Image data has been uploaded'
+        success: 'Thank you, a record has been created for '+ species_name
     }
 
 }

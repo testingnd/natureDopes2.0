@@ -27,7 +27,10 @@ export default function imageUploadForm({lng, lat, session}: {lng: number, lat: 
         } else {
               const {errorPrisma, success} = await registerImageData(data, path, session)
                 setError(errorPrisma)
-                setSuccess(success)
+                if(success){
+                    setSuccess(success)
+
+                }
         }
        
         
@@ -38,12 +41,12 @@ export default function imageUploadForm({lng, lat, session}: {lng: number, lat: 
     return(
 
         <Theme accentColor="grass" data-is-root-theme='false'>
-            <Card>
-                <Flex gap='4' direction='column'>
+            <Card >
+                <Flex width='50%' gap='4' direction='column'>
                     <form action={submit}>
                         <TextField.Root name='species' placeholder="Species Name" size='3'  />
-                        <TextField.Root name='gps_long' placeholder="Position Long" size='3' value={lng} />
-                        <TextField.Root name='gps_lat' placeholder="Position Lat" size='3' value={lat}/>
+                        <TextField.Root name='gps_long' placeholder="Position Long" size='3' defaultValue={lng} />
+                        <TextField.Root name='gps_lat' placeholder="Position Lat" size='3' defaultValue={lat}/>
                         <input name='image_file' placeholder="Image" type="file" />   
                         <SubmitButton>Upload</SubmitButton>
                     </form>
