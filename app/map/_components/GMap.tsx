@@ -67,13 +67,14 @@ function onClickMap({lat, lng}) {
   return (
     // Important! Always set the container height explicitly
     <>
+      <Theme accentColor='grass' data-is-root-theme='false'>
       <form onSubmit={handleSubmit}>
 
         <label >Search</label><br />
           <input name='searchSpecies' type='text' placeholder="Search for species here... " onChange={event => setSearchParams(event.target.value)}/>
       </form>
 
-    <Theme accentColor='grass' data-is-root-theme='false'>
+   
       { !session ? null :
       
       <>
@@ -81,7 +82,7 @@ function onClickMap({lat, lng}) {
       <Switch checked={!allChecked} onCheckedChange={() => setAllChecked(allChecked => !allChecked)} />
       <label>Your finds</label>
 
-        {uploadForm ? <Button onClick={toggleUploadForm}>+</Button>: null}
+        {uploadForm ? null : <Button onClick={toggleUploadForm}>+</Button> }
       </>
       }
 
@@ -95,7 +96,7 @@ function onClickMap({lat, lng}) {
       
       <div style={{ height: '90vh', width: '100%' }}>
 
-        {uploadForm? null: <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm}/>}
+        {uploadForm? <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm}/>: null}
         <Suspense fallback={<Loading/>}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI}}
