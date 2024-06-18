@@ -1,6 +1,7 @@
 'use server'
 import {prisma} from '@/app/prisma'
 import { Prisma } from "@prisma/client";
+import validator from 'validator';
 
 
 export async function registerImageData(data: FormData, image_path: string, user_ids: number){
@@ -9,9 +10,23 @@ export async function registerImageData(data: FormData, image_path: string, user
  const gps_longs = data.get('gps_long') as string
  const gps_lats = data.get('gps_lat') as string
 
+ if(!validator.isFloat(gps_longs)){
+    return {
+        errorPrisma: 'gps coordinates must be decimal numbers'
+    }
+ }
+ if(!validator.isAlpha(species_name)){
+    return {
+        errorPrisma: 'Species names must only  contain letters '
+    }
+ }
+
  const gps_long = Number(gps_longs)
  const gps_lat = Number(gps_lats)
  const user_id = Number(user_ids)
+
+
+ 
 
     try{
 

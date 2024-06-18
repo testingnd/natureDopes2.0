@@ -1,9 +1,19 @@
 'use server'
 
+import validator from "validator"
+
 export async function iagonUpload(data: FormData){
 
     let imageFile = data.get('image_file') as File
     let imageName = data.get('species') as string   
+
+    if(!validator.isAlpha(imageName)){
+        return {
+            error: 'Species names must only  contain letters '
+        }
+     }
+    
+
     console.log(data)
     
     try{
@@ -38,7 +48,7 @@ export async function iagonUpload(data: FormData){
     } catch (e: any) {
         console.log(e.error)
         return {
-            error: 'bad'
+            error: 'There was a technical issue uploading your data, please try again. If the issue persists please contact us '
         }
 
     }

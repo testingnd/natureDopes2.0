@@ -49,7 +49,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm}: {
                         <TextField.Root name='species' placeholder="Species Name" size='3'  />
                         <TextField.Root name='gps_long' placeholder="Position Long" size='3' value={lng} />
                         <TextField.Root name='gps_lat' placeholder="Position Lat" size='3' value={lat}/>
-                        <input name='image_file' placeholder="Image" type="file" />   
+                        <input name='image_file' placeholder="Image" type="file" accept=".png, .jpg, .jpeg, .heic, .svg"/>   
                         <SubmitButton>Upload</SubmitButton>
                     </form>
                     {error && <p>{error}</p>}
