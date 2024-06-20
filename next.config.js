@@ -17,6 +17,32 @@ const nextConfig = {
     serverComponentsExternalPackages: ['@prisma/client', 'bcrypt']
   },
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'scontent-cdg4-3.cdninstagram.com',
+        port: '',
+        pathname: '**'
+        
+      },
+      {
+        protocol: 'https',
+        hostname: 'scontent-cdg4-2.cdninstagram.com',
+        port: '',
+        pathname: '**'
+        
+      },
+      {
+        protocol: 'https',
+        hostname: 'scontent-cdg4-1.cdninstagram.com',
+        port: '',
+        pathname: '**'
+        
+      },
+    ],
+  },
+
   reactStrictMode: false,
 
 
