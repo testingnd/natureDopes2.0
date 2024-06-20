@@ -6,6 +6,11 @@ import Image from "next/image"
 
 
 
+import InstagramGallery from "./_components/InstagramGallery"
+
+
+
+
 
 export default async function Gallery(){
 
@@ -29,27 +34,7 @@ export default async function Gallery(){
 
     return(
         <>
-        {igResponse.map((media) => {
-            if(media.media_type == 'IMAGE'){
-                return <div key={media.id}>
-                        
-                            <Image 
-                                src={media.media_url}
-                                width={200}
-                                height={200}
-                                alt={'Ig picture'}
-                            />
-                        </div>
-            }
-            
-                return <div key={media.id} height='200'>
-
-                        <video width="200" height="200" controls preload="none" src={media.media_url}>
-
-                        </video>
-                </div>
-            
-        } )}
+        <InstagramGallery igResponse={igResponse} />
         <p>This will be the gallery page</p>
         
         </>
