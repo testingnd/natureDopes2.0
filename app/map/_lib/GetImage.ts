@@ -14,16 +14,12 @@
                     password: process.env.IAGON_PASS})
 
         })
-        
-        
        
         console.log(res.status)
         const arrayBuffer = await res.arrayBuffer()
         const buffer = Buffer.from(arrayBuffer);
         let base64 = buffer.toString('base64');
        
-        
-        
         if (!res.ok) {
             // This will activate the closest `error.js` Error Boundary
           
