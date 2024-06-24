@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, {params}: {params: {id: string}}){
     
-    console.log(params)
+    
     let prismaId = Number(params.id)
 
     const imageData = await prisma.images.findMany({
@@ -14,6 +14,7 @@ export async function GET(req, {params}: {params: {id: string}}){
         }
     });
 
+    
   return NextResponse.json(imageData);
 
 }

@@ -30,5 +30,5 @@
     }   
 
 
-            //<img alt='nowt' placeholder="nowt" src={`data:image/png;base64,${data}`} />
+            
             
