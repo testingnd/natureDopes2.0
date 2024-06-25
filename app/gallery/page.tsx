@@ -7,6 +7,8 @@ import MainGalleryComponent from "./_components/MainGalleryComponent"
 import { getServerSession } from "next-auth"
 import { authOptions } from "../api/auth/[...nextauth]/route"
 
+import LoadingGif from '@/public/images/loadingplant.gif'
+
 
 async function getPrismaData(sessionId){
  
@@ -53,7 +55,7 @@ export default async function PageRootGallery(){
 
     return(
         <>
-        <MainGalleryComponent igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} />
+        <MainGalleryComponent igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} LoadingGif={LoadingGif} />
         <p>This will be the gallery page</p>
        
         </>

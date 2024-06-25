@@ -13,7 +13,7 @@ import InstagramGallery from "./galleries/InstagramGallery";
 
 
 
-export default function MainGalleryComponent({session, igResponse, imageDataPrisma}: {session: number|null}){
+export default function MainGalleryComponent({session, igResponse, imageDataPrisma, LoadingGif}: {session: number|null}){
 
     const [galleryInView, setGalleryinView] = React.useState<boolean>(true)
 
@@ -29,7 +29,7 @@ export default function MainGalleryComponent({session, igResponse, imageDataPris
         {session? <div> 
                     <Button onClick={galleryToggle} >switch</Button> 
                 
-                    {galleryInView? <InstagramGallery igResponse={igResponse}  />: <IagonGallery imageDataPrisma={imageDataPrisma} />}
+                    {galleryInView? <InstagramGallery igResponse={igResponse}  />: <IagonGallery imageDataPrisma={imageDataPrisma} LoadingGif={LoadingGif} />}
                   </div>
             : <InstagramGallery igResponse={igResponse} />
         

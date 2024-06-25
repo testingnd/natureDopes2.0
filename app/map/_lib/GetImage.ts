@@ -1,6 +1,6 @@
 'use server'
 
-        export async function GetImage(){
+        export async function GetImage(path){
         
         const headers = new Headers();
         headers.set("x-api-key", process.env.IAGON_API); 
