@@ -3,8 +3,8 @@
 
 import React from "react";
 import Image from "next/image";
-import maplibregl, { Popup } from 'maplibre-gl';
-import 'maplibre-gl/dist/maplibre-gl.css';
+
+
 import style from './mapMarker.module.css'
 
 

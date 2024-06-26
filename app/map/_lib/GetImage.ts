@@ -1,5 +1,7 @@
 'use server'
 
+import { cache } from "react";
+
         export async function GetImage(path){
         
         const headers = new Headers();
@@ -11,8 +13,8 @@
             headers: headers,
             
             body: JSON.stringify({id: '6668524fc0334a94a3a164a9',
-                    password: process.env.IAGON_PASS})
-
+                    password: process.env.IAGON_PASS}),
+            cache: 'force-cache'
         })
        
         console.log(res.status)
