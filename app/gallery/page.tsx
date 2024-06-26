@@ -37,7 +37,7 @@ export default async function PageRootGallery(){
     let imageDataPrisma = null
     if(session){
       imageDataPrisma = await getPrismaData(session.user.id)
-      console.log(imageDataPrisma)
+     
     }
 
 

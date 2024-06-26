@@ -12,6 +12,7 @@ import { GetImage } from "@/app/map/_lib/GetImage";
 export default function IagonImage({path, LoadingGif}: {path: string, LoadingGif: string}){
 
 const [base64String, setBase64String] =  React.useState<string|null>(LoadingGif)
+const [error, setError] = React.useState<string|undefined>('')
 const iagonLocation = path
 
     async function getImageApi(iagonLocation: string){
@@ -20,8 +21,9 @@ const iagonLocation = path
             return
         } else {
         setBase64String(LoadingGif)
-        let i = await GetImage(iagonLocation)
-        let imageSrc: string = 'data:image/png;base64,' + i
+        let {i64, error} = await GetImage(iagonLocation)
+        setError(error)
+        let imageSrc: string = 'data:image/png;base64,' + i64
          setBase64String(imageSrc)
         }
      }
@@ -34,6 +36,7 @@ const iagonLocation = path
         <div onLoad={handleImage} >
 
         <Image
+
             src={base64String} 
             width={100} 
             height={100} 
@@ -42,7 +45,7 @@ const iagonLocation = path
             alt='flower picture'
         
             />
-
+        {error && <p>{error}</p>}
         </div>
 
     )
