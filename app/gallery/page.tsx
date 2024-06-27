@@ -4,13 +4,14 @@ import Image from "next/image"
 
 import MainGalleryComponent from "./_components/MainGalleryComponent"
 
-import { getServerSession } from "next-auth"
+import { getServerSession, NextAuthOptions } from "next-auth"
 import { authOptions } from "../api/auth/[...nextauth]/route"
+
 
 import LoadingGif from '@/public/images/loadingplant.gif'
 
 
-async function getPrismaData(sessionId){
+async function getPrismaData(sessionId: number){
  
   const res = await fetch(`http://localhost:3000/gallery/api/prismaData/${sessionId}`, { next: { revalidate: 1} })
 
@@ -55,7 +56,7 @@ export default async function PageRootGallery(){
 
     return(
         <>  
-        {error && <p>{error}+ verify </p> }
+        {error && <p>{error} </p> }
         {!error ?
           <MainGalleryComponent igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} LoadingGif={LoadingGif} />: null
         }

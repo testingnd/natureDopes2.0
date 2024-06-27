@@ -7,7 +7,7 @@ export async function GET(req: NextRequest){
     
  
     console.log(res.status)
-    if(res.status == '400' || res.status == '500'){
+    if(res.status == 400 || res.status == 500){
         const response = await res.json();
        
 
