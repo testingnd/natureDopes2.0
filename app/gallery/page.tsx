@@ -49,14 +49,17 @@ export default async function PageRootGallery(){
         }
         return res.json()
       }
-    const igResponse = await getInstagramData();
+    const {igResponse, error} = await getInstagramData();
 
    
 
     return(
-        <>
-        <MainGalleryComponent igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} LoadingGif={LoadingGif} />
-        <p>This will be the gallery page</p>
+        <>  
+        {error && <p>{error}+ verify </p> }
+        {!error ?
+          <MainGalleryComponent igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} LoadingGif={LoadingGif} />: null
+        }
+      
        
         </>
     )
