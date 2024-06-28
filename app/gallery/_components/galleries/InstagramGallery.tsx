@@ -6,16 +6,18 @@ import Image from "next/image"
 import '@radix-ui/themes/styles.css';
 import { Theme, Card, Box, Flex, Section, Container } from "@radix-ui/themes"
 
+//type imports
+import { InstagramApiData } from "../../page";
 
 
-export default function InstagramGallery({igResponse}){
+export default function InstagramGallery({igResponse}: {igResponse: InstagramApiData}){
 
     return (
         <>
         <Theme accentColor="grass" grayColor="sand" appearance="light">
         <Container size='3'>
          <Flex>
-            {igResponse.map((media, index) => {
+            {igResponse.map((media: InstagramApiData, index: number) => {
                 if(index % 2){
                     return
                 }
@@ -46,7 +48,7 @@ export default function InstagramGallery({igResponse}){
         </Container>
         <Container size='3'>
          <Flex>
-            {igResponse.map((media, index) => {
+            {igResponse.map((media: InstagramApiData, index: number) => {
                 if(index % 2 == 0){
                     return
                 }

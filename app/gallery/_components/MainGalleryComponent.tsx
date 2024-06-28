@@ -11,9 +11,11 @@ import { Theme, Card, Box, Flex, Section, Container, Button } from "@radix-ui/th
 import IagonGallery from "./galleries/IagonGallery";
 import InstagramGallery from "./galleries/InstagramGallery";
 
+// importing types
+import {ImagesDataPrisma} from '../page'
+import { InstagramApiData } from "../page";
 
-
-export default function MainGalleryComponent({session, igResponse, imageDataPrisma, LoadingGif}: {session: number|null}){
+export default function MainGalleryComponent({session, igResponse, imageDataPrisma, LoadingGif}: {session: number|null, igResponse: InstagramApiData, imageDataPrisma: ImagesDataPrisma | null, LoadingGif: any}){
 
     const [galleryInView, setGalleryinView] = React.useState<boolean>(true)
 

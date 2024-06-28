@@ -11,6 +11,8 @@ import { authOptions } from "../api/auth/[...nextauth]/route"
 import LoadingGif from '@/public/images/loadingplant.gif'
 
 
+
+
 async function getPrismaData(sessionId: number){
  
   const res = await fetch(`http://localhost:3000/gallery/api/prismaData/${sessionId}`, { next: { revalidate: 1} })
@@ -21,6 +23,21 @@ async function getPrismaData(sessionId: number){
   }
 
   return res.json()
+}
+
+export type ImagesDataPrisma = {
+  id: number,
+  path: string,
+  species_name: string,
+  gps_long: number,
+  gps_lat: number,
+  user_id: number
+}
+
+export type InstagramApiData = {
+  media_type: string,
+  media_url: string,
+  id: number
 }
 
 
@@ -35,7 +52,7 @@ export default async function PageRootGallery(){
       userId = session.user.id
   }
 
-    let imageDataPrisma = null
+    let imageDataPrisma: ImagesDataPrisma | null = null
     if(session){
       imageDataPrisma = await getPrismaData(session.user.id)
      
@@ -50,7 +67,7 @@ export default async function PageRootGallery(){
         }
         return res.json()
       }
-    const {igResponse, error} = await getInstagramData();
+    const {igResponse, error}: {igResponse: InstagramApiData, error: string} = await getInstagramData();
 
    
 

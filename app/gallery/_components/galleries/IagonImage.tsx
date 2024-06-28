@@ -11,7 +11,7 @@ import { GetImage } from "@/app/map/_lib/GetImage";
 
 export default function IagonImage({path, LoadingGif}: {path: string, LoadingGif: string}){
 
-const [base64String, setBase64String] =  React.useState<string|null>(LoadingGif)
+const [base64String, setBase64String] =  React.useState<string>(LoadingGif)
 const [error, setError] = React.useState<string|undefined>('')
 const iagonLocation = path
 
