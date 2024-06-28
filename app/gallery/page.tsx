@@ -73,12 +73,10 @@ export default async function PageRootGallery(){
 
     return(
         <>  
-        {error && <p>{error} </p> }
-        {!error ?
-          <MainGalleryComponent igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} LoadingGif={LoadingGif} />: null
-        }
-      
        
+          <MainGalleryComponent error={error} igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} LoadingGif={LoadingGif} />
+        
+      
         </>
     )
 }
