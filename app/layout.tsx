@@ -25,7 +25,7 @@ const inter = Inter({
 
 
 export const metadata: Metadata = {
-  title: 'Nature Dopes - Flower Finder',
+  title: 'Nature Dopes | Wild Flower Data | Nature Preservation | Nature Map',
   description: 'Nature Dopes - mini-game app - Flower Finder ',
 }
 
@@ -39,22 +39,25 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      
+      <head>
+       
+      </head>
       <body>
        
       <Providers>   
          
           <nav className={style.layoutNav}>
-              <section>
+              <section className={style.navUserSection}>
               <Theme data-is-root-theme='False' accentColor='grass'>
               
               {!session? <LoginButton/>:<LogoutButton/>  }
               </Theme>
-              {session? <pre>Logged in as {JSON.stringify(session)}</pre>: null }
+              {session? <div><p>Logged in as: {session.user.name}</p></div>: null }
+              
               </section>
               
-              <section className={inter.className}>
-                <a href='https://www.naturedopes.com'>Main Site</a>
+              <section className={style.navUserSection}>
+                <div><a href='https://www.naturedopes.com'>Main Site</a></div>
               </section>
                
           
