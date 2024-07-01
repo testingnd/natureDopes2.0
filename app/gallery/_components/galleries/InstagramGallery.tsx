@@ -4,7 +4,7 @@ import React from "react"
 import Image from "next/image"
 
 import '@radix-ui/themes/styles.css';
-import { Theme, Card, Box, Flex, Section, Container } from "@radix-ui/themes"
+import { Theme, Card, Box, Flex, Section, Container, Inset, Text, Grid, Blockquote } from "@radix-ui/themes"
 
 //type imports
 import { InstagramApiData } from "../../page";
@@ -14,68 +14,52 @@ export default function InstagramGallery({igResponse}: {igResponse: InstagramApi
 
     return (
         <>
-        <Theme accentColor="grass" grayColor="sand" appearance="light">
-        <Container size='3'>
-         <Flex>
+        <Theme accentColor="grass" grayColor="sand" appearance="light" radius="medium" shadows='5'>
+        <Container size='2'>
+         <Grid columns='4' gap='6' >
             {igResponse.map((media: InstagramApiData, index: number) => {
-                if(index % 2){
-                    return
-                }
+               
                 if(media.media_type == 'IMAGE'){
                 
-                return <Box key={media.id} width='350px' height='350px'>
+                return <Box key={media.id} size='3' maxHeight='auto' >
                             <Card >
-                                <Image 
-                                    src={media.media_url}
-                                    width={250}
-                                    height={250}
-                                    alt={'Ig picture'}
-                                />
+                               
+                                <Inset clip="padding-box" side="top" pb="current" >
+                                    <Image 
+                                        src={media.media_url}
+                                        width={300}
+                                        height={250}
+                                        alt={'Ig picture'}
+                                    />
+                                </Inset>
+                                <Blockquote size='2'>
+                                    {media.caption}
+                                </Blockquote>
+                              
                             </Card>
                         </Box>       
             }
             
-                return   <Box key={media.id} width='350px' height='350px'>
-                            <Card>
-                            <video width="200" height="200" controls preload="none" src={media.media_url}>
+                return   <Box key={media.id} size='3' maxHeight='auto'>    
                             
-                            </video>
+                            <Card variant="surface" >
+                               
+                                    <Inset clip="padding-box" side="top" pb="current">
+                                        <video width="270" controls poster={media.thumbnail_url}>
+                                            <source src={media.media_url}/>
+                                        </video>
+                                        
+                                    </Inset>
+                                    
+            
                             </Card>
+                           
                          </Box>
           
         } )}
-        </Flex>
+        </Grid>
         </Container>
-        <Container size='3'>
-         <Flex>
-            {igResponse.map((media: InstagramApiData, index: number) => {
-                if(index % 2 == 0){
-                    return
-                }
-                if(media.media_type == 'IMAGE'){
-                
-                return <Box key={media.id} width='350px' height='350px'>
-                            <Card >
-                                <Image 
-                                    src={media.media_url}
-                                    width={250}
-                                    height={250}
-                                    alt={'Ig picture'}
-                                />
-                            </Card>
-                        </Box>      
-            }
-            
-                return   <Box key={media.id} width='350px' height='350px'>
-                            <Card>
-                            <video width="200" height="200" controls preload="none" src={media.media_url}>
-                            
-                            </video>
-                            </Card>
-                         </Box>
-        } )}
-        </Flex>
-        </Container>
+       
      </Theme>
      </> 
    )

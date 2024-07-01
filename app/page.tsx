@@ -28,10 +28,11 @@ export default async function Page() {
    
       
         <section className={`${indie.className} ${styles.logoWrapper} `}>
-                <aside >
+                <aside>
                   <Image
                     src={ndLogo}
                     alt='Nature Dopes Logo, mini'
+                    width={200}
                     style={{  
                       maxWidth: '100%',
                       height: 'auto'

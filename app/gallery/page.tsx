@@ -37,7 +37,9 @@ export type ImagesDataPrisma = {
 export type InstagramApiData = {
   media_type: string,
   media_url: string,
-  id: number
+  id: number,
+  caption: string,
+  thumbnail_url: string
 }
 
 

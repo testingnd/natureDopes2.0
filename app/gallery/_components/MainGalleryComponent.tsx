@@ -5,7 +5,7 @@ import React, { useState } from "react"
 import Image from "next/image"
 
 import '@radix-ui/themes/styles.css';
-import { Theme, Card, Box, Flex, Section, Container, Button } from "@radix-ui/themes"
+import { Theme, Card, Box, Flex, Section, Container, Button, Switch, Badge} from "@radix-ui/themes"
 
 //import gallery components
 import IagonGallery from "./galleries/IagonGallery";
@@ -27,16 +27,18 @@ export default function MainGalleryComponent({session, igResponse, imageDataPris
 
         
          <Theme accentColor="grass" grayColor="sand" appearance="light">
-          <Container>  
-        {session? <div> 
-                    <Button onClick={galleryToggle} >switch</Button> 
+          <Container size='4'>  
+        {session?<>
+                 <Flex gap='1'><Badge variant="surface" size='3'>Nature Dopes Gallery</Badge><Switch size='3' onClick={galleryToggle} /><Badge variant="surface" size='3'>User Gallery</Badge></Flex> 
+                 <Box mt='3'> 
+                   
                 
                     {galleryInView? error? <p>error</p>: <InstagramGallery igResponse={igResponse}  />: <IagonGallery imageDataPrisma={imageDataPrisma} LoadingGif={LoadingGif} />}
-                  </div>
+                  </Box></>
             : error? <p>error</p>: <InstagramGallery igResponse={igResponse} />
         
        
-        
+                
         
         }
          </Container>

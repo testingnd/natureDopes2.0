@@ -3,7 +3,7 @@ import {NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest){
 
-    const res = await fetch(`https://graph.instagram.com/me/media?fields=media_type,media_url,id&access_token=${process.env.INSTAGRAMACCESSTOKEN}`)
+    const res = await fetch(`https://graph.instagram.com/me/media?fields=media_type,media_url,id,caption,thumbnail_url&access_token=${process.env.INSTAGRAMACCESSTOKEN}`)
     
  
     console.log(res.status)
@@ -24,7 +24,7 @@ export async function GET(req: NextRequest){
     const igData = await res.json()
     const newArray = []
 
-    for(let i = 0; i < 6; i++ ){
+    for(let i = 0; i < 8; i++ ){
         newArray.push(igData.data[i])
     }
 
