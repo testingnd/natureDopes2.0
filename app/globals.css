@@ -17,14 +17,7 @@
 }
 
 
-nav{
-  
-  font-weight: 700;
 
-  display: flex;
-  justify-content: flex-end;
-
-}
 
 nav > section {
   margin-right: 1%;

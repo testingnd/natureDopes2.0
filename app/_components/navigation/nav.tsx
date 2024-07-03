@@ -1,5 +1,6 @@
 'use client'
 import { DropdownMenu, Button, Text, Strong } from "@radix-ui/themes";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 
 
@@ -12,8 +13,8 @@ export default function Nav(){
         <DropdownMenu.Root>
         <DropdownMenu.Trigger>
         <Button variant="soft">
-        <Text size='3'><Strong>Options</Strong></Text>
-            <DropdownMenu.TriggerIcon />
+       
+            <HamburgerMenuIcon  />
         </Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>

@@ -5,7 +5,9 @@ import { Providers } from './providers';
 
 // Radix UI themes
 import { Theme, Button, Flex, Text } from '@radix-ui/themes'
-
+import '@radix-ui/themes/styles.css';
+import { HomeIcon } from '@radix-ui/react-icons';
+import { RxHome } from "react-icons/rx";
 
 import style from './layout.module.css'
 
@@ -15,7 +17,7 @@ import { authOptions } from './api/auth/[...nextauth]/route'
 import { LoginButton, LogoutButton } from './auth'
 import Nav from './_components/navigation/nav';
 
-import '@radix-ui/themes/styles.css';
+//global css
 import './globals.css'
 
 
@@ -62,7 +64,7 @@ export default async function RootLayout({
                  <div>
                   <Nav/>
                 </div>
-                <div><Text color='grass'><a href='https://www.naturedopes.com'>Main Site</a></Text></div>
+                <div><Text color='grass'><a href='/'><RxHome width='2em'/></a></Text></div>
               </section>
             
           
