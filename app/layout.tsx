@@ -4,7 +4,7 @@ import { Providers } from './providers';
 
 
 // Radix UI themes
-import { Theme, Button, Flex } from '@radix-ui/themes'
+import { Theme, Button, Flex, Text } from '@radix-ui/themes'
 
 
 import style from './layout.module.css'
@@ -53,7 +53,7 @@ export default async function RootLayout({
             
               {!session? <LoginButton/>:<LogoutButton/>  }
              
-              {session? <div><p>Logged in as: {session.user.name}</p></div>: null }
+              {session? <div><Text color='grass'>Logged in as: {session.user.name}</Text></div>: null }
               
               </section>
             
@@ -62,7 +62,7 @@ export default async function RootLayout({
                  <div>
                   <Nav/>
                 </div>
-                <div><a href='https://www.naturedopes.com'>Main Site</a></div>
+                <div><Text color='grass'><a href='https://www.naturedopes.com'>Main Site</a></Text></div>
               </section>
             
           
