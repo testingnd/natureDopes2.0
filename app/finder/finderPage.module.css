@@ -1,0 +1,65 @@
+
+.loadingWrapper{
+    margin-top: 10%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
+.animateCont{
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+}
+
+
+
+.rootPageWrapper{
+  margin-top: 3%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.logoWrapper{
+  
+  padding-left: 1%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.logoWrapper > h2{
+  font-size: 2em;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+  color: #5B9240;
+}
+
+
+.rootPageSection {
+  margin: 2% 5% 0 5%;
+  font-size: 1.4em;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 700;
+}
+
+

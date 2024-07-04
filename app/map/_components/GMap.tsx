@@ -94,7 +94,7 @@ function onClickMap({lat, lng}) {
 
       
       
-      <div style={{ height: '90vh', width: '100%' }}>
+      <div style={{ height: '90vh', width: '100%'  }}>
 
         {uploadForm? <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm}/>: null}
         <Suspense fallback={<Loading/>}>
@@ -102,7 +102,7 @@ function onClickMap({lat, lng}) {
           bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI}}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
-          yesIWantToUseGoogleMapApiInternals
+          
           onClick={onClickMap}
         >
      

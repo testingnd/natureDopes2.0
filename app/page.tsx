@@ -44,13 +44,8 @@ export default async function Page() {
         
         
         <section className={`${indie.className} ${styles.rootPageSection} `}>
-            <h1> Welcome to the Nature Dopes mini-game <span style={{color: '#5B9240', fontWeight: '800'}}>'Flower finder'</span></h1>
-            <h2> <br /> While out in Nature, see if you can find each flower then answer a question for each</h2>
-            <h3> <br /> Click Go to begin </h3>
-            <Link className={styles.finderLink} href="/finder">
-              <GoButton text='Go!' />
-            </Link>
-              
+            <h1> Welcome to Nature Dopes</h1>
+            
               
           
                   

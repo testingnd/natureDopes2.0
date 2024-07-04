@@ -38,8 +38,8 @@ const toggleIs= () => {
             return
         } else{
         setIagonPath(loadingGif)
-       let i = await GetImage()
-       let path: string = 'data:image/png;base64,' + i
+       let {i64} = await GetImage()
+       let path: string = 'data:image/png;base64,' + i64
         setIagonPath(path)
         }
     }

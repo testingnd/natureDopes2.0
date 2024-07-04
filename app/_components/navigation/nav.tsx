@@ -12,7 +12,7 @@ export default function Nav(){
         
         <DropdownMenu.Root>
         <DropdownMenu.Trigger>
-        <Button variant="soft">
+        <Button variant="surface">
        
             <RxHamburgerMenu size={30} />
         </Button>
@@ -21,7 +21,7 @@ export default function Nav(){
         <DropdownMenu.Item><a href="/map"><Text size='3'><Strong>Map</Strong></Text></a></DropdownMenu.Item>
         <DropdownMenu.Item><a href='gallery'><Text size='3'><Strong>Gallery</Strong></Text></a></DropdownMenu.Item>
         
-        <DropdownMenu.Item><a href='/'><Text size='3'><Strong>Play</Strong></Text></a></DropdownMenu.Item>
+        <DropdownMenu.Item><a href='/finder'><Text size='3'><Strong>Play</Strong></Text></a></DropdownMenu.Item>
         </DropdownMenu.Content>
         </DropdownMenu.Root>
 
