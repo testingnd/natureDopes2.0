@@ -6,8 +6,9 @@ import { Providers } from './providers';
 // Radix UI themes
 import { Theme, Button, Flex, Text } from '@radix-ui/themes'
 import '@radix-ui/themes/styles.css';
-import { HomeIcon } from '@radix-ui/react-icons';
+
 import { RxHome } from "react-icons/rx";
+
 
 import style from './layout.module.css'
 
@@ -63,8 +64,9 @@ export default async function RootLayout({
               <section className={style.navUserSection}>
                  <div>
                   <Nav/>
+               
                 </div>
-                <div><Text color='grass'><a href='/'><RxHome width='2em'/></a></Text></div>
+                <div><Text color='grass'><a href='/'><RxHome size={30}/></a></Text></div>
               </section>
             
           
