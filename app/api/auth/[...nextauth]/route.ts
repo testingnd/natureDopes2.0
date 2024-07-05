@@ -9,7 +9,11 @@ import credentials from "next-auth/providers/credentials";
 
 
 export const authOptions: NextAuthOptions = {
-    
+
+    pages:{
+        signIn: 'api/auth/signin'
+    }
+    ,
     callbacks: {
         /*session: ({session, token}) => {
             console.log('Session Callback', {session, token})
@@ -73,7 +77,7 @@ export const authOptions: NextAuthOptions = {
     },
     providers: [
         credentials({
-            name: 'Email',
+            name: 'credentials',
             credentials: {
                 email: {
                     label: 'Email',
@@ -86,7 +90,7 @@ export const authOptions: NextAuthOptions = {
                 }
             },
             async authorize(credentials){
-                
+                console.log(credentials)
                 if(!credentials?.email || !credentials.password){
                     return null
                 }
