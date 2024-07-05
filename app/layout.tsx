@@ -71,8 +71,9 @@ export default async function RootLayout({
             
           
           </nav>
-          </Theme>
+          
             {children}
+            </Theme>
         </Providers>
       
       

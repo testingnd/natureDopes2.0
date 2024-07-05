@@ -18,10 +18,10 @@ export default function Nav(){
         </Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
-        <DropdownMenu.Item><a href="/map"><Text size='3'><Strong>Map</Strong></Text></a></DropdownMenu.Item>
-        <DropdownMenu.Item><a href='gallery'><Text size='3'><Strong>Gallery</Strong></Text></a></DropdownMenu.Item>
+        <a href="/map"><DropdownMenu.Item><Text size='3'><Strong>Map</Strong></Text></DropdownMenu.Item></a>
+        <a href='gallery'><DropdownMenu.Item><Text size='3'><Strong>Gallery</Strong></Text></DropdownMenu.Item></a>
         
-        <DropdownMenu.Item><a href='/finder'><Text size='3'><Strong>Play</Strong></Text></a></DropdownMenu.Item>
+        <a href='/finder'><DropdownMenu.Item><Text size='3'><Strong>Play</Strong></Text></DropdownMenu.Item></a>
         </DropdownMenu.Content>
         </DropdownMenu.Root>
 

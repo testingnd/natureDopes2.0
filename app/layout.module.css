@@ -28,5 +28,9 @@
   align-items: center;
 }
 
+/* Root page css */
 
-/* Loading state CSS */
+.ndHeadings{
+  text-align: center;
+  font-size: xx-large;
+}
