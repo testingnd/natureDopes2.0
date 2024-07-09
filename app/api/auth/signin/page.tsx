@@ -2,10 +2,14 @@
 
 import React from "react";
 import { sendPasswordReset } from "@/app/forgotPassword/_sendPasswordReset";
-import { Flex , Text, Button} from "@radix-ui/themes";
+import { Flex , Text, Button, Card, Box, Heading, TextField, Avatar} from "@radix-ui/themes";
 
 
 import { signIn } from "next-auth/react";
+import { Label } from "@radix-ui/themes/dist/esm/components/context-menu.js";
+
+import logoMini from '../../../../public/images/logomini.png'
+
 
 export default function SignIn() {
 
@@ -20,20 +24,43 @@ export default function SignIn() {
     }
 
     return (
-      <form method="post" action="/api/auth/callback/credentials" onSubmit={signInHandler}>
-       
-        <label>
-          email
-          <input name="Email" type="text" onChange={e => setEmail(e.target.value)}/>
-          <p>{email}</p>
-        </label>
-        <label>
-          Password
-          <input name="Password" type="password" onChange={ e => setPassword(e.target.value)} />
-          <p>{password}</p>
-        </label>
-        <button >Sign in</button>
-      </form>
+      
+
+      <Flex justify='center' pt='8'>
+
+        <Box width='30%'>
+        <Card size='5' variant="classic" style={{boxShadow: 'var(--shadow-5)'}} asChild>
+          
+          <form method="post" action="/api/auth/callback/credentials" onSubmit={signInHandler}>
+          <Flex gap='2' direction='column' justify='between' align='right'>
+
+                  <Flex gap='3' align='center' justify='center' direction='column'>
+                      <Avatar size='5'  src='../../../images/logomini.png' fallback='N'/>
+                     <Heading pb='2'>Sign In</Heading>
+                    
+                     
+                     
+                  </Flex>
+                 
+                  <Flex gap='2' direction='column'>
+                    <Label >  Email </Label>
+                   
+                    <TextField.Root name="Email" type="text" color="grass"  onChange={e => setEmail(e.target.value)}/>
+                  
+                  </Flex>
+                
+                  <Flex gap='2' direction='column'>
+                    <Label >  Password </Label>
+                    <TextField.Root name="Password" type="password" color="grass"  onChange={e => setPassword(e.target.value)}/>
+                  </Flex>
+                  <Button mt='3'>Sign in</Button>
+                
+              </Flex>
+              </form>
+        </Card>
+        </Box>
+      </Flex>
+      
     )
   }
 
