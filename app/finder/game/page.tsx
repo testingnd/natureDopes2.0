@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 
-import finderStyles from '../finder.module.css'
+import finderStyles from './finder.module.css'
 import React, { JSXElementConstructor } from 'react'
 
 import images, { imageArray } from '../flowerList'

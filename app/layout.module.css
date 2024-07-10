@@ -34,3 +34,8 @@
   text-align: center;
   font-size: xx-large;
 }
+
+.loadingWrapper{
+  display: flex;
+  justify-items: center;
+}

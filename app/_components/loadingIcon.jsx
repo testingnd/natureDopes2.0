@@ -1,6 +1,6 @@
 'use client'
 
-import ndLogo from '../../public/images/logomini.png'
+import ndLogo from '../../public/images/logo_mid.png'
 import Image from 'next/image'
 import styles from '../layout.module.css'
 import {motion} from 'framer-motion'
@@ -23,7 +23,7 @@ export default function LoadingIcon(){
                src={ndLogo}
                 alt='Nature Dopes Logo, mini'
                 style={{  
-                    maxWidth: '50%',
+                    maxWidth: '100%',
                     height: 'auto'
                 }} />    
 

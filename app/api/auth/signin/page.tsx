@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Flex , Text, Button, Card, Box, Heading, TextField, Avatar} from "@radix-ui/themes";
+import { Flex , Text, Button, Card, Box, Heading, TextField, Avatar, AspectRatio} from "@radix-ui/themes";
 
 
 import { signIn } from "next-auth/react";
@@ -29,14 +29,16 @@ export default function SignIn() {
 
       <Flex justify='center' pt='8'>
 
-        <Box width='30%'>
-        <Card size='5' variant="classic" style={{boxShadow: 'var(--shadow-5)'}} asChild>
+        <Box width='35%'>
+        <Card size='4' variant="classic" style={{boxShadow: 'var(--shadow-5)'}} >
           
           <form method="post" action="/api/auth/callback/credentials" onSubmit={signInHandler}>
-          <Flex gap='2' direction='column' justify='between' align='center'>
+          <Flex gap='2' direction='column' justify='between' align='stretch'>
 
                   <Flex gap='3' align='center' justify='center' direction='column'>
                      <Avatar size='5'  src='../../../images/logomini.png' fallback='N'/>
+                    
+
                      <Heading pb='2'>Sign In</Heading>
                     
                      
