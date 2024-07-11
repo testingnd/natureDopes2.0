@@ -4,10 +4,10 @@ import React from "react"
 
 import style from '../../layout.module.css'
 
-
 import { LoginButton, LogoutButton } from '../../auth'
 
 import { Text } from "@radix-ui/themes";
+import { useTheme } from "next-themes"
 
 import Nav from "./nav";
 
@@ -15,8 +15,10 @@ import { RxHome } from "react-icons/rx";
 
 
 
-export default async function NavBar({session}){
+export default function NavBar({session}){
 
+  const { theme, setTheme } = useTheme()
+  const toggleMode = () => setTheme(theme == 'light' ? 'dark' : 'light')
 
     return(
 
@@ -36,7 +38,10 @@ export default async function NavBar({session}){
                   <Nav/>
                
                 </div>
-                <div><Text color='grass'><a href='/'><RxHome size={30}/></a></Text></div>
+                <div><Text color='grass'><a href='/'><RxHome size={30}/></a></Text>
+                 
+                </div>
+               <button onClick={toggleMode}> Light/Dark </button>
               </section>
             
           

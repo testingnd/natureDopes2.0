@@ -6,6 +6,7 @@ import { Providers } from './providers';
 // Radix UI themes
 import { Theme, Button, Flex, Text, Section, Box } from '@radix-ui/themes'
 import '@radix-ui/themes/styles.css';
+import { ThemeProv } from './_components/ThemeProvider';
 
 import { RxHome } from "react-icons/rx";
 
@@ -49,13 +50,18 @@ export default async function RootLayout({
       </head>
       <body>
        
-      <Providers>   
-          <Theme data-is-root-theme='False' accentColor='grass' appearance='dark' scaling='100%'>
+      <Providers> 
+        <ThemeProv attribute='class'
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange>
+          <Theme data-is-root-theme='False' accentColor='grass' grayColor='mauve' scaling='100%'>
             <NavBar session={session} />
           
             {children}
         
             </Theme>
+          </ThemeProv>
         </Providers>
       
       
