@@ -4,7 +4,7 @@ import { Providers } from './providers';
 
 
 // Radix UI themes
-import { Theme, Button, Flex, Text } from '@radix-ui/themes'
+import { Theme, Button, Flex, Text, Section, Box } from '@radix-ui/themes'
 import '@radix-ui/themes/styles.css';
 
 import { RxHome } from "react-icons/rx";
@@ -17,6 +17,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]/route'
 import { LoginButton, LogoutButton } from './auth'
 import Nav from './_components/navigation/nav';
+import NavBar from './_components/navigation/navBar';
 
 //global css
 import './globals.css'
@@ -49,30 +50,11 @@ export default async function RootLayout({
       <body>
        
       <Providers>   
-          <Theme data-is-root-theme='False' accentColor='grass'>
-          <nav className={style.layoutNav}>
-              <section className={style.navUserSection}>
-             
-            
-              {!session? <LoginButton/>:<LogoutButton/>  }
-             
-              {session? <div><Text color='grass'>Logged in as: {session.user.name}</Text></div>: null }
-              
-              </section>
-            
-              
-              <section className={style.navUserSection}>
-                 <div>
-                  <Nav/>
-               
-                </div>
-                <div><Text color='grass'><a href='/'><RxHome size={30}/></a></Text></div>
-              </section>
-            
-          
-          </nav>
+          <Theme data-is-root-theme='False' accentColor='grass' appearance='dark' scaling='100%'>
+            <NavBar session={session} />
           
             {children}
+        
             </Theme>
         </Providers>
       

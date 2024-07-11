@@ -27,7 +27,7 @@ export default function LoadingIcon(){
                     height: 'auto'
                 }} />    
 
-        </motion.div>
+      </motion.div>
 
 
     )

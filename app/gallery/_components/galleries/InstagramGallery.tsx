@@ -14,7 +14,7 @@ export default function InstagramGallery({igResponse}: {igResponse: InstagramApi
 
     return (
         <>
-        <Theme accentColor="grass" grayColor="sand" appearance="light" radius="medium" shadows='5'>
+        
         <Container size='2'>
          <Grid columns='4' gap='6' >
             {igResponse.map((media: InstagramApiData, index: number) => {
@@ -60,7 +60,7 @@ export default function InstagramGallery({igResponse}: {igResponse: InstagramApi
         </Grid>
         </Container>
        
-     </Theme>
+    
      </> 
    )
 }

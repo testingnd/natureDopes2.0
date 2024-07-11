@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import ndLogo from '../public/images/logo_mid.png'
 import { Indie_Flower } from 'next/font/google'
-import { Box, Flex } from '@radix-ui/themes'
+import { Box, Flex, Section, Text } from '@radix-ui/themes'
 
 
 
@@ -26,8 +26,8 @@ export default async function Page() {
 
   return(
   
-   
-        <Flex pt='8' justify='center' >
+      
+        <Flex pt='8' justify='center' direction='column' align='center' >
           <Flex justify='center' align='center' direction='column' width='40%'>
               <section className={`${indie.className} ${styles.rootPageSection} `}>
                   <h1 className={styles.ndHeadings}> Welcome to Nature Dopes</h1>
@@ -45,16 +45,24 @@ export default async function Page() {
                           width={200}
                           style={{  
                             maxWidth: '100%',
-                            height: 'auto'
+                            height: 'auto',
+                            borderRadius: '10%'
                           }} />
                         
                       </aside>
-                      <h2 className={styles.ndHeadings}>Nature Dopes</h2>
+                      
                       </Flex>
               </section>
             
             
            
+          </Flex>
+          
+          <Flex height='500px'align='end'>
+            <Flex >
+              <Text>Footer</Text>
+            </Flex>
+              
           </Flex>
       </Flex>
             

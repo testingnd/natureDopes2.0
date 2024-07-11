@@ -26,7 +26,7 @@ export default function MainGalleryComponent({session, igResponse, imageDataPris
     return (
 
         
-         <Theme accentColor="grass" grayColor="sand" appearance="light">
+        
           <Container size='4'>  
         {session?<>
                  <Flex gap='1'><Badge variant="surface" size='3'>Nature Dopes Gallery</Badge><Switch size='3' onClick={galleryToggle} /><Badge variant="surface" size='3'>User Gallery</Badge></Flex> 
@@ -42,7 +42,7 @@ export default function MainGalleryComponent({session, igResponse, imageDataPris
         
         }
          </Container>
-        </Theme>
+       
        
     )
 
