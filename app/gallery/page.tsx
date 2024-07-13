@@ -15,7 +15,7 @@ import LoadingGif from '@/public/images/loadingplant.gif'
 
 async function getPrismaData(sessionId: number){
  
-  const res = await fetch(`http://localhost:3000/gallery/api/prismaData/${sessionId}`, { next: { revalidate: 1} })
+  const res = await fetch(`http://localhost:3000/gallery/api/prismaData/${sessionId}`, { next: { revalidate: 1000} })
 
   if (!res.ok) {
    
@@ -63,7 +63,7 @@ export default async function PageRootGallery(){
 
 
     async function getInstagramData() {
-        const res = await fetch('http://localhost:3000/gallery/api', { next: { revalidate: 1 } })
+        const res = await fetch('http://localhost:3000/gallery/api', { next: { revalidate: 10 } })
         if (!res.ok) {
           throw new Error('Failed to fetch data')
         }

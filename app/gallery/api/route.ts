@@ -1,10 +1,11 @@
 
 import {NextRequest, NextResponse } from "next/server";
+import { revalidateTag } from 'next/cache'
 
-export async function GET(req: NextRequest){
-
-    const res = await fetch(`https://graph.instagram.com/me/media?fields=media_type,media_url,id,caption,thumbnail_url&access_token=${process.env.INSTAGRAMACCESSTOKEN}`)
-    
+export async function GET(request: NextRequest){
+    revalidateTag('instagramdata')
+    const res = await fetch(`https://graph.instagram.com/me/media?fields=media_type,media_url,id,caption,thumbnail_url&access_token=${process.env.INSTAGRAMACCESSTOKEN}`, { next: { tags: ['instagramdata']}})
+  
  
     console.log(res.status)
     if(res.status == 400 || res.status == 500){
@@ -22,6 +23,7 @@ export async function GET(req: NextRequest){
 
 
     const igData = await res.json()
+
     const newArray = []
 
     for(let i = 0; i < 8; i++ ){
