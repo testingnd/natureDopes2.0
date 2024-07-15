@@ -1,6 +1,6 @@
 'use client'
 
-import {useState} from "react";
+import {ReactEventHandler, useState} from "react";
 
 import { Theme } from "@radix-ui/themes";
 import { Card, Flex, Button, TextField } from "@radix-ui/themes";
@@ -12,10 +12,10 @@ import { registerImageData } from "../../_lib/registerImageData";
 import { SubmitButton } from "@/app/_components/buttons/SubmitButton";
 
 
-export default function imageUploadForm({lng, lat, session, toggleUploadForm}: {lng: number, lat: number, session: number, toggleUploadForm: Function}){
+export default function imageUploadForm({lng, lat, session, toggleUploadForm}: {lng: number, lat: number, session: number, toggleUploadForm: ReactEventHandler}){
 
-    const [ error, setError] = useState<string>('')
-    const [success, setSuccess] = useState<string>('')
+    const [ error, setError] = useState<string | undefined>('')
+    const [success, setSuccess] = useState<string | undefined>('')
 
 
     const submit = async (data: FormData) => {
@@ -41,15 +41,18 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm}: {
 
     return(
         <section className={style.uploadFormWrapper}>
-        <Theme accentColor="grass" data-is-root-theme='false'>
-            <Card >
-                <Flex width='50%' gap='4' direction='column'>
-                    <Button onClick={toggleUploadForm}>close</Button>
+        
+            <Card>
+                <Flex  gap='4' direction='column'>
+                    <Flex justify='end'>
+                        <Button size='1' variant="surface" onClick={toggleUploadForm}>close</Button>
+                    </Flex>
+                    
                     <form action={submit}>
-                        <TextField.Root name='species' placeholder="Species Name" size='3'  />
-                        <TextField.Root name='gps_long' placeholder="Position Long" size='3' value={lng} />
-                        <TextField.Root name='gps_lat' placeholder="Position Lat" size='3' value={lat}/>
-                        <input name='image_file' placeholder="Image" type="file" accept=".png, .jpg, .jpeg, .heic, .svg"/>   
+                        <TextField.Root mb='2' name='species' placeholder="Species Name" size='3'  />
+                        <TextField.Root mb='2' name='gps_long' placeholder="Position Longtitude" size='3' value={lng} />
+                        <TextField.Root mb='2' name='gps_lat' placeholder="Position Latitude" size='3' value={lat}/>
+                        <input className={style.uploadFileButton} name='image_file' placeholder="Image" type="file" accept=".png, .jpg, .jpeg, .heic, .svg"/>   
                         <SubmitButton>Upload</SubmitButton>
                     </form>
                     {error && <p>{error}</p>}
@@ -57,7 +60,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm}: {
                     <p>{session}</p>
                 </Flex>
             </Card>
-        </Theme>
+    
         </section>
     )
 }

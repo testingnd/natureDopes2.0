@@ -55,7 +55,7 @@ export default async function RootLayout({
         defaultTheme="system"
         enableSystem
         disableTransitionOnChange>
-          <Theme data-is-root-theme='False' accentColor='grass' grayColor='mauve' scaling='100%'>
+          <Theme data-is-root-theme='False' accentColor='grass' grayColor='sage' scaling='100%'>
             <NavBar session={session} />
           
             {children}

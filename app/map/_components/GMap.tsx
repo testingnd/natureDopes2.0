@@ -30,8 +30,8 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
   const [allChecked, setAllChecked]  = useState<boolean>(true)
 
   // state for long/ lat positons for onclickMap function
-  const[gps_lat, setLat] = useState<number>(0)
-  const[gps_long, setLong] = useState<number>(0)
+  const[gps_lat, setLat] = useState<number | undefined>()
+  const[gps_long, setLong] = useState<number | undefined>()
 
   // whether upload form is visible
   const[uploadForm, setUploadForm]= useState<boolean>(false)
@@ -74,9 +74,9 @@ function onClickMap({lat, lng}) {
         
         <Flex p='1' justify='between'>
           <Flex align='center'>
-            <label>All finds</label>
+            <label className={style.findLabel}>All finds</label>
             <Switch checked={!allChecked} onCheckedChange={() => setAllChecked(allChecked => !allChecked)} />
-            <label>Your finds</label>
+            <label className={style.findLabel}>Your finds</label>
           </Flex>
         
         </Flex>
