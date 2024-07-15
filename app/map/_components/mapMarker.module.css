@@ -2,16 +2,12 @@
 /* Gmap css */
 
 
-
-
-.imageDiv{
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    left: -16px;
-    top: -16px;
- 
-   
-    width: 32px;
-    height: 32px;
-}
+    .markerTextSnippet{
+        
+        color: black;
+        display: flex;
+        width: 100px;
+        flex-wrap: nowrap;
+        justify-content: start;
+        
+    }

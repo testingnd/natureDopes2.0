@@ -1,5 +1,5 @@
 'use client'
-import React, { DetailedHTMLProps } from "react";
+import React from "react";
 import { GetImage } from "./GetImage";
 import style from './map.module.css'
 

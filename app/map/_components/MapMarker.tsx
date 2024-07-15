@@ -6,6 +6,7 @@ import Image from "next/image";
 
 
 import style from './mapMarker.module.css'
+import { Box, Text, Button, Flex, Code, Badge, Popover } from "@radix-ui/themes";
 
 
 import imageIcon from '@/public/images/icons8-flower-32.png';
@@ -55,21 +56,26 @@ const toggleIs= () => {
       }
  
     return(
-        <>
-        {toggle? <button onClick={toggleIs}>Close</button>: <p></p>}
-        <div className={style.imageDiv} onMouseEnter={changePointer} onMouseLeave={leavePointer} onClick={getImageApi}>
+        <Flex direction='column' >
+        {toggle? <Button size='1' onClick={toggleIs}>X</Button>: <p></p>}
+        <Box onMouseEnter={changePointer} onMouseLeave={leavePointer} onClick={getImageApi}>
             
-            <Image
-            src={imageIcon}
-            width={32}
-            height={32}
-            alt='Flower icon'
-            
-            />
-            {isShown ? <div>{text}</div>: <div></div>}
+            {toggle? null:<Image
+                src={imageIcon}
+                width={32}
+                height={32}
+                alt='Flower icon'
+                style={{
+                    position: 'absolute',
+                    top: '-16px',
+                    left: '-16px'
+                }}
+                />}
+                
+            {isShown ? <Box className={style.markerTextSnippet}><Text>{text}</Text></Box >: <Box className={style.markerTextSnippet} ></Box>}
             {toggle ? <Image width={100} height={100} src={iagonPath} alt='Awaiting image...' />: null }
-        </div>
-        </>
+        </Box>
+        </Flex>
     )
     
 }
