@@ -6,13 +6,14 @@ import { Suspense, useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import MapMarker from './MapMarker'
 import ImageUploadForm from './forms/ImageUploadForm';
+import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 
 import Loading from '@/app/loading'
 
 import { StaticImageData } from 'next/image';
 
 
-import { Button, Switch, Theme } from '@radix-ui/themes';
+import { Button, Switch, Tooltip, TextField, Flex, Box } from '@radix-ui/themes';
 import style from './mapMarker.module.css'
 
 
@@ -67,29 +68,40 @@ function onClickMap({lat, lng}) {
   return (
     // Important! Always set the container height explicitly
     <>
-      <Theme accentColor='grass' data-is-root-theme='false'>
-      <form onSubmit={handleSubmit}>
-
-        <label >Search</label><br />
-          <input name='searchSpecies' type='text' placeholder="Search for species here... " onChange={event => setSearchParams(event.target.value)}/>
-      </form>
-
-   
-      { !session ? null :
+      <Flex p='1' direction='column' width='40%'>
       
-      <>
-      <label>All finds</label>
-      <Switch checked={!allChecked} onCheckedChange={() => setAllChecked(allChecked => !allChecked)} />
-      <label>Your finds</label>
+        { !session ? null :
+        
+        <Flex p='1' justify='between'>
+          <Flex align='center'>
+            <label>All finds</label>
+            <Switch checked={!allChecked} onCheckedChange={() => setAllChecked(allChecked => !allChecked)} />
+            <label>Your finds</label>
+          </Flex>
+        
+        </Flex>
+        }
+        <Flex align='center'>
+          <form onSubmit={handleSubmit}>
 
-        {uploadForm ? null : <Button onClick={toggleUploadForm}>+</Button> }
-      </>
-      }
+            <TextField.Root placeholder="Search for Species…" onChange={event => setSearchParams(event.target.value)}>
+              <TextField.Slot>
+              <MagnifyingGlassIcon height="16" width="16" />
+              </TextField.Slot>
+            </TextField.Root>
+          
+          </form>
+          {uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>Add</Button> </Box>}
+          {session? null:<Tooltip  content='Sign in for more map features'>
+            <Button ml='1%'  radius='medium'>i</Button>
 
-
+          </Tooltip>
+          }
+        </Flex>
+        
      
 
-    </Theme>
+    </Flex>
 
 
       
