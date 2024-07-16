@@ -2,8 +2,8 @@
 
 import {ReactEventHandler, useState} from "react";
 
-import { Theme } from "@radix-ui/themes";
-import { Card, Flex, Button, TextField } from "@radix-ui/themes";
+import { Heading, Theme } from "@radix-ui/themes";
+import { Card, Flex, Button, TextField, Text, HoverCard } from "@radix-ui/themes";
 import style from './uploadForm.module.css'
 
 import { iagonUpload } from "../../_lib/uploadImageIagon";
@@ -42,10 +42,31 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm}: {
     return(
         <section className={style.uploadFormWrapper}>
         
-            <Card>
+            <Card variant="classic">
                 <Flex  gap='4' direction='column'>
-                    <Flex justify='end'>
-                        <Button size='1' variant="surface" onClick={toggleUploadForm}>close</Button>
+                    
+                    <Flex justify='between'>
+                        <Flex align='center'>
+                            <Text>Upload your finds here</Text> 
+                            <HoverCard.Root >
+                                <HoverCard.Trigger>
+                                    <Button ml='1' size='1'>i</Button>
+                                </HoverCard.Trigger>
+                                <HoverCard.Content className={style.uploadFormInfoHover}>
+                                    <Card >
+                                        <Flex direction='column' gap='2'>
+                                            <Text>>Enter Your Species Name</Text>
+                                            <Text>>Click on the map where you located it (Zoom in for accuracy)</Text>
+                                            <Text>>Click Choose File to select the photo from your device</Text>
+                                            <Text>>Click Upload and it's done!</Text>
+                                        </Flex>
+                                    </Card>
+
+                                </HoverCard.Content>
+                            </HoverCard.Root>
+
+                        </Flex>
+                        <Button size='1' variant="surface" onClick={toggleUploadForm}>X</Button>
                     </Flex>
                     
                     <form action={submit}>
@@ -57,7 +78,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm}: {
                     </form>
                     {error && <p>{error}</p>}
                     { success && <p >{success}</p>}  
-                    <p>{session}</p>
+                    
                 </Flex>
             </Card>
     

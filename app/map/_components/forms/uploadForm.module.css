@@ -1,12 +1,16 @@
 .uploadFormWrapper{
     position: absolute;
     top: 30%;
-    z-index: 10;
+    z-index: 1;
     border-radius: 2px;
-
+    background-color: gray;
 }
 
 .uploadFileButton{
 
     margin-bottom: 2%;
+}
+
+.uploadFormInfoHover{
+    z-index: 2;
 }
