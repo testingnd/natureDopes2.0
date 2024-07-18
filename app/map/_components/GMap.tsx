@@ -137,7 +137,7 @@ function onClickMap({lat, lng}) {
             return data
           }
         }).map((data) => (
-          <MapMarker key={data.id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} path={data.path} loadingGif={loadingGif} />
+          <MapMarker key={data.id} id={data.id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} path={data.path} loadingGif={loadingGif} />
         ))}  
 
         </GoogleMapReact>

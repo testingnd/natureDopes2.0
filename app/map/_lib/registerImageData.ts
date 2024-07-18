@@ -24,10 +24,7 @@ export async function registerImageData(data: FormData, image_path: string, user
  const gps_long = Number(gps_longs)
  const gps_lat = Number(gps_lats)
  const user_id = Number(user_ids)
-
-
  
-
     try{
 
         const imageData = await prisma.images.create({

@@ -15,12 +15,13 @@ import { GetImage } from "../_lib/GetImage";
 
 
 export interface mapMarkerProps {
+    id: number,
     text: string,
     path: string,
     loadingGif: string
 }
 
-export default function MapMarker({text, path, loadingGif}: mapMarkerProps){
+export default function MapMarker({id, text, path, loadingGif}: mapMarkerProps){
 
 const [isShown, setIsShown] = React.useState<boolean>(false);
 const [iagonPath, setIagonPath]= React.useState<string|null>(null)
