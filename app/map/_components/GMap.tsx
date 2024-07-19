@@ -6,6 +6,8 @@ import { Suspense, useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import MapMarker from './MapMarker'
 import ImageUploadForm from './forms/ImageUploadForm';
+import EditImageForm from './forms/EditImageForm';
+
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 
 import Loading from '@/app/loading'
@@ -32,15 +34,24 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
   // state for long/ lat positons for onclickMap function
   const[gps_lat, setLat] = useState<number | undefined>()
   const[gps_long, setLong] = useState<number | undefined>()
+  const[species_name, setSpecies] = useState<string | undefined>()
 
   // whether upload form is visible
   const[uploadForm, setUploadForm]= useState<boolean>(false)
+  const[editForm, setEditForm] = useState<boolean>(false)
 
   // whether Edit Form is Visible
   
 
   function toggleUploadForm(){
     setUploadForm(!uploadForm)
+  }
+
+  function toggleEditForm({species=null, long=null, lat=null}){
+    setEditForm(!editForm)
+    setLong(long)
+    setLat(lat)
+    setSpecies(species)
   }
 
 
@@ -95,6 +106,7 @@ function onClickMap({lat, lng}) {
           
           </form>
           {uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>Add</Button> </Box>}
+          {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} session={session} toggleEditForm={toggleEditForm}  />: null }
           {session? null:<Tooltip  content='Sign in for more map features'>
             <Button ml='1%'  radius='medium'>i</Button>
 
@@ -111,7 +123,7 @@ function onClickMap({lat, lng}) {
       
       <div style={{ height: '90vh', width: '100%'  }}>
 
-        {uploadForm? <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm}/>: null}
+        {uploadForm? <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm}  />: null}
         <Suspense fallback={<Loading/>}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI}}
@@ -140,7 +152,7 @@ function onClickMap({lat, lng}) {
             return data
           }
         }).map((data) => (
-          <MapMarker key={data.id} id={data.id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} path={data.path} loadingGif={loadingGif} />
+          <MapMarker key={data.id} id={data.id} user_id={data.user_id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} path={data.path} session={session} loadingGif={loadingGif} toggleEditForm={toggleEditForm}  />
         ))}  
 
         </GoogleMapReact>

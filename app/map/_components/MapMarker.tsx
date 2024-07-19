@@ -1,7 +1,7 @@
 'use client'
 
 
-import React from "react";
+import React, { ReactEventHandler } from "react";
 import Image from "next/image";
 
 
@@ -16,12 +16,17 @@ import { GetImage } from "../_lib/GetImage";
 
 export interface mapMarkerProps {
     id: number,
+    user_id: number,
+    lat: number,
+    lng: number,
     text: string,
     path: string,
-    loadingGif: string
+    session: number,
+    loadingGif: string,
+    toggleEditForm: ReactEventHandler,
 }
 
-export default function MapMarker({id, text, path, loadingGif}: mapMarkerProps){
+export default function MapMarker({id, user_id, lat, lng, text, path, session, loadingGif, toggleEditForm}: mapMarkerProps){
 
 const [isShown, setIsShown] = React.useState<boolean>(false);
 const [iagonPath, setIagonPath]= React.useState<string|null>(null)
@@ -73,7 +78,7 @@ const toggleIs= () => {
                 }}
                 />}
                 
-            {isShown ? <Box className={style.markerTextSnippet}><Text>{text}</Text><Button size='1'>Edit</Button></Box >: <Box className={style.markerTextSnippet} ></Box>}
+            {isShown ? <Box className={style.markerTextSnippet}><Text>{text}</Text>{ session == user_id? <Button onClick={ () => toggleEditForm(text, lng, lat)} size='1'>Edit</Button>: null}</Box >: <Box className={style.markerTextSnippet} ></Box>}
             {toggle ? <Image width={100} height={100} src={iagonPath} alt='Awaiting image...' />: null }
         </Box>
         </Flex>

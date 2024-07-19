@@ -12,7 +12,7 @@ import { editImageData } from "../../_lib/editImageData";
 import { SubmitButton } from "@/app/_components/buttons/SubmitButton";
 
 
-export default function EditImageForm({lng, lat, imageId, toggleEditForm}: {lng: number, lat: number, imageId: number, toggleEditForm: ReactEventHandler}){
+export default function EditImageForm({species, lng, lat, imageId, toggleEditForm}: {species: string, lng: number, lat: number, imageId: number, toggleEditForm: ReactEventHandler}){
 
     const [ error, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')
@@ -46,7 +46,7 @@ export default function EditImageForm({lng, lat, imageId, toggleEditForm}: {lng:
                             <Text>Edit Existing Find</Text> 
                             <HoverCard.Root >
                                 <HoverCard.Trigger>
-                                    <Button ml='1' size='1'>Edit</Button>
+                                    <Button ml='1' size='1'>?</Button>
                                 </HoverCard.Trigger>
                                 <HoverCard.Content className={style.uploadFormInfoHover}>
                                     <Card >
@@ -66,9 +66,9 @@ export default function EditImageForm({lng, lat, imageId, toggleEditForm}: {lng:
                     </Flex>
                     
                     <form action={submit}>
-                        <TextField.Root mb='2' name='species' placeholder="Species Name" size='3'  />
-                        <TextField.Root mb='2' name='gps_long' placeholder="Position Longtitude" size='3' value={lng} />
-                        <TextField.Root mb='2' name='gps_lat' placeholder="Position Latitude" size='3' value={lat}/>
+                        <TextField.Root mb='2' name='species' placeholder={species} size='3'  />
+                        <TextField.Root mb='2' name='gps_long' placeholder={lng} size='3' value={lng} />
+                        <TextField.Root mb='2' name='gps_lat' placeholder={lat} size='3' value={lat}/>
                         
                         <SubmitButton>Upload</SubmitButton>
                     </form>
