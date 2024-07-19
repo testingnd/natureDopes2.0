@@ -14,3 +14,16 @@
 .uploadFormInfoHover{
     z-index: 2;
 }
+
+/* Css for Edit Image Form */
+
+.EditFormWrapper{
+
+    position: absolute;
+    top: 30%;
+    left: 70%;
+    z-index: 1;
+    border-radius: 2px;
+    background-color: green;
+
+}

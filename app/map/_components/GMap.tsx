@@ -36,6 +36,9 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
   // whether upload form is visible
   const[uploadForm, setUploadForm]= useState<boolean>(false)
 
+  // whether Edit Form is Visible
+  
+
   function toggleUploadForm(){
     setUploadForm(!uploadForm)
   }

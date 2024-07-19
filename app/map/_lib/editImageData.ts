@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 import validator from 'validator';
 
 
-export async function updateImageData(data: FormData, imageId: number){
+export async function editImageData(data: FormData, imageId: number){
 
     
  const species_name = data.get('species') as string

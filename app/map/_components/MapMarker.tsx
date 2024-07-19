@@ -73,7 +73,7 @@ const toggleIs= () => {
                 }}
                 />}
                 
-            {isShown ? <Box className={style.markerTextSnippet}><Text>{text}</Text></Box >: <Box className={style.markerTextSnippet} ></Box>}
+            {isShown ? <Box className={style.markerTextSnippet}><Text>{text}</Text><Button size='1'>Edit</Button></Box >: <Box className={style.markerTextSnippet} ></Box>}
             {toggle ? <Image width={100} height={100} src={iagonPath} alt='Awaiting image...' />: null }
         </Box>
         </Flex>
