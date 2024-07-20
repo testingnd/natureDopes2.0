@@ -35,6 +35,7 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
   const[gps_lat, setLat] = useState<number | undefined>()
   const[gps_long, setLong] = useState<number | undefined>()
   const[species_name, setSpecies] = useState<string | undefined>()
+  const[imageId, setImageId] = useState<number | undefined>()
 
   // whether upload form is visible
   const[uploadForm, setUploadForm]= useState<boolean>(false)
@@ -47,11 +48,10 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
     setUploadForm(!uploadForm)
   }
 
-  function toggleEditForm({species=null, long=null, lat=null}){
+  function toggleEditForm(text=undefined, id=undefined){
     setEditForm(!editForm)
-    setLong(long)
-    setLat(lat)
-    setSpecies(species)
+    setImageId(id)
+    setSpecies(text)
   }
 
 
@@ -106,7 +106,7 @@ function onClickMap({lat, lng}) {
           
           </form>
           {uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>Add</Button> </Box>}
-          {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} session={session} toggleEditForm={toggleEditForm}  />: null }
+          {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm}  />: null }
           {session? null:<Tooltip  content='Sign in for more map features'>
             <Button ml='1%'  radius='medium'>i</Button>
 

@@ -4,12 +4,13 @@ import { Prisma } from "@prisma/client";
 import validator from 'validator';
 
 
-export async function editImageData(data: FormData, imageId: number){
+export async function editImageData(data: FormData){
 
-    
+ console.log(data)   
  const species_name = data.get('species') as string
  const gps_longs = data.get('gps_long') as string
  const gps_lats = data.get('gps_lat') as string
+ const imageId = data.get('imageId') as string
 
  if(!validator.isFloat(gps_longs)){
     return {

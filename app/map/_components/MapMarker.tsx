@@ -78,7 +78,7 @@ const toggleIs= () => {
                 }}
                 />}
                 
-            {isShown ? <Box className={style.markerTextSnippet}><Text>{text}</Text>{ session == user_id? <Button onClick={ () => toggleEditForm(text, lng, lat)} size='1'>Edit</Button>: null}</Box >: <Box className={style.markerTextSnippet} ></Box>}
+            {isShown ? <Box className={style.markerTextSnippet}><Text>{text}</Text>{ session == user_id? <Button onClick={ () => toggleEditForm(text, id)} size='1'>Edit</Button>: null}</Box >: <Box className={style.markerTextSnippet} ></Box>}
             {toggle ? <Image width={100} height={100} src={iagonPath} alt='Awaiting image...' />: null }
         </Box>
         </Flex>
