@@ -3,6 +3,8 @@ import {prisma} from '@/app/prisma'
 import { Prisma } from "@prisma/client";
 import validator from 'validator';
 
+import { revalidateTag } from 'next/cache';
+
 
 export async function editImageData(data: FormData){
 
@@ -17,7 +19,7 @@ export async function editImageData(data: FormData){
         errorPrisma: 'gps coordinates must be decimal numbers'
     }
  }
- if(!validator.isAlpha(species_name)){
+ if(!validator.isAlpha(species_name, 'en-GB', {'ignore': " '-"})){
     return {
         errorPrisma: 'Species names must only  contain letters '
     }
@@ -53,7 +55,7 @@ export async function editImageData(data: FormData){
 
 
  }
-
+ revalidateTag('finderdata')
  return {
     success: 'Thank you, this find has been updated'
  }

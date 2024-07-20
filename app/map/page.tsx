@@ -17,7 +17,7 @@ import Gmap from './_components/GMap'
 
 
 async function getData() {
-    const res = await fetch('http://localhost:3000/map/api', { next: { revalidate: 1 } })
+    const res = await fetch('http://localhost:3000/map/api', { next: { tags: ['finderdata'] } })
     // The return value is *not* serialized
 
    
