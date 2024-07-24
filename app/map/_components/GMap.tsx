@@ -22,7 +22,7 @@ import style from './mapMarker.module.css'
 
 export default function Gmap({getImageData, loadingGif, session}: {getImageData: ImageData, loadingGif: StaticImageData, session: number}) {
 
-  //state for image file collected from iagon api
+  //image data from prisma client
   const [imageData, setImageData] = useState<ImageData>(getImageData)
 
   // state for search bar
@@ -41,13 +41,27 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
   const[uploadForm, setUploadForm]= useState<boolean>(false)
   const[editForm, setEditForm] = useState<boolean>(false)
 
-  // whether Edit Form is Visible
+  async function getData() {
+    const res = await fetch('http://localhost:3000/map/api')
   
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error('Failed to fetch data')
+    }
+    return res.json()
+  }
+  
+  // handler to refresh data dynamically after marker edit
+  async function refreshData(){
+    const getImageData = await getData()
+    setImageData(getImageData)
+  }
 
   function toggleUploadForm(){
     setUploadForm(!uploadForm)
   }
 
+  // whether Edit Form is Visible
   function toggleEditForm(text=undefined, id=undefined){
     setEditForm(!editForm)
     setImageId(id)
@@ -106,7 +120,7 @@ function onClickMap({lat, lng}) {
           
           </form>
           {uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>Add</Button> </Box>}
-          {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm}  />: null }
+          {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm} refreshData={refreshData}  />: null }
           {session? null:<Tooltip  content='Sign in for more map features'>
             <Button ml='1%'  radius='medium'>i</Button>
 

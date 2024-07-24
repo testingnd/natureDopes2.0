@@ -12,7 +12,7 @@ import { editImageData } from "../../_lib/editImageData";
 import { SubmitButton } from "@/app/_components/buttons/SubmitButton";
 
 
-export default function EditImageForm({species, lng, lat, imageId, toggleEditForm}: {species: string, lng: number, lat: number, imageId: number, toggleEditForm: ReactEventHandler}){
+export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, refreshData}: {species: string, lng: number, lat: number, imageId: number, toggleEditForm: ReactEventHandler, refreshData: ReactEventHandler}){
 
     const [ error, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')
@@ -21,11 +21,10 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
 
     const submit = async (data: FormData) => {
         
-       
-        
         const {errorPrisma, success} = await editImageData(data)
             setError(errorPrisma)
             if(success){
+                refreshData()
                 setSuccess(success)
 
             }
