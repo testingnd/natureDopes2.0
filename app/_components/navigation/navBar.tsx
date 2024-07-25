@@ -4,15 +4,21 @@ import React from "react"
 
 import style from '../../layout.module.css'
 
+import Nav from "./nav";
 import { LoginButton, LogoutButton } from '../../auth'
 
+// radix ui elements
 import { Text } from "@radix-ui/themes";
+// to allow theme change
 import { useTheme } from "next-themes"
 
-import Nav from "./nav";
+import Image from "next/image";
 
+// icons & images
 import { RxHome } from "react-icons/rx";
 import { CiLight, CiDark } from "react-icons/ci";
+import logoMid from "@/public/images/logo_mid.png"
+
 
 
 
@@ -26,11 +32,19 @@ export default function NavBar({session}){
 
         <nav className={style.layoutNav}>
               <section className={style.navUserSection}>
+
+                <div>
+                  <Image 
+                    src={logoMid}
+                    width={100}
+                    height={100}
+                    alt='Nature dopes logo'
+                  />
+                </div>
+
+                {!session? <LoginButton/>:<LogoutButton/>  }
              
-            
-              {!session? <LoginButton/>:<LogoutButton/>  }
-             
-              {session? <div><Text color='grass'>Logged in as: {session.user.name}</Text></div>: null }
+                {session? <div><Text color='grass'>Logged in as: {session.user.name}</Text></div>: null }
               
               </section>
             
