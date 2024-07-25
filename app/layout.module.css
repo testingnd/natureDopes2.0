@@ -23,8 +23,7 @@
 .navUserSection > div{
   display: flex;
   padding: 3%;
-  flex-wrap: nowrap;
-  text-overflow: ellipsis;
+
   text-wrap: nowrap;
   align-items: center;
 }

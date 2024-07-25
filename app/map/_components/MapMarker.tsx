@@ -9,7 +9,8 @@ import style from './mapMarker.module.css'
 import { Box, Text, Button, Flex, Code, Badge, Popover } from "@radix-ui/themes";
 
 
-import imageIcon from '@/public/images/icons8-flower-32.png';
+import { RiFlowerFill } from "react-icons/ri";
+
 
 import { GetImage } from "../_lib/GetImage";
 
@@ -66,17 +67,8 @@ const toggleIs= () => {
         {toggle? <Button size='1' onClick={toggleIs}>X</Button>: <p></p>}
         <Box onMouseEnter={changePointer} onMouseLeave={leavePointer} onClick={getImageApi}>
             
-            {toggle? null:<Image
-                src={imageIcon}
-                width={32}
-                height={32}
-                alt='Flower icon'
-                style={{
-                    position: 'absolute',
-                    top: '-16px',
-                    left: '-16px'
-                }}
-                />}
+        
+            {toggle? null: session == user_id ? <RiFlowerFill size={15} color="crimson" />: <RiFlowerFill size={15} color="green"/>}
                 
             {isShown ? <Box className={style.markerTextSnippet}><Flex justify='between'><Text>{text}</Text>{ session == user_id? <Button className={style.editButton} onClick={ () => toggleEditForm(text, id)} size='1'>Edit</Button>: null}</Flex></Box >: <Box className={style.markerTextSnippet} ></Box>}
             {toggle ? <Image width={100} height={100} src={iagonPath} alt='Awaiting image...' />: null }

@@ -8,7 +8,7 @@ import Nav from "./nav";
 import { LoginButton, LogoutButton } from '../../auth'
 
 // radix ui elements
-import { Text } from "@radix-ui/themes";
+import { Text, Box } from "@radix-ui/themes";
 // to allow theme change
 import { useTheme } from "next-themes"
 
@@ -30,7 +30,7 @@ export default function NavBar({session}){
 
     return(
 
-        <nav className={style.layoutNav}>
+        <div className={style.layoutNav}>
               <section className={style.navUserSection}>
 
                 <div>
@@ -44,7 +44,7 @@ export default function NavBar({session}){
 
                 {!session? <LoginButton/>:<LogoutButton/>  }
              
-                {session? <div><Text color='grass'>Logged in as: {session.user.name}</Text></div>: null }
+                {session? <Box><Text color='grass'>Logged in as: {session.user.name}</Text></Box>: null }
               
               </section>
             
@@ -59,12 +59,12 @@ export default function NavBar({session}){
                  
                 </div>
                 <div>
-                   <button onClick={toggleMode}> {theme == 'light'? <CiDark color="black" size={30} />:<CiLight  size={30} />} </button>
+                   <button onClick={toggleMode}> {theme != 'dark'? <CiDark size={30} />:<CiLight  size={30} />} </button>
                 </div>
               
               </section>
             
           
-          </nav>
+          </div>
     )
 }
