@@ -8,6 +8,7 @@
 }
 
 .navUserSection:nth-child(2){
+  width: 25%;
   justify-content: flex-end;
   padding-right: 1%;
 }

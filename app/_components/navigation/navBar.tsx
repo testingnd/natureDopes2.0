@@ -12,6 +12,8 @@ import { useTheme } from "next-themes"
 import Nav from "./nav";
 
 import { RxHome } from "react-icons/rx";
+import { CiLight, CiDark } from "react-icons/ci";
+
 
 
 
@@ -34,14 +36,18 @@ export default function NavBar({session}){
             
               
               <section className={style.navUserSection}>
-                 <div>
+                <div>
                   <Nav/>
                
                 </div>
-                <div><Text color='grass'><a href='/'><RxHome size={30}/></a></Text>
+                <div>
+                  <Text color='grass'><a href='/'><RxHome size={30}/></a></Text>
                  
                 </div>
-               <button onClick={toggleMode}> Light/Dark </button>
+                <div>
+                   <button onClick={toggleMode}> {theme == 'light'? <CiDark color="black" size={30} />:<CiLight  size={30} />} </button>
+                </div>
+              
               </section>
             
           
