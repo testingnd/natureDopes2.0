@@ -46,16 +46,18 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
   
     if (!res.ok) {
       // This will activate the closest `error.js` Error Boundary
-      throw new Error('Failed to fetch data')
+      return {
+        error: 'Find has been updated, please refresh browser'
+      }
     }
-    return res.json()
+    const newData = await res.json()
+    setImageData(newData)
+    return {
+      success: 'Map updated'
+    }
   }
   
-  // handler to refresh data dynamically after marker edit
-  async function refreshData(){
-    const getImageData = await getData()
-    setImageData(getImageData)
-  }
+
 
   function toggleUploadForm(){
     setUploadForm(!uploadForm)
@@ -120,7 +122,7 @@ function onClickMap({lat, lng}) {
           
           </form>
           {uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>Add</Button> </Box>}
-          {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm} refreshData={refreshData}  />: null }
+          {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm} getData={getData}  />: null }
           {session? null:<Tooltip  content='Sign in for more map features'>
             <Button ml='1%'  radius='medium'>i</Button>
 

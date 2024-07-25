@@ -12,12 +12,21 @@ import { editImageData } from "../../_lib/editImageData";
 import { SubmitButton } from "@/app/_components/buttons/SubmitButton";
 
 
-export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, refreshData}: {species: string, lng: number, lat: number, imageId: number, toggleEditForm: ReactEventHandler, refreshData: ReactEventHandler}){
+export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, getData}: {species: string, lng: number, lat: number, imageId: number, toggleEditForm: ReactEventHandler, getData: ReactEventHandler}){
 
     const [ error, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')
 
    
+// handler to refresh data dynamically after marker edit
+  async function refreshData(){
+    const {error, success} = await getData()
+    if (error) {
+        setError(error)
+    }
+    if(success)
+    console.log(success)
+  }
 
     const submit = async (data: FormData) => {
         
@@ -71,6 +80,7 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                         <TextField.Root mb='2' name='gps_lat' placeholder='Position Latitude' size='3' value={lat}/>
                         <TextField.Root className={style.hiddenInput} name='imageId' placeholder={imageId} value={imageId} />
                         <SubmitButton>Upload</SubmitButton>
+                       
                     </form>
                     {error && <p>{error}</p>}
                     { success && <p >{success}</p>}  
