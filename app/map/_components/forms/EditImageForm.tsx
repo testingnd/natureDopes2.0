@@ -52,7 +52,7 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                     
                     <Flex justify='between'>
                         <Flex align='center'>
-                            <Text>Edit Existing Find</Text> 
+                            <Text>Edit existing find</Text> 
                             <HoverCard.Root >
                                 <HoverCard.Trigger>
                                     <Button ml='1' size='1'>?</Button>

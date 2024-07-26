@@ -59,7 +59,7 @@ export default function NavBar({session}){
                  
                 </div>
                 <div>
-                   <button onClick={toggleMode}> {theme != 'dark'? <CiDark size={30} /> : <CiLight  size={30} />} </button>
+                   <button onClick={toggleMode}> <CiLight  size={30} /> </button>
                 </div>
               
               </section>
