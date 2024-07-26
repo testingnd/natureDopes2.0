@@ -1,9 +1,9 @@
 
 import {NextRequest, NextResponse } from "next/server";
-import { revalidateTag } from 'next/cache'
+
 
 export async function GET(request: NextRequest){
-    revalidateTag('instagramdata')
+    
     const res = await fetch(`https://graph.instagram.com/me/media?fields=media_type,media_url,id,caption,thumbnail_url&access_token=${process.env.INSTAGRAMACCESSTOKEN}`, { next: { tags: ['instagramdata']}})
   
  

@@ -31,7 +31,7 @@ export default function NavBar({session}){
     return(
 
         <div className={style.layoutNav}>
-              <section className={style.navUserSection}>
+              <div className={style.navUserSection}>
 
                 <div>
                   <Image 
@@ -46,7 +46,7 @@ export default function NavBar({session}){
              
                 {session? <Box><Text color='grass'>Logged in as: {session.user.name}</Text></Box>: null }
               
-              </section>
+              </div>
             
               
               <section className={style.navUserSection}>
@@ -59,7 +59,7 @@ export default function NavBar({session}){
                  
                 </div>
                 <div>
-                   <button onClick={toggleMode}> {theme != 'dark'? <CiDark size={30} />:<CiLight  size={30} />} </button>
+                   <button onClick={toggleMode}> {theme != 'dark'? <CiDark size={30} /> : <CiLight  size={30} />} </button>
                 </div>
               
               </section>

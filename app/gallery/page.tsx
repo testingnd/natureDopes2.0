@@ -63,7 +63,7 @@ export default async function PageRootGallery(){
 
 
     async function getInstagramData() {
-        const res = await fetch('http://localhost:3000/gallery/api', { next: { revalidate: 10 } })
+        const res = await fetch('http://localhost:3000/gallery/api', { cache: 'no-store' })
         if (!res.ok) {
           throw new Error('Failed to fetch data')
         }
