@@ -38,8 +38,8 @@ const iagonLocation = path
         <Image
 
             src={base64String} 
-            width={100} 
-            height={100} 
+            width={300}
+            height={250} 
            
            
             alt='flower picture'

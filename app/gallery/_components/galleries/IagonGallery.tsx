@@ -5,7 +5,7 @@ import Image from "next/image"
 
 //radix themes
 import '@radix-ui/themes/styles.css';
-import { Theme, Card, Box, Flex, Section, Container } from "@radix-ui/themes"
+import { Container, Card, Box, Blockquote, Inset, Grid} from "@radix-ui/themes"
 
 //image component
 import IagonImage from "./IagonImage";
@@ -19,10 +19,27 @@ export default function IagonGallery({imageDataPrisma, LoadingGif}: {imageDataPr
 
     return (
         <>
-        {imageData.map((data: ImagesDataPrisma) => 
+         <Container size='2'>
+            <Grid columns='4' gap='6' >
+                {imageData.map((data: ImagesDataPrisma) => 
 
-            <IagonImage key={data.id} path={data.path} LoadingGif={LoadingGif} />
-        )}
+                            <Box key={data.id} size='3' maxHeight='auto' >
+                                <Card >
+                                
+                                    <Inset clip="padding-box" side="top" pb="current" >
+                                        <IagonImage key={data.id} path={data.path} LoadingGif={LoadingGif} />
+                                    </Inset>
+                                    <Blockquote size='2'>
+                                        {data.species_name}
+                                    </Blockquote>
+                                
+                                </Card>
+                            </Box>       
+
+                
+                )}
+            </Grid>
+        </Container>
         </>
         
     )
