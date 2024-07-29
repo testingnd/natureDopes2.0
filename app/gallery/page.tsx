@@ -15,7 +15,7 @@ import LoadingGif from '@/public/images/loadingplant.gif'
 
 async function getPrismaData(sessionId: number){
  
-  const res = await fetch(`http://localhost:3000/gallery/api/prismaData/${sessionId}`, { next: { revalidate: 1000} })
+  const res = await fetch(`http://localhost:3000/gallery/api/prismaData/${sessionId}`)
 
   if (!res.ok) {
    

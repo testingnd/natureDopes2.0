@@ -8,6 +8,7 @@ import style from './uploadForm.module.css'
 
 import { iagonUpload } from "../../_lib/uploadImageIagon";
 import { registerImageData } from "../../_lib/registerImageData";
+import { revalidateTag } from "next/cache";
 
 import { SubmitButton } from "@/app/_components/buttons/SubmitButton";
 
@@ -44,6 +45,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                 setError(errorPrisma)
                 if(success){
                     refreshData()
+                    revalidateTag('finderdata')
                     setSuccess(success)
                     
 
