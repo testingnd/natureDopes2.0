@@ -1,7 +1,7 @@
 'use client'
 
 
-import { Suspense, useState } from 'react';
+import { Key, Suspense, useState } from 'react';
 
 import GoogleMapReact from 'google-map-react';
 import MapMarker from './MapMarker'
@@ -18,12 +18,22 @@ import { StaticImageData } from 'next/image';
 import { Button, Switch, Tooltip, TextField, Flex, Box } from '@radix-ui/themes';
 import style from './mapMarker.module.css'
 
+export interface imageData{
+  [x: string]: any;
+  id:  number,
+  user_id: number,
+  species_name: string,
+  gps_lat: number,
+  gps_long: number,
+  path: string
+}
 
 
-export default function Gmap({getImageData, loadingGif, session}: {getImageData: ImageData, loadingGif: StaticImageData, session: number}) {
+
+export default function Gmap({getImageData, loadingGif, session}: {getImageData: imageData, loadingGif: string, session: number}) {
 
   //image data from prisma client
-  const [imageData, setImageData] = useState<ImageData>(getImageData)
+  const [imageData, setImageData] = useState(getImageData)
 
   // state for search bar
   const [searchParams, setSearchParams] = useState<string>('')
@@ -32,10 +42,10 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
   const [allChecked, setAllChecked]  = useState<boolean>(true)
 
   // state for long/ lat positons for onclickMap function
-  const[gps_lat, setLat] = useState<number | undefined>()
-  const[gps_long, setLong] = useState<number | undefined>()
-  const[species_name, setSpecies] = useState<string | undefined>()
-  const[imageId, setImageId] = useState<number | undefined>()
+  const[gps_lat, setLat] = useState<number>()
+  const[gps_long, setLong] = useState<number>()
+  const[species_name, setSpecies] = useState<string>()
+  const[imageId, setImageId] = useState<number>()
 
   // whether upload form is visible
   const[uploadForm, setUploadForm]= useState<boolean>(false)
@@ -54,7 +64,7 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
     setImageData(newData)
     return {
       success: 'Map updated'
-    }
+    } 
   }
   
 
@@ -79,7 +89,7 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
 }
 
 // on click function for googleMap
-function onClickMap({lat, lng}) {
+function onClickMap({lat, lng}: {lat: number, lng: number}) {
   setLong(lng)
   setLat(lat)
   console.log(lat, lng)
@@ -150,7 +160,7 @@ function onClickMap({lat, lng}) {
         >
      
     
-        {imageData.filter(data => {
+        {imageData.filter((data: { user_id: number; }) => {
           if(!allChecked){
             if(data.user_id == session){
               return data
@@ -161,13 +171,13 @@ function onClickMap({lat, lng}) {
             return data
           }
         })
-        .filter(data => {
-          if(data === ''){
+        .filter(({data}: {data: imageData}) => {
+          if(!data){
             return data
           } else if(data.species_name.toLowerCase().includes(searchParams.toLowerCase())) {
             return data
           }
-        }).map((data) => (
+        }).map(({data}: { data: imageData }) => (
           <MapMarker key={data.id} id={data.id} user_id={data.user_id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} path={data.path} session={session} loadingGif={loadingGif} toggleEditForm={toggleEditForm}  />
         ))}  
 

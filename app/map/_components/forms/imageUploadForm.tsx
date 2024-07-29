@@ -13,7 +13,7 @@ import { revalidateTag } from "next/cache";
 import { SubmitButton } from "@/app/_components/buttons/SubmitButton";
 
 
-export default function imageUploadForm({lng, lat, session, toggleUploadForm, getData}: {lng: number, lat: number, session: number, toggleUploadForm: ReactEventHandler, getData: ReactEventHandler}){
+export default function imageUploadForm({lng, lat, session, toggleUploadForm, getData}: {lng: number | undefined, lat: number | undefined, session: number, toggleUploadForm: ReactEventHandler, getData: Function}){
 
     const [ errors, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')
@@ -73,10 +73,10 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                                 <HoverCard.Content className={style.uploadFormInfoHover}>
                                     <Card >
                                         <Flex direction='column' gap='2'>
-                                            <Text>>Enter Your Species Name</Text>
-                                            <Text>>Click on the map where you located it (Zoom in for accuracy)</Text>
-                                            <Text>>Click Choose File to select the photo from your device</Text>
-                                            <Text>>Click Upload and it's done!</Text>
+                                            <Text>{">"}Enter Your Species Name</Text>
+                                            <Text>{">"}Click on the map where you located it (Zoom in for accuracy)</Text>
+                                            <Text>{">"}Click Choose File to select the photo from your device</Text>
+                                            <Text>{">"}Click Upload and it's done!</Text>
                                         </Flex>
                                     </Card>
 

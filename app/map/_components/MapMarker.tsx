@@ -1,7 +1,7 @@
 'use client'
 
 
-import React, { ReactEventHandler } from "react";
+import React, { MouseEventHandler, ReactEventHandler } from "react";
 import Image from "next/image";
 
 
@@ -24,10 +24,10 @@ export interface mapMarkerProps {
     path: string,
     session: number,
     loadingGif: string,
-    toggleEditForm: ReactEventHandler,
+    toggleEditForm: MouseEventHandler | Function,
 }
 
-export default function MapMarker({id, user_id, lat, lng, text, path, session, loadingGif, toggleEditForm}: mapMarkerProps){
+export default function MapMarker({id, user_id, text, session, loadingGif, toggleEditForm}: mapMarkerProps){
 
 const [isShown, setIsShown] = React.useState<boolean>(false);
 const [iagonPath, setIagonPath]= React.useState<string|null>(null)

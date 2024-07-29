@@ -1,6 +1,6 @@
 'use client'
 
-import {ReactEventHandler, useState} from "react";
+import {MouseEventHandler, ReactEventHandler, useState} from "react";
 
 
 import { Card, Flex, Button, TextField, Text, HoverCard } from "@radix-ui/themes";
@@ -12,7 +12,7 @@ import { editImageData } from "../../_lib/editImageData";
 import { SubmitButton } from "@/app/_components/buttons/SubmitButton";
 
 
-export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, getData}: {species: string, lng: number, lat: number, imageId: number, toggleEditForm: ReactEventHandler, getData: ReactEventHandler}){
+export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, getData}: {species: string | undefined, lng: number | undefined, lat: number | undefined, imageId: number | undefined | string, toggleEditForm: Function | ReactEventHandler, getData: Function}){
 
     const [ error, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')
@@ -23,9 +23,11 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
     const {error, success} = await getData()
     if (error) {
         setError(error)
+        
     }
     if(success)
     console.log(success)
+    
   }
 
     const submit = async (data: FormData) => {
@@ -60,10 +62,10 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                                 <HoverCard.Content className={style.uploadFormInfoHover}>
                                     <Card >
                                         <Flex direction='column' gap='2'>
-                                            <Text>>Re-Enter Your Species Name</Text>
-                                            <Text>>Click on the map again, the location of the find (Zoom in for accuracy)</Text>
+                                            <Text>{">"}Re-Enter Your Species Name</Text>
+                                            <Text>{">"}Click on the map again, the location of the find (Zoom in for accuracy)</Text>
                                             
-                                            <Text>>Click Update and it's done!</Text>
+                                            <Text>{">"}Click Update and it's done!</Text>
                                         </Flex>
                                     </Card>
 
