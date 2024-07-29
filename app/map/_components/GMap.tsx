@@ -139,7 +139,7 @@ function onClickMap({lat, lng}) {
       
       <div style={{ height: '90vh', width: '100%'  }}>
 
-        {uploadForm? <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm}  />: null}
+        {uploadForm? <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm} getData={getData}  />: null}
         <Suspense fallback={<Loading/>}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI}}

@@ -12,13 +12,27 @@ import { registerImageData } from "../../_lib/registerImageData";
 import { SubmitButton } from "@/app/_components/buttons/SubmitButton";
 
 
-export default function imageUploadForm({lng, lat, session, toggleUploadForm}: {lng: number, lat: number, session: number, toggleUploadForm: ReactEventHandler}){
+export default function imageUploadForm({lng, lat, session, toggleUploadForm, getData}: {lng: number, lat: number, session: number, toggleUploadForm: ReactEventHandler, getData: ReactEventHandler}){
 
-    const [ error, setError] = useState<string | undefined>('')
+    const [ errors, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')
 
+    // handler to refresh data dynamically after marker edit
+  async function refreshData(){
+    const {error, success} = await getData()
+    if (error) {
+        setError(error)
+    }
+    if(success)
+    console.log(success)
+  }
+   
 
     const submit = async (data: FormData) => {
+
+        if(errors){
+            return
+        }
         
         const {error, path} = await iagonUpload(data)
         
@@ -29,7 +43,9 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm}: {
               const {errorPrisma, success} = await registerImageData(data, path, session)
                 setError(errorPrisma)
                 if(success){
+                    refreshData()
                     setSuccess(success)
+                    
 
                 }
         }
@@ -73,10 +89,22 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm}: {
                         <TextField.Root mb='2' name='species' placeholder="Species Name" size='3'  />
                         <TextField.Root mb='2' name='gps_long' placeholder="Position Longtitude" size='3' value={lng} />
                         <TextField.Root mb='2' name='gps_lat' placeholder="Position Latitude" size='3' value={lat}/>
-                        <input className={style.uploadFileButton} name='image_file' placeholder="Image" type="file" accept=".png, .jpg, .jpeg, .heic, .svg"/>   
+                        <input className={style.uploadFileButton} name='image_file' placeholder="Image" type="file" accept=".png, .jpg, .jpeg, .heic, .svg" onChange={(event) => {
+                            if (event.target.files && event.target.files[0]) {
+                            if (event.target.files[0].size > 5 * 1000 * 1024) {
+                                setError("File with maximum size of 5MB is allowed");
+                                
+                                return false;
+                            } else {
+                                setError('')
+                            }
+
+                            // do other operation
+                            }
+                        }}/>   
                         <SubmitButton>Upload</SubmitButton>
                     </form>
-                    {error && <p>{error}</p>}
+                    {errors && <p>{errors}</p>}
                     { success && <p >{success}</p>}  
                     
                 </Flex>

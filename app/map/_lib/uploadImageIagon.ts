@@ -9,7 +9,7 @@ export async function iagonUpload(data: FormData){
 
     if(!validator.isAlpha(imageName)){
         return {
-            error: 'Species names must only  contain letters '
+            error: 'Species names must only contain letters '
         }
      }
     
