@@ -13,7 +13,11 @@ import Link from 'next/link'
 import {AnimatePresence, motion, useInView} from 'framer-motion'
 import { Indie_Flower } from 'next/font/google'
 
-import GoButton from '../../_components/buttons/GoButton'
+import GoButton from '@/app/_components/buttons/GoButton'
+
+import { Button } from '@radix-ui/themes'
+import { useTheme } from "next-themes"
+
 
 
 const indie = Indie_Flower({
@@ -24,6 +28,8 @@ const indie = Indie_Flower({
 
 
 export default function Game(){
+
+  const { theme, setTheme } = useTheme()
 
 
 const [flowerPics, setflowerPics] = React.useState(images) // state to manage the initial picture(element) array/ unfound items
@@ -36,6 +42,9 @@ const [showMeFlowers, setShowMeFlowers] = React.useState<boolean>(true);
 
 // Points tally State, displayed in congratulations component
 const [pointsTotal, setPointsTotal] = React.useState<number>(0)
+
+
+
  
 
 
@@ -143,7 +152,7 @@ const reset = () => {
            <AnimatePresence key={index}>
             {showMeFlowers && (
            
-            <motion.div className={finderStyles.flowerlistAside} style={{display: showMeFlowers? "block":"none"}} onClick={() => onClickRemove(item, index)}
+            <motion.div className={finderStyles.flowerlistAside} style={{display: showMeFlowers? "block":"none", backgroundColor: theme == 'dark'? 'black': 'white'}} onClick={() => onClickRemove(item, index)}
               whileInView={{ x: 0}}
             
               
@@ -177,7 +186,7 @@ const reset = () => {
           <AnimatePresence>
             {showMeQuestion && (
 
-            <motion.div className={finderStyles.questionModal} style={{display: showMeQuestion?"flex":"none", minHeight: '400px'}} 
+            <motion.div className={finderStyles.questionModal} style={{display: showMeQuestion?"flex":"none", minHeight: '400px', backgroundColor: theme == 'dark'? 'black': 'white'}} 
               key='modal'
               initial={{ x: 800, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -230,10 +239,10 @@ const reset = () => {
 
         <section className={finderStyles.resetandRestartWrapper}>
           
-          <aside className={finderStyles.rrIcon}> <GoButton text='Reset Game' reset={reset}/></aside>
+          <aside className={finderStyles.rrIcon}> <Button onClick={reset}>Reset Game</Button></aside>
          
           
-          <Link className={finderStyles.rrIcon} href='/finder'><GoButton text='Start Page'/></Link>
+          <Link className={finderStyles.rrIcon} href='/finder'><Button>Start Page</Button></Link>
         </section>
       
       </section>

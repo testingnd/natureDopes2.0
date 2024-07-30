@@ -1,11 +1,18 @@
 
 import styles from './finderPage.module.css'
 import React, { JSXElementConstructor } from 'react'
+
+
 import Link from 'next/link'
 import Image from 'next/image'
-import ndLogo from '../../public/images/logomini.png'
+
+import ndLogo from '../../public/images/logo_mid.png'
+
 import { Indie_Flower } from 'next/font/google'
 import GoButton from '../_components/buttons/GoButton'
+
+
+import { Button } from '@radix-ui/themes'
 
 
 
@@ -45,7 +52,7 @@ export default async function Page() {
             <h2> <br /> While out in Nature, see if you can find each flower then answer a question for each</h2>
             <h3> <br /> Click Go to begin </h3>
             <Link className={styles.finderLink} href="/finder/game">
-              <GoButton text='Go!' />
+              <Button>Go!</Button>
             </Link>
               
               
