@@ -2,7 +2,7 @@
 import React from "react"
 
 
-import loadingGif from '@/public/images/loadingplant.gif'
+import loadingGif from '@/public/images/nd -logo-gif.gif'
 
 // css imports
 import style from './map.module.css'

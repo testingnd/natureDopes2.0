@@ -19,7 +19,7 @@ import { Button, Switch, Tooltip, TextField, Flex, Box } from '@radix-ui/themes'
 import style from './mapMarker.module.css'
 
 export interface imageData{
-  [x: string]: any;
+ 
   id:  number,
   user_id: number,
   species_name: string,
@@ -30,7 +30,7 @@ export interface imageData{
 
 
 
-export default function Gmap({getImageData, loadingGif, session}: {getImageData: imageData, loadingGif: string, session: number}) {
+export default function Gmap({getImageData, loadingGif, session}: {getImageData: imageData, loadingGif: StaticImageData, session: number}) {
 
   //image data from prisma client
   const [imageData, setImageData] = useState(getImageData)
@@ -160,7 +160,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
         >
      
     
-        {imageData.filter((data: { user_id: number; }) => {
+        {imageData.filter(data => {
           if(!allChecked){
             if(data.user_id == session){
               return data
@@ -171,13 +171,13 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
             return data
           }
         })
-        .filter(({data}: {data: imageData}) => {
+        .filter(data => {
           if(!data){
             return data
           } else if(data.species_name.toLowerCase().includes(searchParams.toLowerCase())) {
             return data
           }
-        }).map(({data}: { data: imageData }) => (
+        }).map(data => (
           <MapMarker key={data.id} id={data.id} user_id={data.user_id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} path={data.path} session={session} loadingGif={loadingGif} toggleEditForm={toggleEditForm}  />
         ))}  
 

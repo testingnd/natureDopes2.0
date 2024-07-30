@@ -8,7 +8,7 @@ import { getServerSession, NextAuthOptions } from "next-auth"
 import { authOptions } from "../api/auth/[...nextauth]/route"
 
 
-import LoadingGif from '@/public/images/loadingplant.gif'
+import LoadingGif from '@/public/images/nd -logo-gif.gif'
 
 
 

@@ -2,7 +2,7 @@
 
 
 import React, { MouseEventHandler, ReactEventHandler } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 
 import style from './mapMarker.module.css'
@@ -23,14 +23,14 @@ export interface mapMarkerProps {
     text: string,
     path: string,
     session: number,
-    loadingGif: string,
+    loadingGif: StaticImageData,
     toggleEditForm: MouseEventHandler | Function,
 }
 
 export default function MapMarker({id, user_id, text, session, loadingGif, toggleEditForm}: mapMarkerProps){
 
 const [isShown, setIsShown] = React.useState<boolean>(false);
-const [iagonPath, setIagonPath]= React.useState<string|null>(null)
+const [iagonPath, setIagonPath]= React.useState<string|null|StaticImageData>(null)
 const [toggle, setToggle] = React.useState<boolean>(false)
 
 const toggleIs= () => {
