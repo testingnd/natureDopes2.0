@@ -101,7 +101,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                                 setError('')
                             }
 
-                            // do other operation
+                       
                             }
                         }}/>   
                         <SubmitButton>Upload</SubmitButton>

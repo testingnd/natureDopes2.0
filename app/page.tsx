@@ -5,9 +5,15 @@ import Link from 'next/link'
 
 import Image from 'next/image'
 import ndLogo from '../public/images/logo_mid.png'
+import ContactForm from './_components/contact/ContactForm'
+
+
 import { Indie_Flower } from 'next/font/google'
 import { Box, Flex, Section, Text } from '@radix-ui/themes'
 
+// Next auth  imports
+import { getServerSession } from 'next-auth';
+import { authOptions } from './api/auth/[...nextauth]/route'
 
 
 
@@ -23,6 +29,9 @@ const indie = Indie_Flower({
 
 
 export default async function Page() {
+
+  const session: number|undefined = await getServerSession(authOptions)
+
 
   return(
   
@@ -56,6 +65,10 @@ export default async function Page() {
             
             
            
+          </Flex>
+
+          <Flex>
+            <ContactForm session={session}/>
           </Flex>
           
           <Flex height='500px'align='end'>

@@ -220,7 +220,7 @@ const reset = () => {
 
         
           { flowerPics.length == 0 && clicked.length == 0 ? (
-            <motion.div className={finderStyles.questionModal} style={{minHeight: '375px'}}
+            <motion.div className={finderStyles.questionModal} style={{minHeight: '375px', backgroundColor: theme == 'dark'? 'black': 'white' }}
               initial={{x: -800}}
               animate={{x: 0}}
               exit={{x: -800}}

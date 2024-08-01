@@ -39,8 +39,11 @@ export default async function Page() {
                     width={200}
                     style={{  
                       maxWidth: '100%',
-                      height: 'auto'
+                      height: 'auto',
+                      borderRadius: '10%'
+
                     }} />
+                    
                   
                 </aside>
                 <h2>Nature Dopes</h2>
