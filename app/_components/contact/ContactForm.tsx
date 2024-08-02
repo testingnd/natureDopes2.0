@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react";
+import { useRef } from 'react'
 
 import { submitContactForm } from "@/app/_lib/serverActions/submitContactForm";
 
@@ -11,10 +12,23 @@ import { SubmitButton } from "../buttons/SubmitButton";
 
 export default function ContactForm({session}) {
 
+    const ref = useRef<HTMLFormElement>(null)
+
+    const [error, setError] = useState<string | undefined>('')
+    const [message, setMessage] = useState<string | undefined>('')
+
     async function submit(data: FormData){
 
-       await submitContactForm(data)
-      
+       const {message} = await submitContactForm(data)
+       if(error){
+        setError(error)
+       } else {
+        setMessage(message)
+       }
+
+       ref.current?.reset()
+
+
 
     }
 
@@ -23,7 +37,7 @@ export default function ContactForm({session}) {
 
         <Box>
             <Card size='5' variant="surface">
-                <form action={submit}>  
+                <form action={submit} ref={ref}>  
                     <Flex gap='2' direction='column' align='center' width='100%' justify='center'>
 
                         <Heading size='5'>Please contact Nature Dopes here</Heading>
@@ -41,6 +55,8 @@ export default function ContactForm({session}) {
                              
                             <Text>{session.user.id}</Text>
                             <SubmitButton>Send</SubmitButton>
+                            {error? <Text>{error}</Text>:null}
+                            {message? <Text>{message}</Text>:null}
                         </Flex>
                        
                     

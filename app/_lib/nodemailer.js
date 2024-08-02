@@ -1,7 +1,10 @@
+
 import nodemailer from 'nodemailer'
 
 
-export function sendMail(mailOptions){
+export async function sendMail(mailOptions){
+
+    return new Promise((resolve, reject)=> {
 
     let transporter = nodemailer.createTransport({
         host: process.env.EMAILHOST,
@@ -14,15 +17,27 @@ export function sendMail(mailOptions){
     });
 
     
-    transporter.sendMail(mailOptions, function(err, info) {
-       
-        if (err) {
-            console.log(err)
-            
-            
-        } else {
-            console.log(info)
         
-        }
-    });
-}
+        transporter.sendMail(mailOptions, function(err, info) {
+
+            if (err) {
+                
+                resolve ( {
+                    message: 'error'
+                })
+                
+            } else {
+                
+                resolve ({
+                    
+                    message: 'Thanks, Naturedopes will get back to you soon'
+                })
+            }
+            
+         })
+        })  
+      
+
+    }
+
+
