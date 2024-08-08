@@ -19,7 +19,7 @@ export default function ContactForm({session}) {
 
     async function submit(data: FormData){
 
-       const {message} = await submitContactForm(data)
+       const {message, error} = await submitContactForm(data)
        if(error){
         setError(error)
        } else {
@@ -27,7 +27,6 @@ export default function ContactForm({session}) {
        }
 
        ref.current?.reset()
-
 
 
     }

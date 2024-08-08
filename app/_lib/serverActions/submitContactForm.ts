@@ -1,6 +1,6 @@
  'use server'
 
-import { error } from "console"
+
  import { sendMail } from "../nodemailer"
 
 export async function submitContactForm(data: FormData){
@@ -18,9 +18,14 @@ export async function submitContactForm(data: FormData){
 
     }
 
-     const message = await sendMail(mailOptions)
-     console.log(message)
-     return message
+     const {message, error} = await sendMail(mailOptions)
+     if(error){
+        console.log(error)
+        return {error}
+     } else {
+        console.log(message)
+        return {message}
+     }
      
    
    

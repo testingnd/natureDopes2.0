@@ -23,7 +23,7 @@ export async function sendMail(mailOptions){
             if (err) {
                 
                 resolve ( {
-                    message: 'error'
+                    error: 'error sending message, please try again later'
                 })
                 
             } else {
