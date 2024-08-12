@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import Image from 'next/image'
 import ndLogo from '../public/images/logo_mid.png'
-import ContactForm from './_components/contact/ContactForm'
+import HomeContent from './_components/homeContent/HomeContent'
 
 
 import { Indie_Flower } from 'next/font/google'
@@ -30,14 +30,15 @@ const indie = Indie_Flower({
 
 export default async function Page() {
 
-  const session: number|undefined = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions)
 
 
   return(
   
       
-        <Flex pt='8' justify='center' direction='column' align='center' >
-          <Flex justify='center' align='center' direction='column' width='40%'>
+        <Flex pt='8' justify='center' direction='column' align='center'  >
+          <Box height='80vh' width='40%' mt='8'>
+          <Flex justify='center' align='center' direction='column' >
               <section className={`${indie.className} ${styles.rootPageSection} `}>
                   <h1 className={styles.ndHeadings}> Welcome to Nature Dopes</h1>
                   
@@ -66,10 +67,9 @@ export default async function Page() {
             
            
           </Flex>
-
-          <Flex>
-            <ContactForm session={session}/>
-          </Flex>
+          </Box>
+          
+          <HomeContent session={session} />
           
           <Flex height='500px'align='end'>
             <Flex >

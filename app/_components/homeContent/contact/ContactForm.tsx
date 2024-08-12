@@ -6,11 +6,11 @@ import { useRef } from 'react'
 import { submitContactForm } from "@/app/_lib/serverActions/submitContactForm";
 
 import { Box, Card, Heading, Text, Flex, TextField, TextArea } from "@radix-ui/themes";
-import { SubmitButton } from "../buttons/SubmitButton";
+import { SubmitButton } from "../../buttons/SubmitButton";
 
 
 
-export default function ContactForm({session}) {
+export default function ContactForm({session}: {session: null | undefined | number}) {
 
     const ref = useRef<HTMLFormElement>(null)
 
@@ -52,7 +52,7 @@ export default function ContactForm({session}) {
                             </Box>
                              
                              
-                            <Text>{session.user.id}</Text>
+                            
                             <SubmitButton>Send</SubmitButton>
                             {error? <Text>{error}</Text>:null}
                             {message? <Text>{message}</Text>:null}

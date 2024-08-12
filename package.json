@@ -10,7 +10,7 @@
     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
+    "@emotion/react": "^11.13.0",
     "@mapbox/node-pre-gyp": "^1.0.11",
     "@next/bundle-analyzer": "^14.1.0",
     "@prisma/client": "^5.5.2",
@@ -31,7 +31,7 @@
     "nodemailer": "^6.9.13",
     "pg": "^8.11.3",
     "react": "^18",
-    "react-awesome-reveal": "^4.2.7",
+    "react-awesome-reveal": "^4.2.14",
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "sharp": "^0.33.2",
