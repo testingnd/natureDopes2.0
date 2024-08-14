@@ -23,7 +23,7 @@ export default function HomeContent({session}: {session: null | undefined | numb
             <ContactForm session={session}/>
         </Flex>
       
-        <Flex justify='center'>
+        <Flex justify='center' mt='8'>
             <About/>
         </Flex>
         </Fade>

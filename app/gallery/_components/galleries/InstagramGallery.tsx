@@ -16,7 +16,7 @@ export default function InstagramGallery({igResponse}: {igResponse: InstagramApi
         <>
         
         <Container size='2'>
-         <Grid columns='4' gap='6' >
+         <Grid columns={{lg:'4', sm: '1'}} gap='6' >
             {igResponse.map((media: InstagramApiData, index: number) => {
                
                 if(media.media_type == 'IMAGE'){
