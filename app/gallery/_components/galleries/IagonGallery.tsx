@@ -19,12 +19,12 @@ export default function IagonGallery({imageDataPrisma, LoadingGif}: {imageDataPr
 
     return (
         <>
-         <Container size='2'>
-            <Grid columns='4' gap='6' >
+         <Container size={{lg: '2', sm: '2', xs: '1' , initial: '1'}}>
+            <Grid columns={{lg:'4', md: '3' ,sm: '3', xs: '1' , initial: '1'}} gap='6' >
                 {imageData.map((data: ImagesDataPrisma) => 
 
-                            <Box key={data.id} size='3' maxHeight='auto' >
-                                <Card >
+                            <Box key={data.id} size={{lg: '3', sm: '2', xs: '1', initial: '1'}} maxHeight='auto' >
+                                <Card size={{lg: '2', md: '2', sm: '1', xs: '1', initial: '1'}} >
                                 
                                     <Inset clip="padding-box" side="top" pb="current" >
                                         <IagonImage key={data.id} path={data.path} LoadingGif={LoadingGif} />

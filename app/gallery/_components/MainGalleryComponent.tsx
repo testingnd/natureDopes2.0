@@ -27,10 +27,10 @@ export default function MainGalleryComponent({session, igResponse, imageDataPris
 
         
         
-          <Container size={{lg: '4', sm: '1'}}>  
+          <Container size={{lg: '4', md: '3', sm: '2', xs: '1', initial: '1'}}>  
         {session?<>
                  <Flex gap='1'><Badge variant="surface" size='3'>Nature Dopes Gallery</Badge><Switch size='3' onClick={galleryToggle} /><Badge variant="surface" size='3'>User Gallery</Badge></Flex> 
-                 <Box mt='3'> 
+                 <Box size={{xs: '1'}} mt='3' ml={{xs: '2', initial: '8'}} mr={{xs: '2', initial: '8'}}> 
                    
                 
                     {galleryInView? error? <p>error</p>: <InstagramGallery igResponse={igResponse}  />: <IagonGallery imageDataPrisma={imageDataPrisma} LoadingGif={LoadingGif} />}
