@@ -19,7 +19,9 @@ async function getPrismaData(sessionId: number){
 
   if (!res.ok) {
    
-    throw new Error('Failed to fetch data')
+    return {
+      error: 'Cannot return images from database, please try again later'
+    }
   }
 
   return res.json()
@@ -55,9 +57,17 @@ export default async function PageRootGallery(){
   }
 
     let imageDataPrisma: ImagesDataPrisma | null = null
+    let prismaError: string | null = null 
     if(session){
-      imageDataPrisma = await getPrismaData(session.user.id)
-     
+      const {prismaData, error}: {prismaData: ImagesDataPrisma, error: string | null} = await getPrismaData(session.user.id)
+      
+      if(prismaData){
+        imageDataPrisma = prismaData
+      }
+      if(error){
+        prismaError = error
+      }
+
     }
 
 
@@ -65,8 +75,11 @@ export default async function PageRootGallery(){
     async function getInstagramData() {
         const res = await fetch('http://localhost:3000/gallery/api', { cache: 'no-store' })
         if (!res.ok) {
-          throw new Error('Failed to fetch data')
+         return {
+          error: 'Data from instagram has failed to load, please try again later'
+         }
         }
+        
         return res.json()
       }
     const {igResponse, error}: {igResponse: InstagramApiData, error: string} = await getInstagramData();
@@ -76,7 +89,7 @@ export default async function PageRootGallery(){
     return(
         <>  
        
-          <MainGalleryComponent error={error} igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} LoadingGif={LoadingGif} />
+          <MainGalleryComponent error={error} prismaError={prismaError} igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} LoadingGif={LoadingGif} />
         
       
         </>

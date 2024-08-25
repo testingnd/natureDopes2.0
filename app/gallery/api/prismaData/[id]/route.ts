@@ -15,6 +15,6 @@ export async function GET(req, {params}: {params: {id: string}}){
     });
 
     
-  return NextResponse.json(imageData);
+  return NextResponse.json({prismaData: imageData});
 
 }

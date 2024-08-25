@@ -59,13 +59,13 @@ const toggleIs= () => {
 
       function leavePointer(): void {
         
-        setIsShown(false)
+        setIsShown(current => !current)
       }
  
     return(
         <Flex direction='column' >
-        {toggle? <Button size='1' onClick={toggleIs}>X</Button>: <p></p>}
-        <Box onMouseEnter={changePointer} onMouseLeave={leavePointer} onClick={getImageApi}>
+        {toggle? <Button size='1' onClick={toggleIs} onTouchStart={leavePointer}>X</Button>: <p></p>}
+        <Box onMouseEnter={changePointer} onMouseLeave={leavePointer} onTouchStart={changePointer} onClick={getImageApi}>
             
         
             {toggle? null: session == user_id ? <RiFlowerFill size={15} color="#115511" />: <RiFlowerFill size={15} color="green"/>}

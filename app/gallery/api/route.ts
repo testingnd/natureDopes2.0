@@ -9,10 +9,7 @@ export async function GET(request: NextRequest){
  
     console.log(res.status)
     if(res.status == 400 || res.status == 500){
-        const response = await res.json();
-       
-
-        console.log(response.body.error)
+        
         return NextResponse.json({error: 'Problem returning data from Instagram. If the problem persists please contact us' })
     }
 

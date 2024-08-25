@@ -15,7 +15,7 @@ import InstagramGallery from "./galleries/InstagramGallery";
 import {ImagesDataPrisma} from '../page'
 import { InstagramApiData } from "../page";
 
-export default function MainGalleryComponent({session, igResponse, imageDataPrisma, LoadingGif, error}: {session: number|null, igResponse: InstagramApiData, imageDataPrisma: ImagesDataPrisma | null, LoadingGif: any, error: string}){
+export default function MainGalleryComponent({session, igResponse, imageDataPrisma, LoadingGif, error, prismaError}: {session: number|null, igResponse: InstagramApiData, imageDataPrisma: ImagesDataPrisma | null, LoadingGif: any, error: string, prismaError: string | null}){
 
     const [galleryInView, setGalleryinView] = React.useState<boolean>(true)
 
@@ -33,9 +33,9 @@ export default function MainGalleryComponent({session, igResponse, imageDataPris
                  <Box size={{xs: '1'}} mt='3' ml={{xs: '2', initial: '8'}} mr={{xs: '2', initial: '8'}}> 
                    
                 
-                    {galleryInView? error? <p>error</p>: <InstagramGallery igResponse={igResponse}  />: <IagonGallery imageDataPrisma={imageDataPrisma} LoadingGif={LoadingGif} />}
+                    {galleryInView? error? prismaError? <p>{prismaError}</p> : <p>{error}</p>: <InstagramGallery igResponse={igResponse}  />: <IagonGallery imageDataPrisma={imageDataPrisma} LoadingGif={LoadingGif} />}
                   </Box></>
-            : error? <p>error</p>: <InstagramGallery igResponse={igResponse} />
+            : error? <p>{error}</p>: <InstagramGallery igResponse={igResponse} />
         
        
                 

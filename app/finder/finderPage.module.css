@@ -13,6 +13,7 @@
 .rootPageWrapper{
   margin-top: 3%;
   width: 100%;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
