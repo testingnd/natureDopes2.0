@@ -17,7 +17,7 @@ import Image from "next/image";
 // icons & images
 import { RxHome } from "react-icons/rx";
 import { CiLight, CiDark } from "react-icons/ci";
-import logoMid from "@/public/images/logo_mid.png"
+import logoMini from "@/public/images/logomini.png"
 
 
 
@@ -33,18 +33,23 @@ export default function NavBar({session}){
         <div className={style.layoutNav}>
               <div className={style.navUserSection}>
 
-                <div>
-                  <Image 
-                    src={logoMid}
+                <div className={style.logoContainer}>
+                  {/*<Image 
+                    src={logoMini}
                     width={100}
-                    height={100}
+                    height={90}
                     alt='Nature dopes logo'
-                  />
+                  />*/}
+                   <Text color='grass'><a href='/'><RxHome className={style.homeLogo}  /></a></Text>
                 </div>
 
-                {!session? <LoginButton/>:<LogoutButton/>  }
+                <div>
+
+                  {!session? <LoginButton/>:<LogoutButton/>  }
              
-                {session? <Box><Text color='grass'>Logged in as: {session.user.name}</Text></Box>: null }
+                  {session? <Box pl='4px' size={{xs: '1' ,sm: '1', md: '2', lg: '3', xl: '4'}}><Text color='grass' size={{xs: '1' ,sm: '1', md: '2', lg: '3'}}>User: {session.user.name}</Text></Box>: null }
+                </div>
+                
               
               </div>
             
@@ -54,10 +59,10 @@ export default function NavBar({session}){
                   <Nav/>
                
                 </div>
-                <div>
+                {/*<div>
                   <Text color='grass'><a href='/'><RxHome size={30}/></a></Text>
                  
-                </div>
+                </div>*/}
                 <div>
                    <button onClick={toggleMode}> <CiLight  size={30} /> </button>
                 </div>

@@ -29,8 +29,8 @@ export default function SignIn() {
 
       <Flex justify='center' pt='8'>
 
-        <Box width='35%'>
-        <Card size='4' variant="classic" style={{boxShadow: 'var(--shadow-5)'}} >
+        <Box width={{xs: '80vw', sm: '80vw', md: '50vw', lg: '50vw' , xl: '50vw'}}>
+        <Card size='5' variant="classic" style={{boxShadow: 'var(--shadow-5)'}} >
           
           <form method="post" action="/api/auth/callback/credentials" onSubmit={signInHandler}>
           <Flex gap='2' direction='column' justify='between' align='stretch'>

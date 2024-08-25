@@ -8,7 +8,7 @@
 }
 
 .navUserSection:nth-child(2){
-  width: 25%;
+  width: 30%;
   justify-content: flex-end;
   padding-right: 1%;
 }
@@ -16,7 +16,8 @@
 
 .navUserSection{
   display: flex;
-  
+  justify-content: flex-start;
+  width: 30%;
   
 }
 
@@ -26,6 +27,10 @@
 
   text-wrap: nowrap;
   align-items: center;
+}
+
+.homeLogo{
+  font-size: 40px;
 }
 
 /* Root page css */
@@ -42,4 +47,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (max-width: 450px) {
+
+  .navUserSection > div{
+    
+    padding: 2%;
+  }
+
+    .logoContainer{
+    display: none;
+  }
+
+  .homeLogo{
+    font-size: 30px;
+  }
+  
 }
