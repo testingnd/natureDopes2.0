@@ -3,7 +3,7 @@ import {prisma} from '@/app/prisma'
 import { NextResponse } from "next/server";
 
 
-export async function GET(req, {params}: {params: {id: string}}){
+export async function GET(req: any, {params}: {params: {id: string}}){
     
     
     let prismaId = Number(params.id)

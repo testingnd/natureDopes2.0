@@ -160,7 +160,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
         >
      
     
-        {imageData.filter(data => {
+        {imageData.filter((data: { user_id: number; }) => {
           if(!allChecked){
             if(data.user_id == session){
               return data
@@ -171,13 +171,13 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
             return data
           }
         })
-        .filter(data => {
+        .filter((data: { species_name: string; }) => {
           if(!data){
             return data
           } else if(data.species_name.toLowerCase().includes(searchParams.toLowerCase())) {
             return data
           }
-        }).map(data => (
+        }).map(data  => (
           <MapMarker key={data.id} id={data.id} user_id={data.user_id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} path={data.path} session={session} loadingGif={loadingGif} toggleEditForm={toggleEditForm}  />
         ))}  
 

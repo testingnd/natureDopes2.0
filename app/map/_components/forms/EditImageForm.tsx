@@ -12,7 +12,7 @@ import { editImageData } from "../../_lib/editImageData";
 import { SubmitButton } from "@/app/_components/buttons/SubmitButton";
 
 
-export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, getData}: {species: string | undefined, lng: number | undefined, lat: number | undefined, imageId: string | undefined | string, toggleEditForm: ReactEventHandler, getData: Function}){
+export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, getData}: {species: string | undefined, lng: number | undefined, lat: number | undefined, imageId: number | undefined | string, toggleEditForm: MouseEventHandler, getData: Function}){
 
     const [ error, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')

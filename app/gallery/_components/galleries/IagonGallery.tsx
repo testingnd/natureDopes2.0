@@ -23,7 +23,7 @@ export default function IagonGallery({imageDataPrisma, LoadingGif}: {imageDataPr
             <Grid columns={{lg:'4', md: '3' ,sm: '3', xs: '1' , initial: '1'}} gap='6' >
                 {imageData.map((data: ImagesDataPrisma) => 
 
-                            <Box key={data.id} size={{lg: '3', sm: '2', xs: '1', initial: '1'}} maxHeight='auto' >
+                            <Box key={data.id} maxHeight='auto' >
                                 <Card size={{lg: '2', md: '2', sm: '1', xs: '1', initial: '1'}} >
                                 
                                     <Inset clip="padding-box" side="top" pb="current" >

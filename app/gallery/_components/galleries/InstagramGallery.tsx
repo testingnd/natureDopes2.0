@@ -21,7 +21,7 @@ export default function InstagramGallery({igResponse}: {igResponse: InstagramApi
                
                 if(media.media_type == 'IMAGE'){
                 
-                return <Box key={media.id} size={{lg: '3', sm: '2', xs: '1', initial: '1'}} maxHeight='auto' >
+                return <Box key={media.id}  maxHeight='auto' >
                             <Card size={{lg: '2', md: '2', sm: '1', xs: '1', initial: '1'}}>
                                
                                 <Inset clip="padding-box" side="top" pb="current"  >
@@ -42,7 +42,7 @@ export default function InstagramGallery({igResponse}: {igResponse: InstagramApi
                         </Box>       
             }
             
-                return   <Box key={media.id} size='3' maxHeight='auto'>    
+                return   <Box key={media.id} maxHeight='auto'>    
                             
                             <Card variant="surface" >
                                

@@ -13,8 +13,8 @@ import styles from './register.module.css'
 
 export default function RegisterPage(){
 
-    const [ error, setError] = React.useState<string>('')
-    const [success, setSuccess] = React.useState<string>('')
+    const [ error, setError] = React.useState<string | undefined>('')
+    const [success, setSuccess] = React.useState<string| undefined>('')
 
     const submit = async (data: FormData) => {
         const {error, success} = await registerUser(data)

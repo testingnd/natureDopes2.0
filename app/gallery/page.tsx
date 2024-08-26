@@ -37,6 +37,7 @@ export type ImagesDataPrisma = {
 }
 
 export type InstagramApiData = {
+  map(arg0: (media: InstagramApiData, index: number) => React.JSX.Element): React.ReactNode
   media_type: string,
   media_url: string,
   id: number,
