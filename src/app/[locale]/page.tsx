@@ -1,0 +1,60 @@
+
+import styles from './layout.module.css'
+import React, { JSXElementConstructor } from 'react'
+
+import Image from 'next/image'
+import {useTranslations} from 'next-intl'
+
+
+import HomeContent from './_components/homeContent/HomeContent'
+import Splash from './_components/homeContent/Splash'
+
+
+import { Indie_Flower } from 'next/font/google'
+import { Box, Flex, Section, Text } from '@radix-ui/themes'
+
+// Next auth  imports
+import { getServerSession } from 'next-auth';
+import { authOptions } from './api/auth/[...nextauth]/route'
+
+
+
+
+
+const indie = Indie_Flower({
+  weight: '400',
+  subsets: ['latin'],
+  
+})
+
+
+
+
+export default async function Page() {
+
+  const session = await getServerSession(authOptions)
+
+
+  return(
+  
+      
+    <Flex pt='8' justify='center' direction='column' align='center'  >
+          
+          <Splash />
+          <HomeContent session={session} />
+          
+          <Flex height='500px'align='end'>
+            <Flex >
+              <Text>Footer</Text>
+            </Flex>
+              
+          </Flex>
+      </Flex>
+            
+  
+ 
+ 
+  )
+
+  //change to objects to align with Typescript (oop)
+}

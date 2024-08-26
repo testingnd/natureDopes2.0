@@ -5,8 +5,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
+const withNextIntl = require('next-intl/plugin')();
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withNextIntl({
 
   eslint: {
     // Warning: This allows production builds to successfully complete even if
@@ -52,7 +54,7 @@ const nextConfig = {
   reactStrictMode: false,
 
 
-}
+})
 
 module.exports = nextConfig
 
