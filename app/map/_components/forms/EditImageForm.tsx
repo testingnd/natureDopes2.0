@@ -49,7 +49,7 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
     return(
         <section className={style.EditFormWrapper}>
         
-            <Card variant="classic" >
+            <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} variant="classic" >
                 <Flex  gap='4' direction='column'>
                     
                     <Flex justify='between'>
@@ -60,7 +60,7 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                                     <Button ml='1' size='1'>?</Button>
                                 </HoverCard.Trigger>
                                 <HoverCard.Content className={style.uploadFormInfoHover}>
-                                    <Card >
+                                    <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} >
                                         <Flex direction='column' gap='2'>
                                             <Text>{">"}Re-Enter Your Species Name</Text>
                                             <Text>{">"}Click on the map again, the location of the find (Zoom in for accuracy)</Text>

@@ -31,3 +31,12 @@
 .hiddenInput{
     display: none;
 }
+
+@media screen and (max-width: 450px) {
+    
+    .EditFormWrapper{
+        left: 40%;
+    
+    }
+
+}

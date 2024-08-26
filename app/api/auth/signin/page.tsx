@@ -39,7 +39,7 @@ export default function SignIn() {
                      <Avatar size='5'  src='../../../images/logomini.png' fallback='N'/>
                     
 
-                     <Heading pb='2'>Sign In</Heading>
+                     <Heading>Sign In</Heading>
                     
                      
                      
