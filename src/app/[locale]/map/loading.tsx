@@ -1,7 +1,7 @@
 
 import LoadingIcon from '@/src/app/[locale]/_components/loadingIcon'
 
-import styles from '@/app/layout.module.css'
+import styles from '../layout.module.css'
 
 export default function Loading(){
       return( 

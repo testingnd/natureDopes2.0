@@ -10,6 +10,7 @@ import style from './map.module.css'
 // import session data
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route'
+import {getTranslations} from 'next-intl/server';
 
 //google map react build
 import Gmap from './_components/GMap'
@@ -37,6 +38,12 @@ export default async function Map(){
 
   const session: any = await getServerSession(authOptions)
 
+  const t = await getTranslations("GMap") 
+
+  const translationProps = {
+    searchbar: t('searchbar')
+  }
+
  let userId = null
 
   if(session){
@@ -47,7 +54,7 @@ export default async function Map(){
         <>
      
 
-              <Gmap getImageData={getImageData} loadingGif={loadingGif} session={userId} />
+              <Gmap getImageData={getImageData} loadingGif={loadingGif} session={userId} translationProps={translationProps} />
        
        
         

@@ -2,6 +2,10 @@
 
     "Home":{
         "title": "Bienvenue à Nature Dopes"
+    },
+    "GMap": {
+        "searchbar": "Chercher..."
     }
+
 
 }

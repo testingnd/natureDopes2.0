@@ -2,6 +2,10 @@
 
     "Home":{
         "title": "Welcome to Nature Dopes"
+    },
+
+    "GMap": {
+        "searchbar": "Search for species..."
     }
 
 }

@@ -1,8 +1,8 @@
 
 
 import toadflax from '../../../../public/images/toadflax.jpg'
-import lucerne from '../../../public/images/lucerne.jpg'
-import bugloss from '../../../public/images/bugloss.jpg'
+import lucerne from '../../../../public/images/lucerne.jpg'
+import bugloss from '../../../../public/images/bugloss.jpg'
 import { StaticImageData } from 'next/image'
 
 

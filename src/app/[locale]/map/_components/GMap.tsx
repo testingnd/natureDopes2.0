@@ -15,6 +15,7 @@ import Loading from '@/src/app/[locale]/loading'
 import { StaticImageData } from 'next/image';
 
 
+
 import { Button, Switch, Tooltip, TextField, Flex, Box } from '@radix-ui/themes';
 import style from './mapMarker.module.css'
 
@@ -30,7 +31,9 @@ export interface imageData{
 
 
 
-export default function Gmap({getImageData, loadingGif, session}: {getImageData: imageData, loadingGif: StaticImageData, session: number}) {
+export default function Gmap({getImageData, loadingGif, session, translationProps}: {getImageData: imageData, loadingGif: StaticImageData, session: number, translationProps: {string}}) {
+
+
 
   //image data from prisma client
   const [imageData, setImageData] = useState(getImageData)
@@ -124,7 +127,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
         <Flex align='center'>
           <form onSubmit={handleSubmit}>
 
-            <TextField.Root placeholder="Search for Species…" onChange={event => setSearchParams(event.target.value)}>
+            <TextField.Root placeholder={translationProps.searchbar} onChange={event => setSearchParams(event.target.value)}>
               <TextField.Slot>
               <MagnifyingGlassIcon height="16" width="16" />
               </TextField.Slot>
