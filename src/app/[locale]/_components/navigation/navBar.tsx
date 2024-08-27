@@ -5,6 +5,7 @@ import React from "react"
 import style from '../../layout.module.css'
 
 import Nav from "./nav";
+import LanguageSwitcher from "../Switcher";
 import { LoginButton, LogoutButton } from '../../auth'
 
 // radix ui elements
@@ -17,13 +18,14 @@ import Image from "next/image";
 // icons & images
 import { RxHome } from "react-icons/rx";
 import { CiLight, CiDark } from "react-icons/ci";
+import { NextAuthOptions } from "next-auth";
 
 
 
 
 
 
-export default function NavBar({session}){
+export default function NavBar({session, locale}: {session: NextAuthOptions, locale: string}){
 
   const { theme, setTheme } = useTheme()
   const toggleMode = () => setTheme(theme == 'light' ? 'dark' : 'light')
@@ -47,7 +49,7 @@ export default function NavBar({session}){
 
                   {!session? <LoginButton/>:<LogoutButton/>  }
              
-                  {session? <Box pl='4px' size={{xs: '1' ,sm: '1', md: '2', lg: '3', xl: '4'}}><Text color='grass' size={{xs: '1' ,sm: '1', md: '2', lg: '3'}}>User: {session.user.name}</Text></Box>: null }
+                  {session? <Box pl='4px' ><Text>User: {session.user.name}</Text></Box>: null }
                 </div>
                 
               
@@ -65,6 +67,9 @@ export default function NavBar({session}){
                 </div>*/}
                 <div>
                    <button onClick={toggleMode}> <CiLight  size={30} /> </button>
+                </div>
+                <div>
+                  <LanguageSwitcher locale={locale} />
                 </div>
               
               </section>

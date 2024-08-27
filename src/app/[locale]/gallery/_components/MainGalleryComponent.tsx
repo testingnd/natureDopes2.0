@@ -33,7 +33,7 @@ export default function MainGalleryComponent({session, igResponse, imageDataPris
                  <Box size={{xs: '1'}} mt='3' ml={{xs: '2', initial: '8'}} mr={{xs: '2', initial: '8'}}> 
                    
                 
-                    {galleryInView? error? prismaError? <p>{prismaError}</p> : <p>{error}</p>: <InstagramGallery igResponse={igResponse}  />: <IagonGallery imageDataPrisma={imageDataPrisma} LoadingGif={LoadingGif} />}
+                    {galleryInView? error?  <p>{error}</p>: <InstagramGallery igResponse={igResponse}  />: prismaError? <p>{prismaError}</p> : <IagonGallery imageDataPrisma={imageDataPrisma} LoadingGif={LoadingGif} />}
                   </Box></>
             : error? <p>{error}</p>: <InstagramGallery igResponse={igResponse} />
         

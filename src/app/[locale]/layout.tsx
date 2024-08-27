@@ -17,6 +17,7 @@ import { authOptions } from './api/auth/[...nextauth]/route'
 
 import NavBar from './_components/navigation/navBar';
 
+
 //global css
 import './globals.css'
 
@@ -53,7 +54,7 @@ export default async function RootLayout({
         enableSystem
         disableTransitionOnChange>
           <Theme data-is-root-theme='False' accentColor='grass' grayColor='sage' scaling='100%'>
-            <NavBar session={session} />
+            <NavBar session={session} locale={locale} />
           
             {children}
         
