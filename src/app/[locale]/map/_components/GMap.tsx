@@ -1,6 +1,5 @@
 'use client'
 
-
 import { Key, Suspense, useState } from 'react';
 
 import GoogleMapReact from 'google-map-react';
@@ -14,10 +13,10 @@ import Loading from '@/src/app/[locale]/loading'
 
 import { StaticImageData } from 'next/image';
 
-
-
 import { Button, Switch, Tooltip, TextField, Flex, Box } from '@radix-ui/themes';
 import style from './mapMarker.module.css'
+
+import { TranslationTypes } from '../../layout';
 
 export interface imageData{
  
@@ -31,7 +30,7 @@ export interface imageData{
 
 
 
-export default function Gmap({getImageData, loadingGif, session, translationProps}: {getImageData: imageData, loadingGif: StaticImageData, session: number, translationProps: {string}}) {
+export default function Gmap({getImageData, loadingGif, session, translationProps}: {getImageData: imageData, loadingGif: StaticImageData, session: number, translationProps: TranslationTypes}) {
 
 
 
@@ -117,9 +116,9 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
         
         <Flex p='1' justify='between'>
           <Flex align='center'>
-            <label className={style.findLabel}>All finds</label>
+            <label className={style.findLabel}>{translationProps.allfinds}</label>
             <Switch checked={!allChecked} onCheckedChange={() => setAllChecked(allChecked => !allChecked)} />
-            <label className={style.findLabel}>Your finds</label>
+            <label className={style.findLabel}>{translationProps.yourfinds}</label>
           </Flex>
         
         </Flex>
@@ -134,7 +133,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
             </TextField.Root>
           
           </form>
-          {uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>Add</Button> </Box>}
+          {uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>{translationProps.addbutton}</Button> </Box>}
           {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm} getData={getData}  />: null }
           {session? null:<Tooltip  content='Sign in for more map features'>
             <Button ml='1%'  radius='medium'>i</Button>
@@ -152,7 +151,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
       
       <div style={{ height: '90vh', width: '100%'  }}>
 
-        {uploadForm? <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm} getData={getData}  />: null}
+        {uploadForm? <ImageUploadForm translationProps={translationProps} lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm} getData={getData}  />: null}
         <Suspense fallback={<Loading/>}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI}}

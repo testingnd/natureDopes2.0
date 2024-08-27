@@ -20,12 +20,10 @@ import { RxHome } from "react-icons/rx";
 import { CiLight, CiDark } from "react-icons/ci";
 import { NextAuthOptions } from "next-auth";
 
+import {TranslationTypes} from '../../layout'
 
 
-
-
-
-export default function NavBar({session, locale}: {session: NextAuthOptions, locale: string}){
+export default function NavBar({session, locale, translationProps}: {session: NextAuthOptions, locale: string, translationProps: TranslationTypes }){
 
   const { theme, setTheme } = useTheme()
   const toggleMode = () => setTheme(theme == 'light' ? 'dark' : 'light')
@@ -47,9 +45,9 @@ export default function NavBar({session, locale}: {session: NextAuthOptions, loc
 
                 <div>
 
-                  {!session? <LoginButton/>:<LogoutButton/>  }
+                  {!session? <LoginButton translationProps={translationProps} />:<LogoutButton translationProps={translationProps}  />  }
              
-                  {session? <Box pl='4px' ><Text>User: {session.user.name}</Text></Box>: null }
+                  {session? <Box pl='4px' ><Text>{translationProps.user} {session.user.name}</Text></Box>: null }
                 </div>
                 
               
@@ -58,7 +56,7 @@ export default function NavBar({session, locale}: {session: NextAuthOptions, loc
               
               <section className={style.navUserSection}>
                 <div>
-                  <Nav/>
+                  <Nav translationProps={translationProps} />
                
                 </div>
                 {/*<div>

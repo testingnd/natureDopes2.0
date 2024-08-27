@@ -11,9 +11,10 @@ import { registerImageData } from "../../_lib/registerImageData";
 import { revalidateTag } from "next/cache";
 
 import { SubmitButton } from "@/src/app/[locale]/_components/buttons/SubmitButton";
+import { TranslationTypes } from "../../../layout";
 
 
-export default function imageUploadForm({lng, lat, session, toggleUploadForm, getData}: {lng: number | undefined, lat: number | undefined, session: number, toggleUploadForm: ReactEventHandler, getData: Function}){
+export default function imageUploadForm({lng, lat, session, toggleUploadForm, getData, translationProps}: {lng: number | undefined, lat: number | undefined, session: number, toggleUploadForm: ReactEventHandler, getData: Function, translationProps: TranslationTypes}){
 
     const [ errors, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')
@@ -54,6 +55,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
        
         
     }
+    
 
 
 
@@ -65,7 +67,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                     
                     <Flex justify='between'>
                         <Flex align='center'>
-                            <Text>Upload your finds here</Text> 
+                            <Text>{translationProps.uploadFormTitle}</Text> 
                             <HoverCard.Root >
                                 <HoverCard.Trigger>
                                     <Button ml='1' size='1'>i</Button>
@@ -73,10 +75,10 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                                 <HoverCard.Content className={style.uploadFormInfoHover}>
                                     <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} >
                                         <Flex direction='column' gap='2'>
-                                            <Text>{">"}Enter Your Species Name</Text>
-                                            <Text>{">"}Click on the map where you located it (Zoom in for accuracy)</Text>
-                                            <Text>{">"}Click Choose File to select the photo from your device</Text>
-                                            <Text>{">"}Click Upload and it's done!</Text>
+                                            <Text>{">"}{translationProps.hoverOne}</Text>
+                                            <Text>{">"}{translationProps.hoverTwo}</Text>
+                                            <Text>{">"}{translationProps.hoverThree}</Text>
+                                            <Text>{">"}{translationProps.hoverFour}</Text>
                                         </Flex>
                                     </Card>
 
@@ -88,7 +90,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                     </Flex>
                     
                     <form action={submit}>
-                        <TextField.Root mb='2' name='species' placeholder="Species Name" size='3'  />
+                        <TextField.Root mb='2' name='species' placeholder={translationProps.species} size='3'  />
                         <TextField.Root mb='2' name='gps_long' placeholder="Position Longtitude" size='3' value={lng} />
                         <TextField.Root mb='2' name='gps_lat' placeholder="Position Latitude" size='3' value={lat}/>
                         <input className={style.uploadFileButton} name='image_file' placeholder="Image" type="file" accept=".png, .jpg, .jpeg, .heic, .svg" onChange={(event) => {
@@ -104,7 +106,8 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                        
                             }
                         }}/>   
-                        <SubmitButton>Upload</SubmitButton>
+                        <SubmitButton>{translationProps.uploadButton}</SubmitButton>
+                       
                     </form>
                     {errors && <p>{errors}</p>}
                     { success && <p >{success}</p>}  

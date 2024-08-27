@@ -1,11 +1,39 @@
 {
 
+    "Navigation": {
+        "user": "Hello ",
+        "signin": "Sign In",
+        "signout": "Sign Out",
+        "NavMenu": {
+            "map": "Map",
+            "gallery": "Gallery",
+            "play": "Play"
+        }
+    },
+
     "Home":{
         "title": "Welcome to Nature Dopes"
     },
 
     "GMap": {
-        "searchbar": "Search for species..."
+        "searchbar": "Search for species...",
+        "allfinds": "All Finds",
+        "yourfinds": "Your Finds",
+        "addbutton": "Add",
+        "UploadForm": {
+            "title": "Upload your finds here",
+            "species": "Species Name",
+            "filesizeerror": "File with maximum size of 5MB is allowed",
+            "uploadbutton": "Upload",
+            "HoverCard": {
+                "one": "Enter Your Species Name",
+                "two": "Click on the map where you located it (Zoom in for accuracy)",
+                "three": "Click Choose File to select the photo from your device",
+                "four": "Click Upload and it's done!"
+            }
+
+        }
+
     }
 
 }

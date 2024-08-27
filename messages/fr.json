@@ -1,10 +1,35 @@
 {
+    "Navigation": {
+        "user": "Salut ",
+        "signin": "Connexion",
+        "signout": "Déconnexion",
+        "NavMenu": {
+            "map": "Carte",
+            "gallery": "Gallerie",
+            "play": "Joue"
+        }
+    },
 
     "Home":{
         "title": "Bienvenue à Nature Dopes"
     },
     "GMap": {
-        "searchbar": "Chercher..."
+        "searchbar": "Chercher...",
+         "allfinds": "Tous trouvailles",
+        "yourfinds": "Vos trouvailles",
+        "addbutton": "Ajoute",
+        "UploadForm": {
+            "title": "Téléchargez vos trouvailles ici",
+            "species": "Nom de l'espèce",
+            "filesizeerror": "Un fichier d'une taille maximale de 5 Mo est autorisé",
+            "uploadbutton": "Téléchargez",
+            "HoverCard": {
+                "one": "Entrez le nom de votre espèce",
+                "two": "Cliquez sur la carte où vous l'avez localisé (Zoomez pour plus de précision)",
+                "three": "Cliquez sur Choisir un fichier pour sélectionner la photo sur votre appareil",
+                "four": "Cliquez sur Télécharger et c'est fait !"
+            }
+        }
     }
 
 
