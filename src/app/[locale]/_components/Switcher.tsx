@@ -3,11 +3,15 @@
 import React from "react";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { Select, DropdownMenu, Button } from "@radix-ui/themes";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 export default function LanguageSwitcher({locale}: {locale: string}){
+
+    const pathname = usePathname()
+    const currentRoute = pathname.slice(3)
 
     return (
         <>
@@ -21,8 +25,9 @@ export default function LanguageSwitcher({locale}: {locale: string}){
                 <DropdownMenu.Content>
                     
                         
-                        <Link href='/en'><DropdownMenu.Item >en</DropdownMenu.Item></Link>
-                        <Link href='/fr'><DropdownMenu.Item >fr</DropdownMenu.Item></Link>
+                        <Link href={'/en'+currentRoute}><DropdownMenu.Item >en</DropdownMenu.Item></Link>
+                        <Link href={'/fr'+currentRoute}><DropdownMenu.Item >fr</DropdownMenu.Item></Link>
+                        
                         
                    
                 </DropdownMenu.Content>
