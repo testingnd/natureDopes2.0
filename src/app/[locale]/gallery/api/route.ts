@@ -1,8 +1,12 @@
 
 import {NextRequest, NextResponse } from "next/server";
 
+import { getTranslations } from "next-intl/server";
+
 
 export async function GET(request: NextRequest){
+
+    const t = await getTranslations("Gallery.Errors")
     
     const res = await fetch(`https://graph.instagram.com/me/media?fields=media_type,media_url,id,caption,thumbnail_url&access_token=${process.env.INSTAGRAMACCESSTOKEN}`, { next: { tags: ['instagramdata']}})
   
@@ -10,7 +14,7 @@ export async function GET(request: NextRequest){
     console.log(res.status)
     if(res.status == 400 || res.status == 500){
         
-        return NextResponse.json({error: 'Problem returning data from Instagram. If the problem persists please contact us' })
+        return NextResponse.json({error: t('insta1') })
     }
 
     if(!res.ok){

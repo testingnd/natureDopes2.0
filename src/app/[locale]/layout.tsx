@@ -22,7 +22,7 @@ import { getTranslations } from 'next-intl/server';
 
 //global css
 import './globals.css'
-import { signOut } from 'next-auth/react';
+
 
 
 const inter = Inter({

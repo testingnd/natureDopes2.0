@@ -5,7 +5,7 @@ import Image from "next/image"
 
 //radix themes
 import '@radix-ui/themes/styles.css';
-import { Container, Card, Box, Blockquote, Inset, Grid} from "@radix-ui/themes"
+import { Container, Card, Box, Blockquote, Inset, Grid, Flex} from "@radix-ui/themes"
 
 //image component
 import IagonImage from "./IagonImage";
@@ -19,7 +19,7 @@ export default function IagonGallery({imageDataPrisma, LoadingGif}: {imageDataPr
 
     return (
         <>
-         <Container size={{lg: '2', sm: '2', xs: '1' , initial: '1'}}>
+         <Flex justify='center' pl='6' pr='6'>
             <Grid columns={{lg:'4', md: '3' ,sm: '3', xs: '1' , initial: '1'}} gap='6' >
                 {imageData.map(data => 
 
@@ -39,7 +39,7 @@ export default function IagonGallery({imageDataPrisma, LoadingGif}: {imageDataPr
                 
                 )}
             </Grid>
-        </Container>
+        </Flex>
         </>
         
     )

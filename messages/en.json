@@ -35,6 +35,12 @@
         }
 
     },
+    "Gallery":{
+        "Errors":{
+            "insta1": "Problem returning data from Instagram. If the problem persists please contact us"
+        }
+    },
+
     "Footer":{
         "awattsdev": "Powered By "
     }
