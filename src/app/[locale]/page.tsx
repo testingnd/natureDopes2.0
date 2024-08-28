@@ -20,16 +20,6 @@ import { authOptions } from './api/auth/[...nextauth]/route'
 
 
 
-
-const indie = Indie_Flower({
-  weight: '400',
-  subsets: ['latin'],
-  
-})
-
-
-
-
 export default async function Page() {
 
   const session = await getServerSession(authOptions)
@@ -43,13 +33,8 @@ export default async function Page() {
           <Splash />
           <HomeContent session={session} />
           
-          <Flex height='500px'align='end'>
-            <Flex >
-              <Text>Footer</Text>
-            </Flex>
-              
-          </Flex>
-      </Flex>
+          
+    </Flex>
             
   
  

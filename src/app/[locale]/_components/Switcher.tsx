@@ -23,11 +23,9 @@ export default function LanguageSwitcher({locale}: {locale: string}){
             </DropdownMenu.Trigger>
             
                 <DropdownMenu.Content>
-                    
                         
                         <Link href={'/en'+currentRoute}><DropdownMenu.Item >en</DropdownMenu.Item></Link>
                         <Link href={'/fr'+currentRoute}><DropdownMenu.Item >fr</DropdownMenu.Item></Link>
-                        
                         
                    
                 </DropdownMenu.Content>

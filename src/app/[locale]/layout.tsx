@@ -15,6 +15,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]/route'
 
 import NavBar from './_components/navigation/navBar';
+import Footer from './_components/footer/Footer';
 
 import { getTranslations } from 'next-intl/server';
 
@@ -75,7 +76,8 @@ export default async function RootLayout({
             <NavBar translationProps={translationProps} session={session} locale={locale} />
           
             {children}
-        
+
+            <Footer />
           </Theme>
         </ThemeProv>
       </Providers>
