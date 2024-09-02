@@ -134,7 +134,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
           
           </form>
           {uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>{translationProps.addbutton}</Button> </Box>}
-          {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm} getData={getData}  />: null }
+          {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm} getData={getData} translationProps={translationProps} />: null }
           {session? null:<Tooltip  content='Sign in for more map features'>
             <Button ml='1%'  radius='medium'>i</Button>
 
@@ -180,7 +180,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
             return data
           }
         }).map(data  => (
-          <MapMarker key={data.id} id={data.id} user_id={data.user_id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} path={data.path} session={session} loadingGif={loadingGif} toggleEditForm={toggleEditForm}  />
+          <MapMarker key={data.id} id={data.id} user_id={data.user_id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} path={data.path} session={session} loadingGif={loadingGif} toggleEditForm={toggleEditForm} translationProps={translationProps}  />
         ))}  
 
         </GoogleMapReact>

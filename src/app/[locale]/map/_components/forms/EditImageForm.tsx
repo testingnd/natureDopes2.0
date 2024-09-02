@@ -8,11 +8,12 @@ import style from './uploadForm.module.css'
 
 
 import { editImageData } from "../../_lib/editImageData";
+import { TranslationTypes } from "../../../layout";
 
 import { SubmitButton } from "@/src/app/[locale]/_components/buttons/SubmitButton";
 
 
-export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, getData}: {species: string | undefined, lng: number | undefined, lat: number | undefined, imageId: number | undefined | string, toggleEditForm: MouseEventHandler, getData: Function}){
+export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, getData, translationProps}: {species: string | undefined, lng: number | undefined, lat: number | undefined, imageId: number | undefined | string, toggleEditForm: MouseEventHandler, getData: Function, translationProps: TranslationTypes}){
 
     const [ error, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')
@@ -54,7 +55,7 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                     
                     <Flex justify='between'>
                         <Flex align='center'>
-                            <Text>Edit existing find</Text> 
+                            <Text>{translationProps.editFormTitle}</Text> 
                             <HoverCard.Root >
                                 <HoverCard.Trigger>
                                     <Button ml='1' size='1'>?</Button>
@@ -62,10 +63,10 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                                 <HoverCard.Content className={style.uploadFormInfoHover}>
                                     <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} >
                                         <Flex direction='column' gap='2'>
-                                            <Text>{">"}Re-Enter Your Species Name</Text>
-                                            <Text>{">"}Click on the map again, the location of the find (Zoom in for accuracy)</Text>
+                                            <Text>{">"}{translationProps.eHoverOne}</Text>
+                                            <Text>{">"}{translationProps.eHoverTwo}</Text>
                                             
-                                            <Text>{">"}Click Update and it's done!</Text>
+                                            <Text>{">"}{translationProps.eHoverThree}</Text>
                                         </Flex>
                                     </Card>
 
@@ -81,7 +82,7 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                         <TextField.Root mb='2' name='gps_long' placeholder='Position Longtitude' size='3' value={lng} />
                         <TextField.Root mb='2' name='gps_lat' placeholder='Position Latitude' size='3' value={lat}/>
                         <TextField.Root className={style.hiddenInput} name='imageId' value={imageId} style={{display: 'none'}}  />
-                        <SubmitButton>Update</SubmitButton>
+                        <SubmitButton>{translationProps.updateButton}</SubmitButton>
                        
                     </form>
                     {error && <p>{error}</p>}

@@ -13,6 +13,7 @@ import { RiFlowerFill } from "react-icons/ri";
 
 
 import { GetImage } from "../_lib/GetImage";
+import { TranslationTypes } from "../../layout";
 
 
 export interface mapMarkerProps {
@@ -25,9 +26,10 @@ export interface mapMarkerProps {
     session: number,
     loadingGif: StaticImageData,
     toggleEditForm: MouseEventHandler | Function,
+    translationProps: TranslationTypes
 }
 
-export default function MapMarker({id, user_id, text, session, loadingGif, toggleEditForm}: mapMarkerProps){
+export default function MapMarker({id, user_id, text, session, loadingGif, toggleEditForm, translationProps}: mapMarkerProps){
 
 const [isShown, setIsShown] = React.useState<boolean>(false);
 const [iagonPath, setIagonPath]= React.useState<string|null|StaticImageData>(null)
@@ -70,7 +72,7 @@ const toggleIs= () => {
         
             {toggle? null: session == user_id ? <RiFlowerFill size={15} color="#115511" />: <RiFlowerFill size={15} color="green"/>}
                 
-            {isShown ? <Box className={style.markerTextSnippet}><Flex justify='between'><Text>{text}</Text>{ session == user_id? <Button className={style.editButton} onClick={ () => toggleEditForm(text, id)} size='1'>Edit</Button>: null}</Flex></Box >: <Box className={style.markerTextSnippet} ></Box>}
+            {isShown ? <Box className={style.markerTextSnippet}><Flex justify='between'><Text>{text}</Text>{ session == user_id? <Button className={style.editButton} onClick={ () => toggleEditForm(text, id)} size='1'>{translationProps.editbutton}</Button>: null}</Flex></Box >: <Box className={style.markerTextSnippet} ></Box>}
             {toggle ? <Image width={100} height={100} src={iagonPath} alt='Awaiting image...' />: null }
         </Box>
         </Flex>

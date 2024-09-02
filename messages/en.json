@@ -20,6 +20,7 @@
         "allfinds": "All Finds",
         "yourfinds": "Your Finds",
         "addbutton": "Add",
+        "editbutton": "Edit",
         "UploadForm": {
             "title": "Upload your finds here",
             "species": "Species Name",
@@ -32,6 +33,16 @@
                 "four": "Click Upload and it's done!"
             }
 
+        },
+        "EditForm": {
+            "title": "Edit existing find",
+            "HoverCard": {
+                "one": "Re-enter the species name",
+                "two": "Click on the map again, the location of the find (Zoom in for accuracy)",
+                "three": "Click Update and it's done!"
+            },
+            "updatebutton": "Update!"
+            
         }
 
     },

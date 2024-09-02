@@ -18,6 +18,7 @@
          "allfinds": "Tous trouvailles",
         "yourfinds": "Vos trouvailles",
         "addbutton": "Ajoute",
+        "editbutton": "Modifier",
         "UploadForm": {
             "title": "Téléchargez vos trouvailles ici",
             "species": "Nom de l'espèce",
@@ -29,6 +30,16 @@
                 "three": "Cliquez sur Choisir un fichier pour sélectionner la photo sur votre appareil",
                 "four": "Cliquez sur Télécharger et c'est fait !"
             }
+        },
+        "EditForm": {
+            "title": "Modifier la recherche",
+            "HoverCard": {
+                "one": "Ressaisissez le nom de l'espèce",
+                "two": "Cliquez à nouveau sur la carte, l'emplacement de la découverte (Zoomez pour plus de précision)",
+                "three": "Cliquez sur <Mettre à jour> et c'est fait !"
+            },
+            "updatebutton": "Mettre à jour!"
+
         }
     },
     "Gallery":{
