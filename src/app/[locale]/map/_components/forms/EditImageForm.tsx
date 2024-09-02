@@ -80,7 +80,7 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                         <TextField.Root mb='2' name='species' placeholder={species} size='3'  />
                         <TextField.Root mb='2' name='gps_long' placeholder='Position Longtitude' size='3' value={lng} />
                         <TextField.Root mb='2' name='gps_lat' placeholder='Position Latitude' size='3' value={lat}/>
-                        <TextField.Root className={style.hiddenInput} name='imageId' placeholder={imageId} value={imageId} />
+                        <TextField.Root className={style.hiddenInput} name='imageId' value={imageId} style={{display: 'none'}}  />
                         <SubmitButton>Update</SubmitButton>
                        
                     </form>

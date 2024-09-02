@@ -15,7 +15,7 @@ export default function InstagramGallery({igResponse}: {igResponse: InstagramApi
     return (
         <>
         
-        <Container size={{lg: '2', sm: '2', xs: '1' , initial: '1'}}>
+        <Flex justify='center' pl='6' pr='6'>
          <Grid columns={{lg:'4', md: '3' ,sm: '3', xs: '1' , initial: '1'}} gap='6' >
             {igResponse.map((media: InstagramApiData, index: number) => {
                
@@ -60,7 +60,7 @@ export default function InstagramGallery({igResponse}: {igResponse: InstagramApi
           
         } )}
         </Grid>
-        </Container>
+        </Flex>
        
     
      </> 
