@@ -5,9 +5,9 @@ import Link from "next/link";
 
 import {registerUser} from './_registerPageAction'
 
-import { Theme } from "@radix-ui/themes";
-import { Card, Flex, Button, TextField } from "@radix-ui/themes";
-import {SubmitButton} from '../_components/buttons/SubmitButton' 
+
+import { Card, Flex, TextField, Box, Heading, Avatar, Text} from "@radix-ui/themes";
+import {RegisterSubmitButton} from '../_components/buttons/RegisterSubmitButton' 
 import styles from './register.module.css'
 
 
@@ -23,18 +23,23 @@ export default function RegisterPage(){
     }
 
     return(
-        <main>
-        <Theme accentColor="grass" >    
-            <Card>
-                <Flex gap='3' direction='column' >
-                    <h1> Create your account </h1>
-                    <Flex gap ='2' direction='column' asChild>
+        
+        <Flex justify='center' pt='8'> 
+            <Box width={{xs: '80vw', sm: '80vw', md: '50vw', lg: '50vw' , xl: '50vw'}}>
+            <Card size='5' variant="classic" style={{boxShadow: 'var(--shadow-5)'}}>
+                <Flex gap='3' direction='column' justify='center' >
+                    <Flex gap='3' align='center' justify='center' direction='column' >
+                        <Avatar size='5'  src='../../../images/logoMini.png' fallback='N'/>
+                        <Heading> Create new account </Heading>
+                    </Flex>
+                    
+                    <Flex gap ='3' direction='column' asChild>
                         <form action={submit}>
                             <TextField.Root size='3' placeholder="Username" name='Username' />
                             <TextField.Root size='3' placeholder="Email" name='Email' type='email' />
                             <TextField.Root size='3' placeholder="Password" name='Password' type='password' />
                             <TextField.Root size='3' placeholder="Confirm Password" name='Confirm' type='password' />
-                            <SubmitButton>Register</SubmitButton>
+                            <RegisterSubmitButton>Register</RegisterSubmitButton>
                         </form>
                     </Flex>        
                 </Flex>
@@ -42,11 +47,12 @@ export default function RegisterPage(){
                 { success && <p className={styles.successMessage}>{success}</p>}         
                 <div className={styles.backToSignIn}>
                     <h3>Have an account already?</h3>
-                    <Link href='/api/auth/signin'>Sign in</Link>
+                    <Link href='/api/auth/signin' ><Text ml='2' color='blue'>Sign in</Text></Link>
                 </div>
             </Card>
-        </Theme> 
-        </main>    
+            </Box>
+       </Flex>
+         
 
     )
 }

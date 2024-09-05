@@ -31,12 +31,16 @@ export default function SignIn() {
 
         <Box width={{xs: '80vw', sm: '80vw', md: '50vw', lg: '50vw' , xl: '50vw'}}>
         <Card size='5' variant="classic" style={{boxShadow: 'var(--shadow-5)'}} >
+
+          <Flex justify='end' align='center'>
+              <Text mr='1'>Create an account?</Text><Link href='/register'><Button variant="surface" color="blue">Register</Button></Link>
+          </Flex>
           
           <form method="post" action="/api/auth/callback/credentials" onSubmit={signInHandler}>
           <Flex gap='2' direction='column' justify='between' align='stretch'>
 
                   <Flex gap='3' align='center' justify='center' direction='column'>
-                     <Avatar size='5'  src='../../../images/logomini.png' fallback='N'/>
+                     <Avatar size='5'  src='../../../images/logoMini.png' fallback='N'/>
                     
 
                      <Heading>Sign In</Heading>
@@ -56,10 +60,10 @@ export default function SignIn() {
                     <Label >  Password </Label>
                     <Flex direction='column'>
                       <TextField.Root name="Password" type="password" color="grass"  onChange={e => setPassword(e.target.value)}/>
-                      <Link href='/forgotPassword'><Text weight='bold' color='grass' size='1'>Forgot Password?</Text></Link>
+                      <Text weight='bold' mt='1' color='grass' size='1'><Link href='/forgotPassword'>Forgot Password?</Link></Text>
                     </Flex>
                   </Flex>
-                  <Button mt='3'>Sign in</Button>
+                  <Button mt='3' >Sign in</Button>
                 
               </Flex>
               </form>

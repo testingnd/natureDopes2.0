@@ -8,12 +8,12 @@ import { useFormStatus } from 'react-dom'
 import '@radix-ui/themes/styles.css';
 
 
-export const SubmitButton = ({ children }: { children: ReactNode }) => {
+export const RegisterSubmitButton = ({ children }: { children: ReactNode }) => {
 
     const { pending } = useFormStatus()
     return (
       
-      <Button type="submit" disabled={pending}>
+      <Button color='blue' type="submit" disabled={pending}>
         {pending ? <SymbolIcon className="animate-spin" /> : children}
       </Button>
      
