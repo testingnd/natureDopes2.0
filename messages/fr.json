@@ -36,7 +36,7 @@
             "HoverCard": {
                 "one": "Ressaisissez le nom de l'espèce",
                 "two": "Cliquez à nouveau sur la carte, l'emplacement de la découverte (Zoomez pour plus de précision)",
-                "three": "Cliquez sur <Mettre à jour> et c'est fait !"
+                "three": "Cliquez sur -Mettre à jour- et c'est fait !"
             },
             "updatebutton": "Mettre à jour!"
 

@@ -32,12 +32,13 @@ export default function MainGalleryComponent({session, igResponse, imageDataPris
         {session?
             
                 <>
-                 <Flex gap='1' pl='1'><Badge variant="surface" size='3'>Nature Dopes Gallery</Badge><Switch size='3' onClick={galleryToggle} /><Badge variant="surface" size='3'>User Gallery</Badge></Flex> 
+                 <Flex gap='1'  ml={{initial: '2', xs:'2', sm:'3', md:'4', lg:'6', xl:'7'}}><Badge variant="surface" size='3'>Nature Dopes Gallery</Badge><Switch size='3' onClick={galleryToggle} /><Badge variant="surface" size='3'>User Gallery</Badge></Flex> 
                  <Box mt='3' ml='1' mr='1'> 
                    
                 
                     {galleryInView? error?  <p>{error}</p>: <InstagramGallery igResponse={igResponse}  />: prismaError? <p>{prismaError}</p> : <IagonGallery imageDataPrisma={imageDataPrisma} LoadingGif={LoadingGif} />}
-                  </Box></>
+                  </Box>
+                </>
             : error? <p>{error}</p>: <InstagramGallery igResponse={igResponse} />
         
        

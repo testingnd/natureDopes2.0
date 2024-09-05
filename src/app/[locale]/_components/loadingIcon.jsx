@@ -24,7 +24,8 @@ export default function LoadingIcon(){
                 alt='Nature Dopes Logo, mini'
                 style={{  
                     maxWidth: '100%',
-                    height: 'auto'
+                    height: 'auto',
+                    borderRadius: '10%'
                 }} />    
 
       </motion.div>
