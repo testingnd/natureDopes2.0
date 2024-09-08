@@ -13,7 +13,7 @@ export async function GET(request: NextRequest){
  
     console.log(res.status)
     if(res.status == 400 || res.status == 500){
-        
+        console.log('Problem1')
         return NextResponse.json({error: t('insta1') })
     }
 
@@ -27,7 +27,7 @@ export async function GET(request: NextRequest){
 
     const newArray = []
 
-    for(let i = 0; i < 8; i++ ){
+    for(let i = 0; i < 12; i++ ){
         newArray.push(igData.data[i])
     }
 

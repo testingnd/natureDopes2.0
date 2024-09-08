@@ -27,9 +27,11 @@ const indie = Indie_Flower({
 })
 
 
-export default function Game(){
+export default function Game({params: {locale}}: {params: {locale: string}}){
 
   const { theme, setTheme } = useTheme()
+
+ 
 
 
 const [flowerPics, setflowerPics] = React.useState(images) // state to manage the initial picture(element) array/ unfound items

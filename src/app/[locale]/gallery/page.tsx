@@ -10,6 +10,9 @@ import { authOptions } from "../api/auth/[...nextauth]/route"
 
 import LoadingGif from '@/public/images/nd -logo-gif.gif'
 
+import { TranslationTypes } from "../layout"
+import { getTranslations } from "next-intl/server"
+
 
 
 
@@ -51,6 +54,13 @@ export default async function PageRootGallery(){
     //check for session
     const session: any = await getServerSession(authOptions)
 
+    const t = await getTranslations("Gallery")
+
+    const translationProps: TranslationTypes = {
+      nd: t("ndgallery"),
+      user: t("usergallery")
+    }
+
     let userId = null
 
     if(session){
@@ -90,7 +100,7 @@ export default async function PageRootGallery(){
     return(
         <>  
        
-          <MainGalleryComponent error={error} prismaError={prismaError} igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} LoadingGif={LoadingGif} />
+          <MainGalleryComponent error={error} prismaError={prismaError} igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} LoadingGif={LoadingGif} translationProps={translationProps} />
         
       
         </>

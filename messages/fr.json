@@ -45,6 +45,18 @@
     "Gallery":{
         "Errors":{
             "insta1": "Problème de retour de données depuis Instagram. Si le problème persiste, veuillez nous contacter"
+        },
+        "ndgallery": "Galerie Nature Dopes ",
+        "usergallery": "Galerie Utilisateur"
+    },
+    "Finder":{
+        "StartPage":{
+            "line1": "Bienvenue au mini-jeu Nature Dopes",
+            "line2": "Pendant que dans la nature, voyez si vous pouvez trouver chaque fleur, puis répondez à une question pour chacune",
+            "button": "C'est Parti!"
+        },
+        "Game":{
+            
         }
     },
     "Footer":{
