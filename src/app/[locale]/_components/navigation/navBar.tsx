@@ -28,9 +28,11 @@ export default function NavBar({session, locale, translationProps}: {session: Ne
   const { theme, setTheme } = useTheme()
   const toggleMode = () => setTheme(theme == 'light' ? 'dark' : 'light')
 
+  const color = theme == 'light' ? 'white': 'black'
+
     return(
 
-        <div className={style.layoutNav}>
+        <div className={style.layoutNav} style={{backgroundColor: color}}>
               <div className={style.navUserSection}>
 
                 <div className={style.logoContainer}>

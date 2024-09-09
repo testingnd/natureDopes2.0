@@ -19,13 +19,19 @@ export default function HomeContent({session}: {session: null | undefined | numb
 
        
         <Fade direction="up">
-        <Flex>
-            <ContactForm session={session}/>
-        </Flex>
-      
-        <Flex justify='center' mt='8'>
-            <About/>
-        </Flex>
+          
+            <Box width='100%' style={{backgroundColor: 'white', zIndex: '4'}}>
+                <Flex justify='center' mt='8'>
+                    <About/>
+                </Flex>
+            </Box>
+
+            <Box width='100%' >
+                <Flex >
+                    <ContactForm session={session}/>
+                </Flex>
+            </Box> 
+            
         </Fade>
         
      )

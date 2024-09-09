@@ -22,7 +22,13 @@ export default function Splash(){
 
     return(
 
-       
+       <Box p='0' width='100%' height='100vh'>
+          <span className={styles.spanwrapper}>
+            <span className={styles.spaninside}>
+
+            </span>
+          </span>
+          <Flex justify='center'>
           <Box height='80vh' width='40%' mt='8'>
           <Flex justify='center' align='center' direction='column' >
               <section className={`${indie.className} ${styles.rootPageSection} `}>
@@ -54,6 +60,7 @@ export default function Splash(){
            
           </Flex>
           </Box>
-
+          </Flex>
+        </Box>
     )
 }

@@ -34,7 +34,7 @@ export default function ContactForm({session}: {session: null | undefined | numb
 
     return  (
 
-        <Box>
+        <Box width='100vw' style={{zIndex: '4'}}>
             <Card size='5' variant="surface">
                 <form action={submit} ref={ref}>  
                     <Flex gap='2' direction='column' align='center' width='100%' justify='center'>
