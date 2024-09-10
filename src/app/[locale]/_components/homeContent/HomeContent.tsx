@@ -8,7 +8,7 @@ import { Text, Flex, Box } from "@radix-ui/themes";
 import ContactForm from "./contact/ContactForm";
 import About from "./about/About";
 
-
+import style from './homecontent.module.css'
 
 import { Fade } from 'react-awesome-reveal'
 
@@ -20,13 +20,13 @@ export default function HomeContent({session}: {session: null | undefined | numb
        
         <Fade direction="up">
           
-            <Box width='100%' style={{backgroundColor: 'white', zIndex: '4'}}>
+            <Box width='100%' className={style.aboutWrapper}>
                 <Flex justify='center' mt='8'>
                     <About/>
                 </Flex>
             </Box>
 
-            <Box width='100%' >
+            <Box width='100%' className={style.contactWrapper}  >
                 <Flex >
                     <ContactForm session={session}/>
                 </Flex>

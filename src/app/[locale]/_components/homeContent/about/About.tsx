@@ -2,11 +2,12 @@ import { Text, Flex, Box } from "@radix-ui/themes";
 import React from "react";
 
 
+
 export default function About(){
 
     return (
         
-        <Box width='80%' >
+        <Box width='80%'  >
             
             <Text>
             Welcome to Naturedopes. We are based in Western Europe so the majority of resources found here relate to the natural Flora found in this region and the appreciation of them.

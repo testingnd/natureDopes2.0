@@ -5,13 +5,13 @@ import React from "react"
 import style from '../../layout.module.css'
 
 import Nav from "./nav";
+import ThemeSwitcher from "./ThemeSwitcher";
 import LanguageSwitcher from "../Switcher";
 import { LoginButton, LogoutButton } from '../../auth'
 
 // radix ui elements
 import { Text, Box } from "@radix-ui/themes";
-// to allow theme change
-import { useTheme } from "next-themes"
+
 
 import Image from "next/image";
 
@@ -25,14 +25,9 @@ import {TranslationTypes} from '../../layout'
 
 export default function NavBar({session, locale, translationProps}: {session: NextAuthOptions, locale: string, translationProps: TranslationTypes }){
 
-  const { theme, setTheme } = useTheme()
-  const toggleMode = () => setTheme(theme == 'light' ? 'dark' : 'light')
-
-  const color = theme == 'light' ? 'white': 'black'
-
     return(
 
-        <div className={style.layoutNav} style={{backgroundColor: color}}>
+        <div className={style.layoutNav}  >
               <div className={style.navUserSection}>
 
                 <div className={style.logoContainer}>
@@ -66,7 +61,7 @@ export default function NavBar({session, locale, translationProps}: {session: Ne
                  
                 </div>*/}
                 <div>
-                   <button onClick={toggleMode}> <CiLight  size={30} /> </button>
+                   <ThemeSwitcher />
                 </div>
                 <div>
                   <LanguageSwitcher locale={locale} />

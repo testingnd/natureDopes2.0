@@ -6,7 +6,8 @@ import React, { JSXElementConstructor } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import ndLogo from '../../../../public/images/logo_mid.png'
+import ndLogo from '../../../../public/images/logo-svg.svg'
+import ndLogot from '../../../../public/images/logo_mid.png'
 
 import { Indie_Flower } from 'next/font/google'
 

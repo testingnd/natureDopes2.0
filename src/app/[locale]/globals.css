@@ -8,6 +8,16 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+body{
+  color: #000;
+  background-color: #fff;
+}
+
+[data-theme="dark"] body{
+  background-color: #101211;
+  color: #fff;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -18,10 +28,6 @@
 
 
 
-
-nav > section {
-  margin-right: 1%;
-}
 
 
 

@@ -7,7 +7,7 @@ import { Box, Flex, Section, Text } from '@radix-ui/themes'
 import { Indie_Flower } from 'next/font/google'
 import styles from '../../layout.module.css'
 
-import ndLogo from '../../../../../public/images/logo_mid.png'
+import ndLogo from '../../../../../public/images/logo-svg.svg'
 
 
 const indie = Indie_Flower({

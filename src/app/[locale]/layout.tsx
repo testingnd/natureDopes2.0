@@ -7,6 +7,8 @@ import { Providers } from './providers';
 import { Theme} from '@radix-ui/themes'
 import '@radix-ui/themes/styles.css';
 import { ThemeProv } from './_components/ThemeProvider';
+//global css
+import './globals.css'
 
 import style from './layout.module.css'
 
@@ -18,10 +20,6 @@ import NavBar from './_components/navigation/navBar';
 import Footer from './_components/footer/Footer';
 
 import { getTranslations } from 'next-intl/server';
-
-
-//global css
-import './globals.css'
 
 
 
@@ -61,18 +59,18 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
        
       </head>
       <body>
        
       <Providers> 
-        <ThemeProv attribute='class'
+        <ThemeProv attribute="class"
         defaultTheme="system"
         enableSystem
         disableTransitionOnChange>
-          <Theme data-is-root-theme='False' accentColor='grass' grayColor='sage' scaling='100%'>
+          <Theme data-is-root-theme='False' accentColor='grass' grayColor='sage' scaling='100%' panelBackground='solid'>
             <NavBar translationProps={translationProps} session={session} locale={locale} />
           
             {children}
