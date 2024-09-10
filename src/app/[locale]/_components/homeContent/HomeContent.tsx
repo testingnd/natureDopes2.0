@@ -7,6 +7,7 @@ import { Text, Flex, Box } from "@radix-ui/themes";
 
 import ContactForm from "./contact/ContactForm";
 import About from "./about/About";
+import About2 from "./about/About2";
 
 import style from './homecontent.module.css'
 
@@ -24,6 +25,13 @@ export default function HomeContent({session}: {session: null | undefined | numb
                 <Flex justify='center' mt='8'>
                     <About/>
                 </Flex>
+            </Box>
+
+            <Box width='100%' className={style.about2Wrapper}>
+                <Flex justify='center' mt='8' pt='9' pb='9'>
+                    <About2 />
+                </Flex>
+
             </Box>
 
             <Box width='100%' className={style.contactWrapper}  >

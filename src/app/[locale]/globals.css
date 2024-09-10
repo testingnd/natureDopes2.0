@@ -15,7 +15,7 @@ body{
 
 [data-theme="dark"] body{
   background-color: #101211;
-  color: #fff;
+  color: white;
 }
 
 @media (prefers-color-scheme: dark) {
