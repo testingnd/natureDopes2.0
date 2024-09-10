@@ -1,4 +1,10 @@
 
+.footerWrapper{
+  background-color: var(--color-panel);
+  z-index: 10;
+  position: relative;
+}
+
 
 .wattsLink {
    

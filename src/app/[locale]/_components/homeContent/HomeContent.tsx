@@ -17,7 +17,7 @@ export default function HomeContent({session}: {session: null | undefined | numb
 
      return (
 
-       
+        <Box width='100vw' className={style.homeContentWrapper}>
         <Fade direction="up">
           
             <Box width='100%' className={style.aboutWrapper}>
@@ -33,7 +33,7 @@ export default function HomeContent({session}: {session: null | undefined | numb
             </Box> 
             
         </Fade>
-        
+        </Box>
      )
 
 }

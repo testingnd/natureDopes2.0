@@ -1,4 +1,10 @@
 
+.homeContentWrapper{
+    background-color: var(--color-panel);
+    position: relative;
+  }
+  
+
 .aboutWrapper, .contactWrapper {
     background-color: var(--color-panel);
 

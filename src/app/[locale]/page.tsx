@@ -1,9 +1,7 @@
 
-import styles from './layout.module.css'
+import style from './layout.module.css'
 import React, { JSXElementConstructor } from 'react'
 
-import Image from 'next/image'
-import {useTranslations} from 'next-intl'
 
 
 import HomeContent from './_components/homeContent/HomeContent'
@@ -28,7 +26,7 @@ export default async function Page() {
   return(
   
       
-    <Flex pt='8' justify='center' direction='column' align='center'  >
+    <Flex pt='8' justify='center' direction='column' align='center' className={style.homePageWrapper} >
           
           <Splash />
           <HomeContent session={session} />
