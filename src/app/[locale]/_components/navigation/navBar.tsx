@@ -22,12 +22,16 @@ import { NextAuthOptions } from "next-auth";
 
 import {TranslationTypes} from '../../layout'
 
+import { useTheme } from "next-themes";
+
 
 export default function NavBar({session, locale, translationProps}: {session: NextAuthOptions, locale: string, translationProps: TranslationTypes }){
 
+  const {theme} = useTheme()
+
     return(
 
-        <div className={style.layoutNav}  >
+        <div className={style.layoutNav} data-theme={theme} >
               <div className={style.navUserSection}>
 
                 <div className={style.logoContainer}>

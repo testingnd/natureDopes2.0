@@ -5,7 +5,7 @@ import { Providers } from './providers';
 
 // Radix UI themes
 import { Theme} from '@radix-ui/themes'
-import '@radix-ui/themes/styles.css';
+
 import { ThemeProv } from './_components/ThemeProvider';
 //global css
 import './globals.css'
@@ -66,11 +66,11 @@ export default async function RootLayout({
       <body>
        
       <Providers> 
-        <ThemeProv attribute="class"
-        defaultTheme="system"
+        <ThemeProv attribute='class'
+     
         enableSystem
         disableTransitionOnChange>
-          <Theme data-is-root-theme='False' accentColor='grass' grayColor='sage' scaling='100%' panelBackground='solid'>
+          <Theme data-is-root-theme='false' accentColor='green' grayColor='sage' scaling='100%' panelBackground='solid'>
             <NavBar translationProps={translationProps} session={session} locale={locale} />
           
             {children}

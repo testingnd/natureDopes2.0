@@ -2,14 +2,19 @@
 
 
 
+
 .layoutNav{
-  background-color: var(--color-panel);
+  background-color: var(--green-1);
   display: flex;
   justify-content: space-between;
   max-height: 75px;
   z-index: 10;
   position: relative;
- width: 100vw;
+  width: 100vw;
+}
+
+[data-theme='dark'].layoutNav {
+  background-color: var(--green-7);
 }
 
 
@@ -70,7 +75,7 @@
 }
 
 .spaninside{
-  background-image: url('/images/pexels-wdnet-97888.jpg');
+  background-image: url('/images/AdobeStock_291533500.jpeg');
   background-repeat: no-repeat;
   background-position: top;
   background-position-x: center;
