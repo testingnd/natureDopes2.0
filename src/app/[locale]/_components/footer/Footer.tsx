@@ -1,13 +1,18 @@
+'use client'
+
 import React from "react";
 
 import Link from "next/link";
 import Image from "next/image";
 
 import { Box, Flex, Text } from "@radix-ui/themes";
-import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
+
 
 import { TranslationTypes } from "../../layout";
 import style from './footer.module.css'
+
+
 
 import { Genos, Indie_Flower } from "next/font/google";
 
@@ -23,12 +28,13 @@ const indie = Indie_Flower({
     
   })
 
-export default function Footer(){
+export default function Footer({translationPropsFooter}: {translationPropsFooter: TranslationTypes}){
 
-    const t = useTranslations("Footer")
+    const {theme} = useTheme()
+
     return (
     
-    <Box width='99vw' height='30vh' pt='9' pb='9' className={style.footerWrapper}>
+    <Box width='99vw' height='30vh' pt='9' pb='9' className={style.footerWrapper} data-theme={theme} >
 
         <Flex justify='center' align='center' pr='3'>
             <Image
@@ -43,7 +49,7 @@ export default function Footer(){
         </Flex>
 
         <Flex justify='center'>
-            <Text>{t("awattsdev")} <Link href='https://www.awattsdev.eu' target="_blank"><Text className={` ${genos.className} ${style.wattsLink}`}> awattsdev</Text></Link></Text >
+            <Text>{translationPropsFooter.poweredBy} <Link href='https://www.awattsdev.eu' target="_blank"><Text className={` ${genos.className} ${style.wattsLink}`}> awattsdev</Text></Link></Text >
         </Flex>
        
 

@@ -1,5 +1,6 @@
 
 import style from './layout.module.css'
+import './globals.css'
 import React, { JSXElementConstructor } from 'react'
 
 
@@ -15,14 +16,14 @@ import { Box, Flex, Section, Text } from '@radix-ui/themes'
 import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]/route'
 
+import { useTheme } from 'next-themes';
 
 
 
 export default async function Page() {
 
   const session = await getServerSession(authOptions)
-
-
+ 
   return(
   
       

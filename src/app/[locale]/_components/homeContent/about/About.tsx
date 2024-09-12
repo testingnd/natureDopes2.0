@@ -1,13 +1,19 @@
+
+
 import { Text, Flex, Box } from "@radix-ui/themes";
 import React from "react";
 
+import { useTheme } from "next-themes";
 
+import style from '../homecontent.module.css'
 
 export default function About(){
 
+    const {theme} = useTheme()
+
     return (
         
-        <Box width='80%'  >
+        <Box width='80%' className={style.aboutWrapper} data-theme={theme} >
             
             <Text>
             Welcome to Naturedopes. We are based in Western Europe so the majority of resources found here relate to the natural Flora found in this region and the appreciation of them.

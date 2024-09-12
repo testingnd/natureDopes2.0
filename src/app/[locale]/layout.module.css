@@ -4,7 +4,7 @@
 
 
 .layoutNav{
-  background-color: var(--green-1);
+  background-color: var(--color-panel);
   display: flex;
   justify-content: space-between;
   max-height: 75px;
@@ -13,9 +13,7 @@
   width: 100vw;
 }
 
-[data-theme='dark'].layoutNav {
-  background-color: var(--green-7);
-}
+
 
 
 

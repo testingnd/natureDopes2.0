@@ -9,19 +9,24 @@ import ContactForm from "./contact/ContactForm";
 import About from "./about/About";
 import About2 from "./about/About2";
 
+import { useTheme } from "next-themes";
+
 import style from './homecontent.module.css'
 
 import { Fade } from 'react-awesome-reveal'
 
-export default function HomeContent({session}: {session: null | undefined | number}){
 
+
+export default function HomeContent({session, resolvedTheme}: {session: null | undefined | number, resolvedTheme: string}){
+
+ 
 
      return (
 
-        <Box width='100vw' className={style.homeContentWrapper}>
+        <Box width='100vw' className={style.homeContentWrapper} data-theme={resolvedTheme} >
         <Fade direction="up">
           
-            <Box width='100%' className={style.aboutWrapper}>
+            <Box width='100%' className={style.aboutWrapper} data-theme={resolvedTheme} >
                 <Flex justify='center' mt='8'>
                     <About/>
                 </Flex>

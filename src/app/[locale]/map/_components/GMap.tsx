@@ -133,7 +133,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
             </TextField.Root>
           
           </form>
-          {uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>{translationProps.addbutton}</Button> </Box>}
+          {!session? null :  uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>{translationProps.addbutton}</Button> </Box>}
           {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm} getData={getData} translationProps={translationProps} />: null }
           {session? null:<Tooltip  content='Sign in for more map features'>
             <Button ml='1%'  radius='medium'>i</Button>

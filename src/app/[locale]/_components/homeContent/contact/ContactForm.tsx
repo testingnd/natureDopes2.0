@@ -8,9 +8,13 @@ import { submitContactForm } from "@/src/app/[locale]/_lib/serverActions/submitC
 import { Box, Card, Heading, Text, Flex, TextField, TextArea } from "@radix-ui/themes";
 import { SubmitButton } from "../../buttons/SubmitButton";
 
+import { useTheme } from "next-themes";
 
+import style from '../homecontent.module.css'
 
 export default function ContactForm({session}: {session: null | undefined | number}) {
+
+    const {theme} = useTheme()
 
     const ref = useRef<HTMLFormElement>(null)
 
@@ -34,7 +38,8 @@ export default function ContactForm({session}: {session: null | undefined | numb
 
     return  (
 
-        <Box width='100vw'>
+        <Box width='100vw' className={style.contactWrapper} data-theme={theme}>
+            <Flex justify='center'>
             <Card size='5' variant="surface">
                 <form action={submit} ref={ref}>  
                     <Flex gap='2' direction='column' align='center' width='100%' justify='center'>
@@ -67,6 +72,7 @@ export default function ContactForm({session}: {session: null | undefined | numb
                 </form>
 
             </Card>
+            </Flex>
 
 
         </Box>

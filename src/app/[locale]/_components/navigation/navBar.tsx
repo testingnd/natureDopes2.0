@@ -13,11 +13,9 @@ import { LoginButton, LogoutButton } from '../../auth'
 import { Text, Box } from "@radix-ui/themes";
 
 
-import Image from "next/image";
-
 // icons & images
 import { RxHome } from "react-icons/rx";
-import { CiLight, CiDark } from "react-icons/ci";
+
 import { NextAuthOptions } from "next-auth";
 
 import {TranslationTypes} from '../../layout'

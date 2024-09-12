@@ -8,9 +8,11 @@ import { Theme} from '@radix-ui/themes'
 
 import { ThemeProv } from './_components/ThemeProvider';
 //global css
+
+import '@radix-ui/themes/styles.css';
 import './globals.css'
 
-import style from './layout.module.css'
+
 
 // Next auth  imports
 import { getServerSession } from 'next-auth';
@@ -21,7 +23,7 @@ import Footer from './_components/footer/Footer';
 
 import { getTranslations } from 'next-intl/server';
 
-
+import { useTheme } from 'next-themes';
 
 const inter = Inter({
    weight: '800',
@@ -47,6 +49,7 @@ export default async function RootLayout({
   const session: any = await getServerSession(authOptions)
 
   const t = await getTranslations("Navigation")
+  const tf = await getTranslations("Footer")
 
   const translationProps: TranslationTypes = {
     user: t('user'),
@@ -58,6 +61,12 @@ export default async function RootLayout({
 
   }
 
+  const translationPropsFooter: TranslationTypes = {
+    poweredBy: tf('awattsdev')
+  }
+
+
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
@@ -66,18 +75,21 @@ export default async function RootLayout({
       <body>
        
       <Providers> 
-        <ThemeProv attribute='class'
-     
-        enableSystem
-        disableTransitionOnChange>
-          <Theme data-is-root-theme='false' accentColor='green' grayColor='sage' scaling='100%' panelBackground='solid'>
+         <ThemeProv 
+              attribute='class'
+              defaultTheme='light'
+              >
+          <Theme data-is-root-theme='true' accentColor='green' grayColor='sage' scaling='100%' panelBackground='solid' appearance='inherit'>
+           
+            
             <NavBar translationProps={translationProps} session={session} locale={locale} />
           
             {children}
 
-            <Footer />
+            <Footer translationPropsFooter={translationPropsFooter} />
+           
           </Theme>
-        </ThemeProv>
+         </ThemeProv>
       </Providers>
       
       

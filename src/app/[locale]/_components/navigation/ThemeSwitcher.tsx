@@ -11,7 +11,7 @@ export default function ThemeSwitcher(){
     const [mounted, setMounted] = useState(false);
     const {theme, setTheme} = useTheme();
 
-    const toggleMode = () => setTheme(theme == 'light' ? 'dark' : 'light')
+    const toggleMode = () => setTheme(theme == 'dark' ? 'light' : 'dark')
 
     useEffect(() => {
         setMounted(true)
