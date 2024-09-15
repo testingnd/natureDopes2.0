@@ -36,7 +36,7 @@ export default function Footer({translationPropsFooter}: {translationPropsFooter
     
     <Box width='99vw' height='30vh' pt='9' pb='9' className={style.footerWrapper} data-theme={theme} >
 
-        <Flex justify='center' align='center' pr='3'>
+        <Flex justify='center' align='center' pr='3' >
             <Image
                 src={logoMid}
                 alt='Nature dopes logo'

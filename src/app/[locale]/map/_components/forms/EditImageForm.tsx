@@ -50,7 +50,7 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
     return(
         <section className={style.EditFormWrapper}>
         
-            <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} variant="classic" >
+            <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} variant="ghost" className={style.cardColor} >
                 <Flex  gap='4' direction='column'>
                     
                     <Flex justify='between'>

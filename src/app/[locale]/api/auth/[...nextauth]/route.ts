@@ -32,7 +32,7 @@ export const authOptions: NextAuthOptions = {
         async redirect({url, baseUrl}){
              // Allows relative callback URLs
             if (url.startsWith("/")) return `${baseUrl}${url}`
-    // Allows callback URLs on the same origin
+        // Allows callback URLs on the same origin
             else if (new URL(url).origin === baseUrl) return url
             return baseUrl
         },
@@ -57,6 +57,17 @@ export const authOptions: NextAuthOptions = {
             
             return session
         }, 
+        async signIn({ user, account, profile, email, credentials }) {
+            const isAllowedToSignIn = true
+            if (isAllowedToSignIn) {
+              return true
+            } else {
+              // Return false to display a default error message
+              return false
+              // Or you can return a URL to redirect to:
+              // return '/unauthorized'
+            }
+          }
         /*jwt: ({ token, user}) => {
             console.log('JWT callback', {token, user})
             if(user){
@@ -111,14 +122,14 @@ export const authOptions: NextAuthOptions = {
                     return null
                 }
 
-                return {
-                    id: user.id.toString(),
-                    email: user.email,
-                    name: user.username,
-                    
-                    
-                }
+                if(user){
 
+                    return {
+                        id: user.id.toString(),
+                        email: user.email,
+                        name: user.username,   
+                    }
+                }
                 
             }
         })

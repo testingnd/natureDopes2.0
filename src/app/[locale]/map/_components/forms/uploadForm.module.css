@@ -24,8 +24,13 @@
     left: 70%;
     z-index: 1;
     border-radius: 2px;
-    background-color: green;
+    background-color: var(--green-11);
 
+}
+
+.cardColor{
+    background-color: var(--green-7);
+    border: solid 1px var(--green-12) ;
 }
 
 .hiddenInput{

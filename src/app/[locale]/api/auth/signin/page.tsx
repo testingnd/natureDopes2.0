@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Flex , Text, Button, Card, Box, Heading, TextField, Avatar, AspectRatio} from "@radix-ui/themes";
 
 
@@ -14,15 +15,26 @@ import logoMini from '../../../../public/images/logomini.png'
 
 export default function SignIn() {
 
+ 
     const[email, setEmail] = React.useState("")
     const[password, setPassword] = React.useState("")
+    const[error, setError] = React.useState()
+
+    const searhParams = useSearchParams()
+    const errorMessage = searhParams.get('error')
+
 
     const signInHandler = async (e : React.FormEvent) => {
+        
         console.log(email, password)
         e.preventDefault()
        
         await signIn("credentials" , {email: email, password: password, callbackUrl: '/'})
-    }
+        
+       
+      };
+
+    
 
     return (
       
@@ -64,7 +76,7 @@ export default function SignIn() {
                     </Flex>
                   </Flex>
                   <Button mt='3' >Sign in</Button>
-                
+                  {errorMessage && <Text color="crimson">Invalid credentials</Text> }
               </Flex>
               </form>
         </Card>

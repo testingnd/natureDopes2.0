@@ -1,10 +1,8 @@
 /* Root layout CSS */
 
 
-
-
 .layoutNav{
-  background-color: var(--color-panel);
+  background-color: var(--my-brand-color);
   display: flex;
   justify-content: space-between;
   max-height: 75px;
@@ -12,9 +10,6 @@
   position: relative;
   width: 100vw;
 }
-
-
-
 
 
 .navUserSection:nth-child(2){
@@ -42,9 +37,18 @@
 
 .homeLogo{
   font-size: 34px;
+  color: var(--gray-5);
 }
 
 /* Root page css */
+
+.rootPageSection{
+  position: relative;
+}
+
+.logoWrapper{
+  position: relative;
+}
 
 .ndHeadings{
   text-align: center;

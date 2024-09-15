@@ -5,11 +5,10 @@ import { Providers } from './providers';
 
 // Radix UI themes
 import { Theme} from '@radix-ui/themes'
-
-import { ThemeProv } from './_components/ThemeProvider';
+import { ThemeProvider } from 'next-themes';
 //global css
 
-import '@radix-ui/themes/styles.css';
+
 import './globals.css'
 
 
@@ -51,6 +50,7 @@ export default async function RootLayout({
   const t = await getTranslations("Navigation")
   const tf = await getTranslations("Footer")
 
+
   const translationProps: TranslationTypes = {
     user: t('user'),
     signin: t('signin'),
@@ -70,16 +70,18 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-       
+
+        
       </head>
-      <body>
+      <body >
        
       <Providers> 
-         <ThemeProv 
+         <ThemeProvider
               attribute='class'
-              defaultTheme='light'
+              enableSystem={false}
+              disableTransitionOnChange
               >
-          <Theme data-is-root-theme='true' accentColor='green' grayColor='sage' scaling='100%' panelBackground='solid' appearance='inherit'>
+          <Theme data-is-root-theme='true' accentColor='grass' grayColor='sage' scaling='100%' panelBackground='solid' >
            
             
             <NavBar translationProps={translationProps} session={session} locale={locale} />
@@ -89,7 +91,7 @@ export default async function RootLayout({
             <Footer translationPropsFooter={translationPropsFooter} />
            
           </Theme>
-         </ThemeProv>
+         </ThemeProvider>
       </Providers>
       
       

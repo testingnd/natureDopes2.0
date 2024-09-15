@@ -39,14 +39,14 @@ export default function NavBar({session, locale, translationProps}: {session: Ne
                     height={90}
                     alt='Nature dopes logo'
                   />*/}
-                   <Text color='grass'><a href='/'><RxHome className={style.homeLogo}  /></a></Text>
+                   <Text color='grass'><a href='/'><RxHome className={style.homeLogo} /></a></Text>
                 </div>
 
                 <div>
 
                   {!session? <LoginButton translationProps={translationProps} />:<LogoutButton translationProps={translationProps}  />  }
              
-                  {session? <Box pl='4px' ><Text>{translationProps.user} {session.user.name}</Text></Box>: null }
+                  {session? <Box pl='4px' ><Text color='gold'>{translationProps.user} {session.user.name}</Text></Box>: null }
                 </div>
                 
               
