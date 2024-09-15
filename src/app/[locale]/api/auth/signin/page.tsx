@@ -9,6 +9,8 @@ import { Flex , Text, Button, Card, Box, Heading, TextField, Avatar, AspectRatio
 import { signIn } from "next-auth/react";
 import { Label } from "@radix-ui/themes/dist/esm/components/context-menu.js";
 
+import { SubmitButton } from "../../../_components/buttons/SubmitButton";
+
 import logoMini from '../../../../public/images/logomini.png'
 
 
@@ -23,13 +25,15 @@ export default function SignIn() {
     const searhParams = useSearchParams()
     const errorMessage = searhParams.get('error')
 
+    const callbackUrl = searhParams.get('callbackUrl') || '/'
+
 
     const signInHandler = async (e : React.FormEvent) => {
         
         console.log(email, password)
         e.preventDefault()
        
-        await signIn("credentials" , {email: email, password: password, callbackUrl: '/'})
+        await signIn("credentials" , {email, password, callbackUrl})
         
        
       };
@@ -75,7 +79,7 @@ export default function SignIn() {
                       <Text weight='bold' mt='1' color='grass' size='1'><Link href='/forgotPassword'>Forgot Password?</Link></Text>
                     </Flex>
                   </Flex>
-                  <Button mt='3' >Sign in</Button>
+                  <SubmitButton>Sign in</SubmitButton>
                   {errorMessage && <Text color="crimson">Invalid credentials</Text> }
               </Flex>
               </form>
