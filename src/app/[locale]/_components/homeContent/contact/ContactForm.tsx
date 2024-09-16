@@ -40,7 +40,7 @@ export default function ContactForm({session}: {session: null | undefined | numb
 
         <Box width='100vw' className={style.contactWrapper} data-theme={theme}>
             <Flex justify='center'>
-            <Card size='5' variant="surface">
+            <Card size='5' variant="classic">
                 <form action={submit} ref={ref}>  
                     <Flex gap='2' direction='column' align='center' width='100%' justify='center'>
 

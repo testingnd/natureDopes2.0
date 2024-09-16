@@ -6,7 +6,7 @@ import style from '../../layout.module.css'
 
 import Nav from "./nav";
 import ThemeSwitcher from "./ThemeSwitcher";
-import LanguageSwitcher from "../Switcher";
+import LanguageSwitcher from "../languageSwitcher";
 import { LoginButton, LogoutButton } from '../../auth'
 
 // radix ui elements
@@ -46,7 +46,7 @@ export default function NavBar({session, locale, translationProps}: {session: Ne
 
                   {!session? <LoginButton translationProps={translationProps} />:<LogoutButton translationProps={translationProps}  />  }
              
-                  {session? <Box pl='4px' ><Text color='gold'>{translationProps.user} {session.user.name}</Text></Box>: null }
+                  {session? <Box pl='4px' ><Text >{translationProps.user} {session.user.name}</Text></Box>: null }
                 </div>
                 
               

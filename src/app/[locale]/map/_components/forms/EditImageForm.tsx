@@ -58,7 +58,7 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                             <Text>{translationProps.editFormTitle}</Text> 
                             <HoverCard.Root >
                                 <HoverCard.Trigger>
-                                    <Button ml='1' size='1'>?</Button>
+                                    <Button ml='1' mr='1' size='1'>?</Button>
                                 </HoverCard.Trigger>
                                 <HoverCard.Content className={style.uploadFormInfoHover}>
                                     <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} >
