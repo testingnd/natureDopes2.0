@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Providers } from './providers';
 
-
+import '@radix-ui/themes/styles.css';
 // Radix UI themes
 import { Theme} from '@radix-ui/themes'
 import { ThemeProvider } from 'next-themes';
@@ -81,7 +81,7 @@ export default async function RootLayout({
               enableSystem={false}
               disableTransitionOnChange
               >
-          <Theme data-is-root-theme='true' accentColor='grass' grayColor='sage' scaling='100%' panelBackground='solid' >
+          <Theme data-is-root-theme='false' accentColor='green' grayColor='sage' scaling='100%' panelBackground='solid' >
            
             
             <NavBar translationProps={translationProps} session={session} locale={locale} />

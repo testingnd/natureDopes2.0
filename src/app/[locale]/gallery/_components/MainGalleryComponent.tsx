@@ -4,7 +4,7 @@
 import React, { useState } from "react"
 import Image from "next/image"
 
-import '@radix-ui/themes/styles.css';
+
 import { Theme, Card, Box, Flex, Section, Container, Button, Switch, Badge} from "@radix-ui/themes"
 
 //import gallery components

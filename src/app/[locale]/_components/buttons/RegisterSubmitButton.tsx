@@ -5,7 +5,7 @@ import { Button } from '@radix-ui/themes'
 import { ReactNode } from 'react'
 import { useFormStatus } from 'react-dom'
 
-import '@radix-ui/themes/styles.css';
+
 
 
 export const RegisterSubmitButton = ({ children }: { children: ReactNode }) => {

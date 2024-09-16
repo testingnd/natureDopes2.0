@@ -34,7 +34,7 @@ export default function Footer({translationPropsFooter}: {translationPropsFooter
 
     return (
     
-    <Box width='99vw' height='30vh' pt='9' pb='9' className={style.footerWrapper} data-theme={theme} >
+    <Box width='99vw' height='30vh' pt='9' pb='9' className={style.footerWrapper}  >
 
         <Flex justify='center' align='center' pr='3' >
             <Image

@@ -4,7 +4,7 @@ import React from "react"
 import Image from "next/image"
 
 //radix themes
-import '@radix-ui/themes/styles.css';
+
 import { Container, Card, Box, Blockquote, Inset, Grid, Flex} from "@radix-ui/themes"
 
 //image component

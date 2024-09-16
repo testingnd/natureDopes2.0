@@ -3,7 +3,7 @@
 import React from "react"
 import Image from "next/image"
 
-import '@radix-ui/themes/styles.css';
+
 import { Theme, Card, Box, Flex, Section, Container, Inset, Text, Grid, Blockquote } from "@radix-ui/themes"
 
 //type imports

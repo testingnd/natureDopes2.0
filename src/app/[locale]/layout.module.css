@@ -2,7 +2,7 @@
 
 
 .layoutNav{
-  background-color: var(--my-brand-color);
+ background-color: var(--color-panel);
   display: flex;
   justify-content: space-between;
   max-height: 75px;
@@ -37,7 +37,7 @@
 
 .homeLogo{
   font-size: 34px;
-  color: var(--gray-5);
+ 
 }
 
 /* Root page css */

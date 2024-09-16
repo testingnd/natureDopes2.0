@@ -1,7 +1,7 @@
 'use client'
 
 import { Theme, Button, Flex } from '@radix-ui/themes'
-import '@radix-ui/themes/styles.css';
+
 
 import { signIn, signOut } from "next-auth/react"
 import { TranslationTypes } from './layout';

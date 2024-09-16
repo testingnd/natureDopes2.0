@@ -39,7 +39,7 @@ export default function NavBar({session, locale, translationProps}: {session: Ne
                     height={90}
                     alt='Nature dopes logo'
                   />*/}
-                   <Text color='grass'><a href='/'><RxHome className={style.homeLogo} /></a></Text>
+                   <Text><a href='/'><RxHome className={style.homeLogo} /></a></Text>
                 </div>
 
                 <div>
