@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Box, Flex, Text } from "@radix-ui/themes";
-import { useTheme } from "next-themes";
+
 
 
 import { TranslationTypes } from "../../layout";
@@ -30,13 +30,13 @@ const indie = Indie_Flower({
 
 export default function Footer({translationPropsFooter}: {translationPropsFooter: TranslationTypes}){
 
-    const {theme} = useTheme()
+    
 
     return (
     
     <Box width='99vw' height='30vh' pt='9' pb='9' className={style.footerWrapper}  >
 
-        <Flex justify='center' align='center' pr='3' >
+        <Flex justify='center' align='end' pr='3' >
             <Image
                 src={logoMid}
                 alt='Nature dopes logo'

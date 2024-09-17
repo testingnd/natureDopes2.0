@@ -216,37 +216,36 @@
 }
 
 :is(.dark, .dark-theme), :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-  --gray-1: #999b98cb;
-  --gray-2: #999c98c0;
-  --gray-3: #a4a5a3c0;
-  --gray-4: #9a9c99c0;
-  --gray-5: #9fa19db4;
-  --gray-6: #c1c4c0ad;
-  --gray-7: #d8dad3b4;
-  --gray-8: #d5daccad;
-  --gray-9: #c8cac493;
-  --gray-10: #d9ddd66b;
-  --gray-11: #e6e9df;
-  --gray-12: #ffffff;
+  --gray-1: #697a62;
+  --gray-2: #687962;
+  --gray-3: #677c60;
+  --gray-4: #647b5c;
+  --gray-5: #607b56;
+  --gray-6: #5e7d52;
+  --gray-7: #5d844d;
+  --gray-8: #64984e;
+  --gray-9: #54a22c;
+  --gray-10: #5da43b;
+  --gray-11: #97d081;
+  --gray-12: #e4f3de;
 
-  --gray-a1: #c1d8b56c;
-  --gray-a2: #b9c9b1c7;
-  
-  --gray-a3: #acc2a042;
-  --gray-a4: #b9cfae10;
-  --gray-a5: #38850e1f;
-  --gray-a6: #d6e6cd77;
-  --gray-a7: #d7e2d148;
-  --gray-a8: #cfdfc748;
-  --gray-a9: #ccdac43a;
-  --gray-a10: #d2e0ca1a;
-  --gray-a11: #d7e4d009;
-  --gray-a12: #c5d8ba00;
+  --gray-a1: #62ff6f62;
+  --gray-a2: #80ff6062;
+  --gray-a3: #74ff6760;
+  --gray-a4: #63ff855c;
+  --gray-a5: #60ff6056;
+  --gray-a6: #64ff9252;
+  --gray-a7: #79ff804d;
+  --gray-a8: #c2bbff4e;
+  --gray-a9: #affdcc37;
+  --gray-a10: #cefeff3b;
+  --gray-a11: #d4ffd69a;
+  --gray-a12: #f6fff6e6;
 
   --gray-contrast: #FFFFFF;
   --gray-surface: rgba(0, 0, 0, 0.05);
-  --gray-indicator: #8b8c89a2;
-  --gray-track: #8b8c89;
+  --gray-indicator: #54a22c;
+  --gray-track: #54a22c;
 }
 
 @supports (color: color(display-p3 1 1 1)) {

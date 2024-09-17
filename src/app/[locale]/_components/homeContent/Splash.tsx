@@ -3,11 +3,11 @@ import React from "react";
 import {useTranslations} from 'next-intl'
 import Image from "next/image";
 
-import { Box, Flex, Section, Text } from '@radix-ui/themes'
+import { Box, Flex, Section, Text, Heading } from '@radix-ui/themes'
 import { Indie_Flower } from 'next/font/google'
 import styles from '../../layout.module.css'
 
-import ndLogo from '../../../../../public/images/logo-svg.svg'
+import ndLogo from '../../../../../public/images/Naturedopes-logo.jpg'
 
 
 const indie = Indie_Flower({

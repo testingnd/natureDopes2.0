@@ -39,8 +39,8 @@ export default function ContactForm({session}: {session: null | undefined | numb
     return  (
 
         <Box width='100vw' className={style.contactWrapper} data-theme={theme}>
-            <Flex justify='center'>
-            <Card size='5' variant="classic">
+            <Flex justify='center' pt='8' pb='8'>
+            <Card size='5' variant="classic" >
                 <form action={submit} ref={ref}>  
                     <Flex gap='2' direction='column' align='center' width='100%' justify='center'>
 

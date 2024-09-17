@@ -55,8 +55,16 @@
   font-size: xx-large;
 }
 
+.ndHeadings .radix-themes:is(.light, .light-theme){
+  color: var(--green-8);
+}
+
+.ndHeadings{
+  color: var(--green-8);
+}
+
 .loadingWrapper{
-  margin-top: 10%;
+  margin-top: 5%;
   width: 100%;
   height: 100%;
   display: flex;
