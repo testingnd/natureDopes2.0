@@ -13,7 +13,7 @@ import { TranslationTypes } from "../../../layout";
 import { SubmitButton } from "@/src/app/[locale]/_components/buttons/SubmitButton";
 
 
-export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, getData, translationProps}: {species: string | undefined, lng: number | undefined, lat: number | undefined, imageId: number | undefined | string, toggleEditForm: MouseEventHandler, getData: Function, translationProps: TranslationTypes}){
+export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, getData, translationProps}: {species: string | undefined, lng: number | undefined, lat: number | undefined, imageId: number | undefined | string, toggleEditForm: React.MouseEventHandler, getData: Function, translationProps: TranslationTypes}){
 
     const [ error, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')

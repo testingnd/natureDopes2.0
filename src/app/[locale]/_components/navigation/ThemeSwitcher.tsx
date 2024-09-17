@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
 
-import { CiLight, CiCloudMoon } from "react-icons/ci";
+import { CiLight, CiCloudMoon, CiDark } from "react-icons/ci";
 
 import { Button } from "@radix-ui/themes";
 
@@ -22,7 +22,7 @@ export default function ThemeSwitcher(){
       }
 
       return (
-        <button onClick={toggleMode}>{theme === 'light' ? <CiCloudMoon size={30} />: <CiLight size={30} />}</button>
+        <button onClick={toggleMode}>{theme === 'light' ? <CiDark color="green" size={30} />: <CiLight color='green' size={30} />}</button>
       )
 }
 

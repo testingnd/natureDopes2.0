@@ -29,16 +29,16 @@ export default function Splash(){
             </span>
           </span>
           <Flex justify='center'>
-          <Box height='80vh' width='40%' mt='8'>
+          <Box height='80vh' width='40%' mt='8' pt='8'>
           <Flex justify='center' align='center' direction='column' >
               <section className={`${indie.className} ${styles.rootPageSection} `}>
-                  <h1 className={styles.ndHeadings}> {translated("title")}</h1>
-                  
+                  <Heading size='9' className={`${styles.ndHeadings} ${indie.className}`}> {translated("title")}</Heading>
+                  <Heading  size='5' mt='3' className={styles.ndHeadings}>{translated('splashh2')}</Heading>
                     
                 
                         
               </section>
-              <section className={`${indie.className} ${styles.logoWrapper} `}>
+              {/*<section className={`${indie.className} ${styles.logoWrapper} `}>
                       <Flex direction='column' align='center'>
                       <aside>
                         <Image
@@ -55,7 +55,7 @@ export default function Splash(){
                       
                       </Flex>
               </section>
-            
+            */}
             
            
           </Flex>

@@ -11,7 +11,8 @@
     },
 
     "Home":{
-        "title": "Bienvenue à Nature Dopes"
+        "title": "Nature Dopes",
+        "splashh2": "Dédié à l'appréciation et à la compréhension de la nature"
     },
     "GMap": {
         "searchbar": "Chercher...",

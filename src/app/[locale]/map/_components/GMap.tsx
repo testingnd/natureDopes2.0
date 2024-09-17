@@ -1,6 +1,6 @@
 'use client'
 
-import { Key, Suspense, useState } from 'react';
+import { Key, MouseEventHandler, Suspense, useState } from 'react';
 
 import GoogleMapReact from 'google-map-react';
 import MapMarker from './MapMarker'
@@ -19,6 +19,7 @@ import style from './mapMarker.module.css'
 import { TranslationTypes } from '../../layout';
 
 export interface imageData{
+  [x: string]: any;
  
   id:  number,
   user_id: number,
@@ -135,7 +136,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
           </form>
           {!session? null :  uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>{translationProps.addbutton}</Button> </Box>}
           {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm} getData={getData} translationProps={translationProps} />: null }
-          {session? null:<Tooltip  content='Sign in for more map features'>
+          {session? null:<Tooltip className={style.toolTip}  content='Sign in for more map features'>
             <Button ml='1%'  radius='medium'>i</Button>
 
           </Tooltip>

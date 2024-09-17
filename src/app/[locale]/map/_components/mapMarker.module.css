@@ -14,3 +14,7 @@
     .findLabel{
         padding: 0 2px 0 2px;
     }
+
+    .toolTip{
+        z-index: 2;
+    }
