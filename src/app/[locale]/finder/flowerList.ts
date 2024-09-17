@@ -21,7 +21,7 @@ export type imageArray ={
 }
 
 
-let images: imageArray[] = [
+let imagesEn: imageArray[] = [
         {
         name: 'Toadflax',
         nameSci: 'Linaria vulgaris',
@@ -71,7 +71,7 @@ let images: imageArray[] = [
 
 ]
 
-export default images
+export default imagesEn
 
 
 

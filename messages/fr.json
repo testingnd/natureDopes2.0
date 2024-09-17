@@ -57,7 +57,8 @@
             "button": "C'est Parti!"
         },
         "Game":{
-            
+            "resetbutton": "Réinitialiser",
+            "startpage": "Page d'accueil"
         }
     },
     "Footer":{

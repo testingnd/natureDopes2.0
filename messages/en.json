@@ -59,6 +59,10 @@
             "line1": "Welcome to the Nature Dopes mini-game ",
             "line2": "Whilst out in Nature, see if you can find each flower then answer a question for each",
             "button": "Go!"
+        },
+        "Game":{
+            "resetbutton": "Reset",
+            "startpage": "Start Page"
         }
     },
 
