@@ -9,8 +9,8 @@ import style from './map.module.css'
 
 // import session data
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]/route'
-import {getTranslations} from 'next-intl/server';
+import { authOptions } from "../_lib/authOptions";
+
 import {translator} from './translationPropsMap'
 
 //google map react build

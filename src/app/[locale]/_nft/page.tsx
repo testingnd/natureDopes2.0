@@ -1,5 +1,5 @@
 
-import { getServerSession } from "next-auth"
+{/*import { getServerSession } from "next-auth"
 
 import { prisma } from "../prisma"
 import { authOptions } from "../api/auth/[...nextauth]/route"
@@ -35,3 +35,4 @@ export default async function Page(){
         </>
     )
 }
+    */}

@@ -1,12 +1,12 @@
 
-import { NextAuthOptions} from "next-auth"
+import { AuthOptions} from "next-auth"
 import  CredentialsProvider  from "next-auth/providers/credentials"
 import { prisma } from "@/src/app/[locale]/prisma";
 import { compare } from 'bcrypt'
 
 
 
-export const authOptions: NextAuthOptions = {
+export const authOptions: AuthOptions = {
 
     pages:{
         signIn: 'api/auth/signin'
@@ -48,8 +48,8 @@ export const authOptions: NextAuthOptions = {
               
           },
 
-        async session({session, token}){
-            
+        async session({session, token, user}){
+           
             session.user.id = token.id
             
             

@@ -14,7 +14,7 @@ import { Box, Flex, Section, Text } from '@radix-ui/themes'
 
 // Next auth  imports
 import { getServerSession } from 'next-auth';
-import { authOptions } from './api/auth/[...nextauth]/route'
+import { authOptions } from './_lib/authOptions'
 
 import { useTheme } from 'next-themes';
 

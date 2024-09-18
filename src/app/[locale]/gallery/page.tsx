@@ -5,13 +5,14 @@ import Image from "next/image"
 import MainGalleryComponent from "./_components/MainGalleryComponent"
 
 import { getServerSession, NextAuthOptions } from "next-auth"
-import { authOptions } from "../api/auth/[...nextauth]/route"
+import { authOptions } from "../_lib/authOptions"
 
 
 import LoadingGif from '@/public/images/nd -logo-gif.gif'
 
 import { TranslationTypes } from "../layout"
 import { getTranslations } from "next-intl/server"
+import { sessionTypes } from "../_lib/sessionTypes"
 
 
 
@@ -52,7 +53,9 @@ export type InstagramApiData = {
 export default async function PageRootGallery(){
 
     //check for session
-    const session: any = await getServerSession(authOptions)
+    const session: sessionTypes | null = await getServerSession(authOptions)
+
+    console.log(session)
 
     const t = await getTranslations("Gallery")
 
