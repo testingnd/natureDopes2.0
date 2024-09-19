@@ -15,6 +15,7 @@ import {translator} from './translationPropsMap'
 
 //google map react build
 import Gmap from './_components/GMap'
+import { sessionTypes } from "../_lib/sessionTypes";
 
 
 
@@ -25,6 +26,7 @@ async function getData() {
     if (!res.ok) {
       // This will activate the closest `error.js` Error Boundary
       throw new Error('Failed to fetch data')
+     
     }
 
 
@@ -38,7 +40,7 @@ export default async function Map(){
 
   const getImageData = await getData()
 
-  const session: any = await getServerSession(authOptions)
+  const session: sessionTypes | null = await getServerSession(authOptions)
 
   
  let userId = null
