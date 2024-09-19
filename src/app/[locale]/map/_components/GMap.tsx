@@ -58,7 +58,7 @@ export default function Gmap({getImageData, loadingGif, session, translationProp
     const res = await fetch('http://localhost:3000/map/api')
   
     if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
+     
       return {
         error: 'Find has been updated, please refresh browser'
       }

@@ -16,6 +16,8 @@ import { sessionTypes } from "../../_lib/sessionTypes";
 
 // icons & images
 import { RxHome } from "react-icons/rx";
+import Image from "next/image";
+import logowob from '../../../../../public/images/Naturedopes-logo-removebg-preview.png'
 
 
 
@@ -27,7 +29,7 @@ import { useTheme } from "next-themes";
 export default function NavBar({session, locale, translationProps}: {session: sessionTypes , locale: string, translationProps: TranslationTypes }){
 
   const {theme} = useTheme()
-
+  console.log(theme)
     return(
 
         <div className={style.layoutNav} data-theme={theme} >
@@ -40,7 +42,8 @@ export default function NavBar({session, locale, translationProps}: {session: se
                     height={90}
                     alt='Nature dopes logo'
                   />*/}
-                   <Text color='green'><a href='/'><RxHome className={style.homeLogo} /></a></Text>
+                   <Text color='green'><a href='/'><Image src={logowob} width={48} alt='Nature Dopes Logo'/></a></Text>
+                                                           
                 </div>
 
                 <div>

@@ -2,7 +2,7 @@
 
 import {ReactEventHandler, useState} from "react";
 
-import { Heading, Theme } from "@radix-ui/themes";
+
 import { Card, Flex, Button, TextField, Text, HoverCard } from "@radix-ui/themes";
 import style from './uploadForm.module.css'
 
@@ -96,7 +96,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                         <input className={style.uploadFileButton} name='image_file' placeholder="Image" type="file" accept=".png, .jpg, .jpeg, .heic, .svg" onChange={(event) => {
                             if (event.target.files && event.target.files[0]) {
                             if (event.target.files[0].size > 5 * 1000 * 1024) {
-                                setError("File with maximum size of 5MB is allowed");
+                                setError("Photo with maximum size of 5MB is allowed");
                                 
                                 return false;
                             } else {
