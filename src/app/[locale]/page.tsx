@@ -19,10 +19,16 @@ import { authOptions } from './_lib/authOptions'
 import { useTheme } from 'next-themes';
 
 
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
+
+
 
 export default async function Page() {
 
   const session = await getServerSession(authOptions)
+
+  const messages = await getMessages()
  
   return(
   
@@ -30,8 +36,10 @@ export default async function Page() {
     <Flex pt='8' justify='center' direction='column' align='center' className={style.homePageWrapper} >
           
           <Splash />
-          <HomeContent session={session} />
+          <NextIntlClientProvider  messages={messages}>
           
+            <HomeContent session={session} />
+          </NextIntlClientProvider>
           
     </Flex>
             

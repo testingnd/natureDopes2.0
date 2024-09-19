@@ -22,7 +22,7 @@ export default function Splash(){
 
     return(
 
-       <Box p='0' width='100%' height='100vh'>
+       <Box p='0' width='100%' height='95vh'>
           <span className={styles.spanwrapper}>
             <span className={styles.spaninside}>
 

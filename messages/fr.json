@@ -12,7 +12,12 @@
 
     "Home":{
         "title": "Nature Dopes",
-        "splashh2": "Dédié à l'appréciation et à la compréhension de la nature"
+        "splashh2": "Dédié à l'appréciation et à la compréhension de la nature",
+        "InfoSection": {
+            "enjoy": "Venez profiter du site!",
+             "info1": "NatureDopes est un projet construit par des bénévoles, visant à créer des outils utiles et à développer une communauté pour tous les amoureux de la nature",
+            "info2": "Nous apprécierions beaucoup tout commentaire ou idée de la part de la communauté. Veuillez nous contacter ci-dessous, soit directement, soit via nos réseaux sociaux"
+        }
     },
     "GMap": {
         "searchbar": "Chercher...",

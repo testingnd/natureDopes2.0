@@ -10,7 +10,7 @@ import LanguageSwitcher from "../languageSwitcher";
 import { LoginButton, LogoutButton } from '../../auth'
 
 // radix ui elements
-import { Text, Box } from "@radix-ui/themes";
+import { Text, Box, Link } from "@radix-ui/themes";
 
 import { sessionTypes } from "../../_lib/sessionTypes";
 
@@ -42,7 +42,7 @@ export default function NavBar({session, locale, translationProps}: {session: se
                     height={90}
                     alt='Nature dopes logo'
                   />*/}
-                   <Text color='green'><a href='/'><Image src={logowob} width={48} alt='Nature Dopes Logo'/></a></Text>
+                   <Text color='green'><Link href='/'><Image src={logowob} width={48} alt='Nature Dopes Logo'/></Link></Text>
                                                            
                 </div>
 

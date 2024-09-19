@@ -8,6 +8,7 @@ import { Text, Flex, Box } from "@radix-ui/themes";
 import ContactForm from "./contact/ContactForm";
 import About from "./about/About";
 import About2 from "./about/About2";
+import InfoSection from "./infoSection/Info";
 
 import { useTheme } from "next-themes";
 
@@ -17,8 +18,9 @@ import { Fade } from 'react-awesome-reveal'
 
 
 
-export default function HomeContent({session, resolvedTheme}: {session: null | undefined | number, resolvedTheme: string}){
-
+export default function HomeContent({session, resolvedTheme, messages}: {session: null | undefined | number, resolvedTheme: string}){
+    
+    console.log(messages);  
  
 
      return (
@@ -27,16 +29,22 @@ export default function HomeContent({session, resolvedTheme}: {session: null | u
         <Fade direction="up">
           
             <Box width='100%' className={style.aboutWrapper} data-theme={resolvedTheme} >
-                <Flex justify='center' mt='8'>
+                <Flex justify='center' mt='8' pb='9'>
                     <About/>
                 </Flex>
             </Box>
 
             <Box width='100%' className={style.about2Wrapper}>
-                <Flex justify='center' mt='8' pt='9' pb='9'>
+                <Flex justify='center' mt='1' pt='9' pb='9'>
                     <About2 />
                 </Flex>
 
+            </Box>
+
+            <Box width='100%'>
+                <Flex justify='center' mt='1' pt='9' pb='9'>
+                    <InfoSection messages={messages} />
+                </Flex>
             </Box>
 
             <Box width='100%' className={style.contactWrapper}  >
@@ -44,6 +52,8 @@ export default function HomeContent({session, resolvedTheme}: {session: null | u
                     <ContactForm session={session}/>
                 </Flex>
             </Box> 
+
+
             
         </Fade>
         </Box>
