@@ -22,18 +22,21 @@ export interface mapMarkerProps {
     lat: number,
     lng: number,
     text: string,
-    path: string,
+    ipath: string,
     session: number,
     loadingGif: StaticImageData,
     toggleEditForm: MouseEventHandler | Function,
     translationProps: TranslationTypes
 }
 
-export default function MapMarker({id, user_id, text, session, loadingGif, toggleEditForm, translationProps}: mapMarkerProps){
+export default function MapMarker({id, user_id, text, ipath, session, loadingGif, toggleEditForm, translationProps}: mapMarkerProps){
 
 const [isShown, setIsShown] = React.useState<boolean>(false);
 const [iagonPath, setIagonPath]= React.useState<string|null|StaticImageData>(null)
 const [toggle, setToggle] = React.useState<boolean>(false)
+
+
+
 
 const toggleIs= () => {
     // 👇️ Passed function to setState
@@ -41,14 +44,15 @@ const toggleIs= () => {
     
   };
 
-  async function getImageApi(){
+  async function getImageApi(ipath: string){
+        
        setToggle(current => !current);
-
+        console.log(ipath)
         if(iagonPath){
             return
         } else{
         setIagonPath(loadingGif)
-       let {i64} = await GetImage()
+       let {i64} = await GetImage(ipath)
        let path: string = 'data:image/png;base64,' + i64
         setIagonPath(path)
         }
@@ -67,7 +71,7 @@ const toggleIs= () => {
     return(
         <Flex direction='column' >
         {toggle? <Button size='1' onClick={toggleIs} onTouchStart={leavePointer}>X</Button>: <p></p>}
-        <Box onMouseEnter={changePointer} onMouseLeave={leavePointer} onTouchStart={changePointer} onClick={getImageApi}>
+        <Box onMouseEnter={changePointer} onMouseLeave={leavePointer} onTouchStart={changePointer} onClick={() => {getImageApi(ipath)}}>
             
         
             {toggle? null: session == user_id ? <RiFlowerFill size={15} color="#115511" />: <RiFlowerFill size={15} color="green"/>}

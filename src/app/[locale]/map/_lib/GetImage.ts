@@ -7,14 +7,14 @@
         const headers = new Headers();
         headers.set("x-api-key", process.env.IAGON_API); 
         headers.set("Content-Type", "application/json");  
-     
+          
         try {
 
           const res = await fetch("https://gw.iagon.com/api/v2/storage/download", {
                         method: 'POST',
                         headers: headers,
                                                    
-                        body: JSON.stringify({id: '6634a451ed109dea7696f493',
+                        body: JSON.stringify({id: path,
                                 password: process.env.IAGON_PASS}),
                         cache: 'force-cache'
                     })

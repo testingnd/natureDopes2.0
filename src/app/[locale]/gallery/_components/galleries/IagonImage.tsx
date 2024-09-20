@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 
 import { GetImage } from "@/src/app/[locale]/map/_lib/GetImage";
+import NDLogo from '@/public/images/Naturedopes-logo.jpg'
 
 
 
@@ -23,6 +24,12 @@ const iagonLocation = path
         setBase64String(LoadingGif)
         let {i64, error} = await GetImage(iagonLocation)
         setError(error)
+        
+        if(error){
+            setBase64String(NDLogo)
+            return
+        }
+        
         let imageSrc: string = 'data:image/png;base64,' + i64
          setBase64String(imageSrc)
         }

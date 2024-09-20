@@ -26,7 +26,7 @@ export interface imageData{
   species_name: string,
   gps_lat: number,
   gps_long: number,
-  path: string
+  image_path: string
 }
 
 
@@ -49,6 +49,7 @@ export default function Gmap({getImageData, loadingGif, session, translationProp
   const[gps_long, setLong] = useState<number>()
   const[species_name, setSpecies] = useState<string>()
   const[imageId, setImageId] = useState<number>()
+  
 
   // whether upload form is visible
   const[uploadForm, setUploadForm]= useState<boolean>(false)
@@ -181,7 +182,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
             return data
           }
         }).map(data  => (
-          <MapMarker key={data.id} id={data.id} user_id={data.user_id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} path={data.path} session={session} loadingGif={loadingGif} toggleEditForm={toggleEditForm} translationProps={translationProps}  />
+          <MapMarker key={data.id} id={data.id} user_id={data.user_id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} ipath={data.image_path} session={session} loadingGif={loadingGif} toggleEditForm={toggleEditForm} translationProps={translationProps}  />
         ))}  
 
         </GoogleMapReact>

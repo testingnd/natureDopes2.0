@@ -27,7 +27,7 @@ export default function IagonGallery({imageDataPrisma, LoadingGif}: {imageDataPr
                                 <Card size={{lg: '2', md: '2', sm: '1', xs: '1', initial: '1'}} >
                                 
                                     <Inset clip="padding-box" side="top" pb="current" >
-                                        <IagonImage key={data.id} path={data.path} LoadingGif={LoadingGif} />
+                                        <IagonImage key={data.id} path={data.image_path} LoadingGif={LoadingGif} />
                                     </Inset>
                                     <Blockquote size='2'>
                                         {data.species_name}
