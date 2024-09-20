@@ -56,7 +56,7 @@ export default function Gmap({getImageData, loadingGif, session, translationProp
   const[editForm, setEditForm] = useState<boolean>(false)
 
   async function getData() {
-    const res = await fetch('http://localhost:3000/map/api')
+    const res = await fetch(`${process.env.LIVESITE}map/api`)
   
     if (!res.ok) {
      
