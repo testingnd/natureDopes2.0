@@ -13,10 +13,21 @@
     "Home":{
         "title": "Nature Dopes",
         "splashh2": "Dédié à l'appréciation et à la compréhension de la nature",
+        "About":{
+            "welcome": "Bienvenue à Nature Dopes",
+            "para1": "Le site est ouvert à tous les passionnés de la Nature. Nous sommes basés en Europe de l'Ouest, la majorité des ressources trouvées ici concernent la Flore naturelle que l'on retrouve dans cette région.",
+            "para2": "Quelle que soit votre position sur les questions climatiques, rares sont ceux qui peuvent disputer que la civilisation s’étend, les espaces naturels se réduisent pour faire place. Qu’il s’agisse de champs destinés à l’agriculture moderne, de pratiques d’exploitation forestière ou de terres destinées à de nouvelles habitations. Il faut faire davantage pour protéger nos espaces naturels.",
+            "para3": "Sur ce site, nous pensons que pour que les gens apprécient la nature, il faut d'abord la comprendre. Qu'il s'agisse du plus grand arbre devant votre fenêtre ou de la plus petite fleur au bord de la route. Ce site est un mélange d'art et d'éducation, les fleurs et les arbres sont identifiés dans tous nos articles. Dans l'espoir qu'une connaissance pratique de toutes les espèces puisse être transmise à ceux qui souhaitent apprendre."
+        },
+        "About2": {
+            "user": "Pour utiliser pleinement ce site, nous demandons aux visiteurs de créer un compte et de contribuer. Seule une adresse mail est prise en compte, toutes les données sont privées pour ce site uniquement.",
+            "map": "La fonctionnalité principale est notre outil de cartographie, alors commencez par là. L'objectif est que les utilisateurs créent un compte et publient des photos de leurs propres découvertes avec leurs positions. Les informations seront garder afin de créer une base de données fonctionnelle, indiquant où se trouvent les flore naturel intéressants.",
+            "gallery": "Visiteurs peuvent consulter notre page Galerie. Une collection de photos de la nature de la galerie Nature Dopes originale, ou les utilisateurs enregistrés peuvent consulter leur propre collection."
+        },
         "InfoSection": {
             "enjoy": "Venez profiter du site!",
              "info1": "NatureDopes est un projet construit par des bénévoles, visant à créer des outils utiles et à développer une communauté pour tous les amoureux de la nature",
-            "info2": "Nous apprécierions beaucoup tout commentaire ou idée de la part de la communauté. Veuillez nous contacter ci-dessous, soit directement, soit via nos réseaux sociaux"
+            "info2": "Nous apprécierions tout commentaire ou idée de la part de la communauté. Veuillez nous contacter ci-dessous, soit directement, soit via nos réseaux sociaux"
         }
     },
     "GMap": {

@@ -8,30 +8,42 @@ import style from '../homecontent.module.css'
 
 import { CiMap } from "react-icons/ci";
 import { RiGalleryView } from "react-icons/ri";
+import { RiUser3Line } from "react-icons/ri";
 
+import { useMessages } from "next-intl";
 
 
 
 export default function About2(){
 
+    const m = useMessages()
 
     return (
         
         <Box width='80%'  >
             <Flex>
-                 <Text color="blue" size='9' align='center'><RiGalleryView /></Text>
-                 <Text  className={style.about2Text} ml= '3'>
-                    This site features a Gallery page, a collection of photos of flowers & trees found growing in nature. It is linked directly to our instagram account and is updated regularly.
+            <Text color='blue' size='9' align='center'><RiUser3Line/></Text>
+                <Text  className={style.about2Text} ml='3'>
+                    {m.Home.About2.user}
                 </Text>
             </Flex>
-           
-            <br /><br />
+                <br /><br />
             <Flex>
                 <Text color='blue' size='9' align='center'><CiMap /></Text>
                 <Text  className={style.about2Text} ml='3'>
-                There is a Map page, the aim is to allow users to create an account and then post photos of their own finds and their locations. The information will be stored in order to build a working database of where wildflowers & trees are found. The map tool is still in beta testing so please visit the page and test it out
+                {m.Home.About2.map}
                 </Text>
             </Flex>
+                  <br /><br />
+            <Flex>
+                 <Text color="blue" size='9' align='center'><RiGalleryView /></Text>
+                 <Text  className={style.about2Text} ml= '3'>
+                   {m.Home.About2.gallery}
+                </Text>
+            </Flex>
+           
+      
+            
             
            
 

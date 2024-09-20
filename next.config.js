@@ -2,8 +2,9 @@
 
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://maps.googleapis.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://maps.googleapis.com https://graph.instagram.com https://gw.iagon.com;
     style-src 'self' 'unsafe-inline';
+    connect-src https://maps.googleapis.com;
     img-src 'self' blob: data:;
     font-src 'self';
     object-src 'none';
