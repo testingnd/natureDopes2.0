@@ -31,7 +31,7 @@ export default function MainGalleryComponent({session, igResponse, imageDataPris
 
         
         
-         <Box width='95vw' ml='5' mr='5'>
+         <Box width='95vw' ml='5' mr='5' mt={{initial: '3', xs: '3', sm: '3', md: '1', lg:'1'}}>
         
         {session?
             

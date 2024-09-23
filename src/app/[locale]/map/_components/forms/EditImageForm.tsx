@@ -60,8 +60,8 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                                 <HoverCard.Trigger>
                                     <Button ml='1' mr='1' size='1'>?</Button>
                                 </HoverCard.Trigger>
-                                <HoverCard.Content className={style.uploadFormInfoHover}>
-                                    <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} >
+                                <HoverCard.Content className={style.uploadFormInfoHover} >
+                                    <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} mr={{initial: '2', xs: '2', sm: '2', }} >
                                         <Flex direction='column' gap='2'>
                                             <Text>{">"}{translationProps.eHoverOne}</Text>
                                             <Text>{">"}{translationProps.eHoverTwo}</Text>

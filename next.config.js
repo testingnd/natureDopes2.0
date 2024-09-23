@@ -57,7 +57,13 @@ const nextConfig = withNextIntl({
       },
       {
         protocol: 'https',
-        hostname: 'scontent.cdninstagram.com',
+        hostname: '**.cdninstagram.com',
+        port: '',
+        pathname: '**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'scontent-iad3-2.cdninstagram.com',
         port: '',
         pathname: '**'
       }

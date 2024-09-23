@@ -4,7 +4,7 @@ import React from "react"
 import Image from "next/image"
 
 
-import { Theme, Card, Box, Flex, Section, Container, Inset, Text, Grid, Blockquote } from "@radix-ui/themes"
+import { Theme, Card, Box, Flex,  Inset, Grid, Blockquote } from "@radix-ui/themes"
 
 //type imports
 import { InstagramApiData } from "../../page";

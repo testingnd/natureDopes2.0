@@ -1,6 +1,6 @@
 'use client'
 
-import ndLogo from '../../../../public/images/Naturedopes-logo.jpg'
+import ndLogo from '../../../../public/images/Naturedopes-logo-removebg-preview.png'
 import Image from 'next/image'
 import styles from '../layout.module.css'
 import {motion} from 'framer-motion'
@@ -13,7 +13,7 @@ export default function LoadingIcon(){
 
     return(
 
-    <Flex justify='center' width='80%' mb='9' pb='5' pt='5'> 
+    <Flex justify='center' width='80%' mt='5' mb='9' pb='5' pt='5'> 
     <motion.div className={styles.animateCont} 
         animate={{scale: 1.2}}
         transition={{

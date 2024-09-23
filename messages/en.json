@@ -33,7 +33,7 @@
     },
 
     "GMap": {
-        "searchbar": "Search for species...",
+        "searchbar": "Filter for species...",
         "allfinds": "All Finds",
         "yourfinds": "Your Finds",
         "addbutton": "Add",

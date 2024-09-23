@@ -11,7 +11,7 @@ import { Label } from "@radix-ui/themes/dist/esm/components/context-menu.js";
 
 import { SubmitButton } from "../../../_components/buttons/SubmitButton";
 
-import logoMini from '../../../../public/images/logomini.png'
+import logo from '../../../../../../public/images/Naturedopes-logo-removebg-preview.png'
 
 
 
@@ -30,7 +30,7 @@ export default function SignIn() {
 
     const signInHandler = async (e : React.FormEvent) => {
         
-        console.log(email, password)
+        
         e.preventDefault()
        
         await signIn("credentials" , {email, password, callbackUrl})
@@ -56,7 +56,7 @@ export default function SignIn() {
           <Flex gap='2' direction='column' justify='between' align='stretch'>
 
                   <Flex gap='3' align='center' justify='center' direction='column'>
-                     <Avatar size='5'  src='../../../images/logoMini.png' fallback='N'/>
+                     <Avatar size='5'  src='../../../../../../public/images/Naturedopes-logo-removebg-preview.png' fallback='N'/>
                     
 
                      <Heading>Sign In</Heading>

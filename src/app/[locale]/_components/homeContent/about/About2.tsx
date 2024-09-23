@@ -21,21 +21,21 @@ export default function About2(){
     return (
         
         <Box width='80%'  >
-            <Flex>
+            <Flex align='center'>
             <Text color='blue' size='9' align='center'><RiUser3Line/></Text>
                 <Text  className={style.about2Text} ml='3'>
                     {m.Home.About2.user}
                 </Text>
             </Flex>
                 <br /><br />
-            <Flex>
+            <Flex align='center'>
                 <Text color='blue' size='9' align='center'><CiMap /></Text>
                 <Text  className={style.about2Text} ml='3'>
                 {m.Home.About2.map}
                 </Text>
             </Flex>
                   <br /><br />
-            <Flex>
+            <Flex align='center'>
                  <Text color="blue" size='9' align='center'><RiGalleryView /></Text>
                  <Text  className={style.about2Text} ml= '3'>
                    {m.Home.About2.gallery}

@@ -31,7 +31,7 @@
         }
     },
     "GMap": {
-        "searchbar": "Chercher...",
+        "searchbar": "Filtre...",
          "allfinds": "Tous trouvailles",
         "yourfinds": "Vos trouvailles",
         "addbutton": "Ajoute",

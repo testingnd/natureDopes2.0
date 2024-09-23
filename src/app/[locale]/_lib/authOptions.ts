@@ -99,7 +99,7 @@ export const authOptions: AuthOptions = {
                 }
             },
             async authorize(credentials, req){
-                console.log(credentials)
+                console.log(credentials?.email)
                 if(!credentials?.email || !credentials.password){
                     return null
                 }

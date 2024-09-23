@@ -112,7 +112,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
   return (
     // Important! Always set the container height explicitly
     <>
-      <Flex p='1' direction='column' width='40%'>
+      <Flex p='1' direction='column' width={{initial:'60%', xs: '60%', sm: '60%', md: '40%', lg:'40%', xl: '40%'}}>
       
         { !session ? null :
         
