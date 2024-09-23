@@ -41,8 +41,8 @@ export default function ContactForm({session}: {session: null | undefined | numb
 
     return  (
 
-        <Box width='100vw' className={style.contactWrapper} data-theme={theme}>
-            <Flex justify='center' pt='8' pb='8' gap='2'>
+        <Box width='70%' className={style.contactWrapper} data-theme={theme} ml='15%'>
+            <Flex justify='center' pt='8' pb='8' gap='2' align='center' direction={{initial:'column', sm:'column', xs: 'column', lg:'row', xl:'row'}} >
             <Card size='5' variant="classic" >
                 <form action={submit} ref={ref}>  
                     <Flex gap='2' direction='column' align='center' width='100%' justify='center'>
@@ -78,7 +78,7 @@ export default function ContactForm({session}: {session: null | undefined | numb
 
             <Card size='5' variant="surface">
                 <Flex align='center' justify='center' direction='column' pl='8' pt='8' pb='8' pr='8'>
-                    <Heading size='5'>Social Media Links</Heading>
+                    <Heading size='5' align='center' mb='3'>Socials</Heading>
                     <Text ><Link target='_blank' href='https://www.instagram.com/naturedopes/'><RiInstagramFill size={84} /></Link></Text>
                 </Flex>
 

@@ -26,7 +26,7 @@ export default function HomeContent({session, resolvedTheme, messages}: {session
      return (
 
         <Box width='100vw' className={style.homeContentWrapper} data-theme={resolvedTheme} >
-        <Fade direction="up">
+        <Fade direction="left" damping={0.3}>
           
             <Box width='100%' className={style.aboutWrapper} data-theme={resolvedTheme} >
                 <Flex justify='center' mt='8' pb='9'>

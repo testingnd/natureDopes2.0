@@ -42,7 +42,9 @@ export default function NavBar({session, locale, translationProps}: {session: se
                     height={90}
                     alt='Nature dopes logo'
                   />*/}
-                   <Text color='green'><Link href='/'><Image src={logowob} width={48} alt='Nature Dopes Logo'/></Link></Text>
+                   <Text color='green'><Link href='/'>
+                   <Image src={logowob} width={48} alt='Nature Dopes Logo'/>
+                   </Link></Text>
                                                            
                 </div>
 

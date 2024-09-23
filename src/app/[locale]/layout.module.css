@@ -52,6 +52,8 @@
 
 .ndHeadings{
   text-align: center;
+  text-shadow: .2px .2px white;
+
   
 }
 
@@ -114,6 +116,11 @@
 
   .homeLogo{
     font-size: 26px;
+  }
+
+  .spaninside{
+   background-position-x: 30%; 
+   background-position-y: bottom;
   }
   
 }

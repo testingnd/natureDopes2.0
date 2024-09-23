@@ -13,9 +13,9 @@ export default function About(){
 
     return (
         
-        <Box width='80%' className={style.aboutWrapper}  >
+        <Box width='80%' className={style.aboutWrapper} pt='3' pb='3' >
             
-            <Heading align='center' mb='2'>{m.Home.About.welcome}</Heading>
+            <Heading align='center' mb='6'>{m.Home.About.welcome}</Heading>
             <Text mb='2'>
             {m.Home.About.para1}
             </Text>

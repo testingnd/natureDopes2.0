@@ -22,6 +22,7 @@ export default function Nav({translationProps}: {translationProps: TranslationTy
         </Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
+        <Link href='/' ><DropdownMenu.Item><Text size='3'><Strong>Home</Strong></Text></DropdownMenu.Item></Link>
         <Link href="/map"><DropdownMenu.Item><Text size='3'><Strong>{translationProps.map}</Strong></Text></DropdownMenu.Item></Link>
         <Link href='/gallery'><DropdownMenu.Item><Text size='3'><Strong>{translationProps.gallery}</Strong></Text></DropdownMenu.Item></Link>
         
