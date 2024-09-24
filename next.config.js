@@ -1,10 +1,10 @@
 
 
 const cspHeader = `
-    default-src 'self' http://localhost:3000 https://localhost:3000;
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://maps.googleapis.com https://graph.instagram.com https://gw.iagon.com https://maps.gstatic.com https://next-auth.js.org https://www.naturedopes.com https://naturedopes.com;
+    default-src 'self' http://localhost:3000 https://localhost:3000 http://naturedopes.com http://www.naturedopes.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://maps.googleapis.com https://graph.instagram.com https://gw.iagon.com https://maps.gstatic.com https://next-auth.js.org https://www.naturedopes.com https://naturedopes.com http://naturedopes.com http://www.naturedopes.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    connect-src https://maps.googleapis.com https://maps.gstatic.com https://graph.instagram.com http://localhost:3000 https://localhost:3000 https://www.naturedopes.com https://naturedopes.com ws://localhost:3000 ws://www.naturedopes.com ws://naturedopes.com;
+    connect-src https://maps.googleapis.com https://maps.gstatic.com https://graph.instagram.com http://localhost:3000 https://localhost:3000 https://www.naturedopes.com https://naturedopes.com ws://localhost:3000 ws://www.naturedopes.com ws://naturedopes.com http://naturedopes.com http://www.naturedopes.com;
     media-src *.cdninstagram.com;
     img-src 'self' 'unsafe-inline' blob: data: https://maps.googleapis.com https://graph.instagram.com  *.cdninstagram.com https://maps.gstatic.com;
     font-src 'self' https://fonts.gstatic.com;
