@@ -2,9 +2,9 @@
 
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://maps.googleapis.com https://graph.instagram.com https://gw.iagon.com https://maps.gstatic.com https://next-auth.js.org;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://maps.googleapis.com https://graph.instagram.com https://gw.iagon.com https://maps.gstatic.com https://next-auth.js.org https://www.naturedopes.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    connect-src https://maps.googleapis.com https://maps.gstatic.com https://graph.instagram.com http://localhost:3000 ws://localhost:3000;
+    connect-src https://maps.googleapis.com https://maps.gstatic.com https://graph.instagram.com http://localhost:3000 ws://localhost:3000 https://www.naturedopes.com;
     media-src *.cdninstagram.com;
     img-src 'self' 'unsafe-inline' blob: data: https://maps.googleapis.com https://graph.instagram.com  *.cdninstagram.com https://maps.gstatic.com;
     font-src 'self' https://fonts.gstatic.com;
