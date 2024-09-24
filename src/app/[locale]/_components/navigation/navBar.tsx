@@ -10,7 +10,7 @@ import LanguageSwitcher from "../languageSwitcher";
 import { LoginButton, LogoutButton } from '../../auth'
 
 // radix ui elements
-import { Text, Box, Link } from "@radix-ui/themes";
+import { Text, Box, Link, Flex } from "@radix-ui/themes";
 
 import { sessionTypes } from "../../_lib/sessionTypes";
 
@@ -28,14 +28,14 @@ import { useTheme } from "next-themes";
 
 export default function NavBar({session, locale, translationProps}: {session: sessionTypes , locale: string, translationProps: TranslationTypes }){
 
-  const {theme} = useTheme()
-  console.log(theme)
+ 
+  
     return(
 
-        <div className={style.layoutNav} data-theme={theme} >
-              <div className={style.navUserSection}>
+        <div className={style.layoutNav}  >
+              <Flex justify='start' width='30%' gap='3'>
 
-                <div className={style.logoContainer}>
+                <Flex pl='3' align='center' display={{initial: 'none', xs: 'none', sm: 'none', md: 'flex', lg: 'flex', xl: 'flex'}} className={style.logoContainer}>
                   {/*<Image 
                     src={logoMini}
                     width={100}
@@ -46,17 +46,17 @@ export default function NavBar({session, locale, translationProps}: {session: se
                    <Image src={logowob} width={48} alt='Nature Dopes Logo'/>
                    </Link></Text>
                                                            
-                </div>
+                </Flex>
 
-                <div>
+                <Flex align='center' pl='1'>
 
                   {!session? <LoginButton translationProps={translationProps} />:<LogoutButton translationProps={translationProps}  />  }
              
                   {session? <Box pl='4px' ><Text >{translationProps.user} {session.user.name}</Text></Box>: null }
-                </div>
+                </Flex>
                 
               
-              </div>
+              </Flex>
             
               
               <section className={style.navUserSection}>

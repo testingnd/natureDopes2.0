@@ -56,7 +56,7 @@ export default function SignIn() {
           <Flex gap='2' direction='column' justify='between' align='stretch'>
 
                   <Flex gap='3' align='center' justify='center' direction='column'>
-                     <Avatar size='5'  src='../../../../../../public/images/Naturedopes-logo-removebg-preview.png' fallback='N'/>
+                     <Avatar size='4'  src='../../../../../../images/logo-svg.svg' fallback='N'/>
                     
 
                      <Heading>Sign In</Heading>

@@ -17,7 +17,7 @@ import style from '../homecontent.module.css'
 
 export default function ContactForm({session}: {session: null | undefined | number}) {
 
-    const {theme} = useTheme()
+
 
     const ref = useRef<HTMLFormElement>(null)
 
@@ -41,13 +41,13 @@ export default function ContactForm({session}: {session: null | undefined | numb
 
     return  (
 
-        <Box width='70%' className={style.contactWrapper} data-theme={theme} ml='15%'>
+        <Box width='70%' className={style.contactWrapper}  ml='15%'>
             <Flex justify='center' pt='8' pb='8' gap='2' align='center' direction={{initial:'column', sm:'column', xs: 'column', lg:'row', xl:'row'}} >
             <Card size='5' variant="classic" >
                 <form action={submit} ref={ref}>  
                     <Flex gap='2' direction='column' align='center' width='100%' justify='center'>
 
-                        <Heading size='5'>Please contact Nature Dopes here</Heading>
+                        <Heading size='5' align='center'>Please contact Nature Dopes here</Heading>
                         <Flex direction='column' gap='2'>
                             <Box width='200px'>
                                 <TextField.Root name='name' size='2' type='text' placeholder="Name"></TextField.Root>

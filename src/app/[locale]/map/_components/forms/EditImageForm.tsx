@@ -61,12 +61,12 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                                     <Button ml='1' mr='1' size='1'>?</Button>
                                 </HoverCard.Trigger>
                                 <HoverCard.Content className={style.uploadFormInfoHover} >
-                                    <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} mr={{initial: '2', xs: '2', sm: '2', }} >
-                                        <Flex direction='column' gap='2'>
-                                            <Text>{">"}{translationProps.eHoverOne}</Text>
-                                            <Text>{">"}{translationProps.eHoverTwo}</Text>
+                                    <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} mr={{initial: '4', xs: '4', sm: '4', }} >
+                                        <Flex direction='column' gap='2' width='90%'>
+                                            <Text size={{initial: '2', xs: '2', sm:'2', md: '2', lg:'3', xl: '3'}}>{">"}{translationProps.eHoverOne}</Text>
+                                            <Text size={{initial: '2', xs: '2', sm:'2', md: '2', lg:'3', xl: '3'}}>{">"}{translationProps.eHoverTwo}</Text>
                                             
-                                            <Text>{">"}{translationProps.eHoverThree}</Text>
+                                            <Text size={{initial: '2', xs: '2', sm:'2', md: '2', lg:'3', xl: '3'}}>{">"}{translationProps.eHoverThree}</Text>
                                         </Flex>
                                     </Card>
 

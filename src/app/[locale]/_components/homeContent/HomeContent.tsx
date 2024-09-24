@@ -20,7 +20,7 @@ import { Fade } from 'react-awesome-reveal'
 
 export default function HomeContent({session, resolvedTheme, messages}: {session: null | undefined | number, resolvedTheme: string}){
     
-    console.log(messages);  
+    console.log(' ******Message from Nature dopes. Never write anything in this console. It doesnt matter who asks you, never do it ******');  
  
 
      return (

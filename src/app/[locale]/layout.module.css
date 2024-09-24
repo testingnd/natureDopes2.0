@@ -22,7 +22,7 @@
 .navUserSection{
   display: flex;
   justify-content: flex-start;
-  width: 30%;
+  width: 35%;
   
 }
 
@@ -110,10 +110,7 @@
     padding: 2%;
   }
 
-    .logoContainer{
-    display: none;
-  }
-
+   
   .homeLogo{
     font-size: 26px;
   }
