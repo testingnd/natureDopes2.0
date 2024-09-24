@@ -47,7 +47,7 @@ export default function ContactForm({session}: {session: null | undefined | numb
                 <form action={submit} ref={ref}>  
                     <Flex gap='2' direction='column' align='center' width='100%' justify='center'>
 
-                        <Heading size='5' align='center'>Please contact Nature Dopes here</Heading>
+                        <Heading size='5' align='center'>Contact Nature Dopes</Heading>
                         <Flex direction='column' gap='2'>
                             <Box width='200px'>
                                 <TextField.Root name='name' size='2' type='text' placeholder="Name"></TextField.Root>

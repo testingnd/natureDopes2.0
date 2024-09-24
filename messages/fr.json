@@ -21,13 +21,13 @@
         },
         "About2": {
             "user": "Pour utiliser pleinement ce site, nous conseillons aux visiteurs de créer un compte et de contribuer. Seule une adresse mail est prise en compte, toutes les données sont privées pour ce site uniquement.",
-            "map": "La fonctionnalité principale est notre outil de cartographie, alors commencez par là. L'objectif est que les utilisateurs créent un compte et publient des photos de leurs propres découvertes avec leurs positions. Les informations seront garder afin de créer une base de données fonctionnelle, indiquant où se trouvent les flore naturel intéressants.",
+            "map": "La fonctionnalité principale est l'outil de cartographie, alors commencez par là. L'objectif est que les utilisateurs créent un compte et publient des photos de leurs propres découvertes avec leurs positions. Les informations seront garder afin de créer une base de données fonctionnelle, indiquant où se trouvent les flore naturel intéressants.",
             "gallery": "Visiteurs peuvent consulter notre page Galerie. Une collection de photos de la nature de la galerie Nature Dopes originale, ou les utilisateurs enregistrés peuvent consulter leur propre collection."
         },
         "InfoSection": {
             "enjoy": "Venez profiter du site!",
              "info1": "NatureDopes est un projet construit par des bénévoles, visant à créer des outils utiles et à développer une communauté pour tous les amoureux de la nature",
-            "info2": "Nous apprécierions tout commentaire ou idée de la part de la communauté. Veuillez nous contacter ci-dessous, soit directement, soit via nos réseaux sociaux"
+            "info2": "Nous apprécierions tout commentaire ou idée de la part de la communauté. Veuillez nous contacter en utilisant le formulaire ci-dessous ou via nos réseaux sociaux"
         }
     },
     "GMap": {

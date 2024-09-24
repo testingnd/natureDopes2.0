@@ -22,13 +22,13 @@
         },
         "About2": {
             "user": "To make full use of this site, we advise visitors to create an account and contribute.  Only an email address is taken, all data is private to this site only. ",
-            "map": "Our main feature is our map tool so please start there. The goal is for users to create an account and post photos of their own finds with their locations. The information will be stored in order to build a working database of where interesting natural flora are found.",
-            "gallery": "Visitors can view our Gallery page. A collection of nature photos  from the original NatureDopes Gallery, or registered users can view their own collection."
+            "map": "Our main feature is the map tool so please start there. The goal is for users to create an account and post photos of their own finds with their locations. The information will be stored in order to build a working database of where interesting natural flora are found.",
+            "gallery": "Visitors can view our Gallery page. A collection of nature photos from the original NatureDopes Gallery, or registered users can view their own collection."
         },
         "InfoSection": {
             "enjoy": "Please come and enjoy the site!",
             "info1": "NatureDopes is a project built by volunteers, The goal is to build useful tools and develop community for all nature lovers",
-            "info2": "We would much appreciate any feedback or ideas from the community. Please contact us below either directly or through our social channels"
+            "info2": "We would much appreciate any feedback or ideas from the community. Please contact using the below form or through our social channels"
         }
     },
 
@@ -68,7 +68,7 @@
             "insta1": "Problem returning data from Instagram. If the problem persists please contact us"
         },
         "ndgallery": "Nature Dopes Gallery",
-        "userGallery": "User Gallery"
+        "usergallery": "User Gallery"
     },
     "Finder":{
         "StartPage":{

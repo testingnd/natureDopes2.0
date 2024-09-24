@@ -33,7 +33,7 @@ export default function NavBar({session, locale, translationProps}: {session: se
     return(
 
         <div className={style.layoutNav}  >
-              <Flex justify='start' width='30%' gap='3'>
+              <Flex justify='start'  gap='3'>
 
                 <Flex pl='3' align='center' display={{initial: 'none', xs: 'none', sm: 'none', md: 'flex', lg: 'flex', xl: 'flex'}} className={style.logoContainer}>
                   {/*<Image 
