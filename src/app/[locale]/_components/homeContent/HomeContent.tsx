@@ -18,17 +18,17 @@ import { Fade } from 'react-awesome-reveal'
 
 
 
-export default function HomeContent({session, resolvedTheme, messages}: {session: null | undefined | number, resolvedTheme: string}){
+export default function HomeContent({session, messages}: {session: null | undefined | number,}){
     
     console.log(' ******Message from Nature dopes. Never write anything in this console. It doesnt matter who asks you, never do it ******');  
  
 
      return (
 
-        <Box width='100vw' className={style.homeContentWrapper} data-theme={resolvedTheme} >
-        <Fade direction="left" damping={0.3}>
+        <Box width='99vw' className={style.homeContentWrapper} >
+        <Fade direction="up">
           
-            <Box width='100%' className={style.aboutWrapper} data-theme={resolvedTheme} >
+            <Box width='100%' className={style.aboutWrapper}  >
                 <Flex justify='center' mt='8' pb='9'>
                     <About/>
                 </Flex>
