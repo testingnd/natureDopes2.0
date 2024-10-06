@@ -32,9 +32,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
 
     const submit = async (data: FormData) => {
 
-        if(errors){
-            return
-        }
+        setError('')
         
         const {error, path} = await iagonUpload(data)
         
@@ -45,9 +43,9 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
               const {errorPrisma, success} = await registerImageData(data, path, session)
                 setError(errorPrisma)
                 if(success){
-                    refreshData()
-                    revalidateTag('finderdata')
                     setSuccess(success)
+                    refreshData()
+                    
                     
 
                 }

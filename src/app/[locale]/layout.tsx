@@ -82,7 +82,7 @@ export default async function RootLayout({
               enableSystem={false}
               disableTransitionOnChange
               >
-          <Theme data-is-root-theme='false' accentColor='green' grayColor='sage' scaling='100%' panelBackground='solid' >
+           <Theme data-is-root-theme='false' accentColor='green' grayColor='sage' scaling='100%' panelBackground='solid' >
            
             
             <NavBar translationProps={translationProps} session={session} locale={locale} />

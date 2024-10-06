@@ -21,7 +21,7 @@ import { sessionTypes } from "../_lib/sessionTypes";
 
 async function getData() {
    
-    const res = await fetch(`${process.env.LIVESITE}map/api`, { next: { tags: ['finderdata'] } })
+    const res = await fetch(`${process.env.LIVESITE}/map/api`, { next: { tags: ['finderdata'] } })
    
     if (!res.ok) {
       // This will activate the closest `error.js` Error Boundary

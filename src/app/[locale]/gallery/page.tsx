@@ -19,7 +19,7 @@ import { sessionTypes } from "../_lib/sessionTypes"
 
 async function getPrismaData(sessionId: number){
  
-  const res = await fetch(`${process.env.LIVESITE}gallery/api/prismaData/${sessionId}`)
+  const res = await fetch(`${process.env.LIVESITE}/gallery/api/prismaData/${sessionId}`)
 
   if (!res.ok) {
    
@@ -87,7 +87,7 @@ export default async function PageRootGallery(){
 
 
     async function getInstagramData() {
-        const res = await fetch(`${process.env.LIVESITE}gallery/api`, { cache: 'no-store' })
+        const res = await fetch(`${process.env.LIVESITE}/gallery/api`, { cache: 'no-store' })
         if (!res.ok) {
          return {
           error: 'Data from instagram has failed to load, please try again later'

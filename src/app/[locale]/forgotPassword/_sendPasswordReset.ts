@@ -9,7 +9,7 @@ import { sendMail } from "../_lib/nodemailer"
 import { randomUUID } from "crypto"
 
 
-const DOMAIN = process.env.DOMAIN || 'localhost:3000'
+const LIVESITE = process.env.LIVESITE || 'localhost:3000'
 const PROTOCOL = process.env.NODE_ENV === 'production' ? 'https' : 'http'
 
 
@@ -47,7 +47,7 @@ export async function sendPasswordReset(data: FormData){
         from: 'naturedopes@gmx.fr',
         to: user.email,
         subject: 'Reset Password Link - NatureDopes' ,
-        text: `Hello ${user.username} please find password reset link, click here: ${PROTOCOL}://${DOMAIN}/forgotPassword/password-reset/${token.token} . This link will remain valid for 4 hours. `,
+        text: `Hello ${user.username} please find password reset link, click here: ${LIVESITE}/forgotPassword/password-reset/${token.token} . This link will remain valid for 4 hours. `,
         
     }
 

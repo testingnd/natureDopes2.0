@@ -7,7 +7,7 @@ export async function iagonUpload(data: FormData){
     let imageFile = data.get('image_file') as File
     let imageName = data.get('species') as string   
 
-    if(!validator.isAlpha(imageName)){
+    if(!validator.isAlpha(imageName, ['en-GB'], {ignore: " ()-,"})){
         return {
             error: 'Species names must only contain letters '
         }
@@ -45,8 +45,8 @@ export async function iagonUpload(data: FormData){
             path: successId
         }
 
-    } catch (e: any) {
-        console.log(e.error)
+    } catch (error: any) {
+        console.log(error)
         return {
             error: 'There was a technical issue uploading your data, please try again. If the issue persists please contact us '
         }
