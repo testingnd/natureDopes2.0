@@ -15,7 +15,7 @@ export async function registerImageData(data: FormData, image_path: string, user
         errorPrisma: 'gps coordinates must be decimal numbers'
     }
  }
- if(!validator.isAlpha(species_name)){
+ if(!validator.isAlpha(species_name, ['en-GB'], {ignore: " ()-,"})){
     return {
         errorPrisma: 'Species names must only  contain letters '
     }
