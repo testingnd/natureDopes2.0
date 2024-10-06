@@ -45,7 +45,9 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                 if(success){
                     setSuccess(success)
                     refreshData()
-                    
+                  
+                   
+                   
                     
 
                 }
@@ -105,10 +107,10 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                             }
                         }}/>   
                         <SubmitButton>{translationProps.uploadButton}</SubmitButton>
-                       
+                       {errors && <p>{errors}</p>}
+                       { success && <p >{success}</p>}  
                     </form>
-                    {errors && <p>{errors}</p>}
-                    { success && <p >{success}</p>}  
+                    
                     
                 </Flex>
             </Card>

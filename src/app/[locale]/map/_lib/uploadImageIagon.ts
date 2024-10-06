@@ -7,7 +7,7 @@ export async function iagonUpload(data: FormData){
     let imageFile = data.get('image_file') as File
     let imageName = data.get('species') as string   
 
-    if(!validator.isAlpha(imageName, ['en-GB'], {ignore: " ()-,"})){
+    if(!validator.isAlpha(imageName, ['en-GB'], {ignore: " ()-,éèà"})){
         return {
             error: 'Species names must only contain letters '
         }
