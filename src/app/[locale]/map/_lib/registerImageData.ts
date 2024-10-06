@@ -2,6 +2,7 @@
 import {prisma} from '@/src/app/[locale]/prisma'
 import { Prisma } from "@prisma/client";
 import validator from 'validator';
+import { revalidateTag } from 'next/cache';
 
 
 export async function registerImageData(data: FormData, image_path: string, user_ids: number){
@@ -15,7 +16,7 @@ export async function registerImageData(data: FormData, image_path: string, user
         errorPrisma: 'gps coordinates must be decimal numbers'
     }
  }
- if(!validator.isAlpha(species_name, ['en-GB'], {ignore: " ()-,"})){
+ if(!validator.isAlpha(species_name, ['en-GB'], {ignore: " ()-,éèà"})){
     return {
         errorPrisma: 'Species names must only  contain letters '
     }
@@ -49,7 +50,7 @@ export async function registerImageData(data: FormData, image_path: string, user
         }
 
     }
-
+    revalidateTag('finderdata')
     return {
         success: 'Thank you, a record has been created for '+ species_name
     }

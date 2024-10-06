@@ -1,6 +1,6 @@
 'use client'
 
-import { SymbolIcon } from '@radix-ui/react-icons'
+import { Spinner } from '@radix-ui/themes'
 import { Button } from '@radix-ui/themes'
 import { ReactNode } from 'react'
 import { useFormStatus } from 'react-dom'
@@ -14,7 +14,7 @@ export const SubmitButton = ({ children }: { children: ReactNode }) => {
     return (
       
       <Button type="submit" disabled={pending}>
-        {pending ? <SymbolIcon className="animate-spin" /> : children}
+        {pending ? <Spinner /> : children}
       </Button>
      
     )
