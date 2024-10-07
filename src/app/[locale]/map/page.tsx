@@ -1,4 +1,7 @@
 
+export const runtime = 'nodejs'
+export const maxDuration = 40
+
 import React from "react"
 
 
