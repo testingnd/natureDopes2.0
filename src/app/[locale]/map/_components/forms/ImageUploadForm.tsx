@@ -35,7 +35,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
         setError('')
         
         const {error, path} = await iagonUpload(data)
-        
+        path ? console.log(path): null
         if(error){
             setError(error)
             return
