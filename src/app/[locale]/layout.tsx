@@ -8,6 +8,8 @@ import { Theme} from '@radix-ui/themes'
 import { ThemeProvider } from 'next-themes';
 //global css
 
+import { Analytics } from "@vercel/analytics/react"
+
 
 import './globals.css'
 
@@ -71,7 +73,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-
+        <title>Nature Dopes - Dedicated to preserving nature</title>
         
       </head>
       <body >
@@ -90,7 +92,7 @@ export default async function RootLayout({
             {children}
 
             <Footer translationPropsFooter={translationPropsFooter} />
-           
+            <Analytics />
           </Theme>
          </ThemeProvider>
       </Providers>
