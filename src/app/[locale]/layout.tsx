@@ -60,7 +60,8 @@ export default async function RootLayout({
     signout: t('signout'),
     map: t('NavMenu.map'),
     gallery: t('NavMenu.gallery'),
-    play: t('NavMenu.play')
+    play: t('NavMenu.play'),
+    apikeys: t('NavMenu.apikeys')
 
   }
 

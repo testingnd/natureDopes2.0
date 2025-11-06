@@ -7,7 +7,8 @@
         "NavMenu": {
             "map": "Map",
             "gallery": "Gallery",
-            "play": "Play"
+            "play": "Play",
+            "apikeys": "API Keys"
         }
     },
 
@@ -84,6 +85,11 @@
 
     "Footer":{
         "awattsdev": "Powered By "
+    },
+
+    "ApiKeys": {
+        "title": "API Key Management",
+        "description": "Generate and manage API keys for programmatic access to NatureDopes flora observation data. Your keys enable external tools and scripts to query our database."
     }
 
 }
