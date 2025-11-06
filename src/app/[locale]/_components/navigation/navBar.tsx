@@ -12,7 +12,7 @@ import { LoginButton, LogoutButton } from '../../auth'
 // radix ui elements
 import { Text, Box, Link, Flex } from "@radix-ui/themes";
 
-import { sessionTypes } from "../../_lib/sessionTypes";
+import { Session } from "next-auth";
 
 // icons & images
 import { RxHome } from "react-icons/rx";
@@ -26,7 +26,7 @@ import {TranslationTypes} from '../../layout'
 import { useTheme } from "next-themes";
 
 
-export default function NavBar({session, locale, translationProps}: {session: sessionTypes , locale: string, translationProps: TranslationTypes }){
+export default function NavBar({session, locale, translationProps}: {session: Session | null, locale: string, translationProps: TranslationTypes }){
 
  
   

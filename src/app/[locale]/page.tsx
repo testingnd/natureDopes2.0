@@ -1,6 +1,5 @@
 
 import style from './layout.module.css'
-import './globals.css'
 import React, { JSXElementConstructor } from 'react'
 
 
@@ -38,7 +37,7 @@ export default async function Page() {
           <Splash />
           <NextIntlClientProvider  messages={messages}>
           
-            <HomeContent session={session} />
+            <HomeContent />
           </NextIntlClientProvider>
           
     </Flex>
