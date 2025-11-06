@@ -25,8 +25,8 @@ export default function Nav({translationProps}: {translationProps: TranslationTy
         <Link href='/' ><DropdownMenu.Item><Text size='3'><Strong>Home</Strong></Text></DropdownMenu.Item></Link>
         <Link href="/map"><DropdownMenu.Item><Text size='3'><Strong>{translationProps.map}</Strong></Text></DropdownMenu.Item></Link>
         <Link href='/gallery'><DropdownMenu.Item><Text size='3'><Strong>{translationProps.gallery}</Strong></Text></DropdownMenu.Item></Link>
-        
         <Link href='/finder'><DropdownMenu.Item><Text size='3'><Strong>{translationProps.play}</Strong></Text></DropdownMenu.Item></Link>
+        <Link href='/api-keys'><DropdownMenu.Item><Text size='3'><Strong>{translationProps.apikeys}</Strong></Text></DropdownMenu.Item></Link>
         </DropdownMenu.Content>
         </DropdownMenu.Root>
 
