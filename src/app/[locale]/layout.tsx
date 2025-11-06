@@ -25,7 +25,6 @@ import Footer from './_components/footer/Footer';
 import { getTranslations } from 'next-intl/server';
 
 import { useTheme } from 'next-themes';
-import { sessionTypes } from './_lib/sessionTypes';
 
 const inter = Inter({
    weight: '800',
@@ -48,7 +47,7 @@ export default async function RootLayout({
   children: React.ReactNode, params: {locale: string}
 }) {
 
-  const session: sessionTypes | null = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions)
 
   const t = await getTranslations("Navigation")
   const tf = await getTranslations("Footer")
