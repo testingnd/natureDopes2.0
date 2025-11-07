@@ -8,12 +8,15 @@ import style from './uploadForm.module.css'
 
 
 import { editImageData } from "../../_lib/editImageData";
-import { TranslationTypes } from "../../../layout";
+import { useTranslations } from "next-intl";
 
 import { SubmitButton } from "@/src/app/[locale]/_components/buttons/SubmitButton";
 
 
-export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, getData, translationProps}: {species: string | undefined, lng: number | undefined, lat: number | undefined, imageId: number | undefined | string, toggleEditForm: React.MouseEventHandler, getData: Function, translationProps: TranslationTypes}){
+export default function EditImageForm({species, lng, lat, imageId, toggleEditForm, getData}: {species: string | undefined, lng: number | undefined, lat: number | undefined, imageId: number | undefined | string, toggleEditForm: React.MouseEventHandler, getData: Function}){
+
+    const t = useTranslations('GMap.EditForm');
+    const tHover = useTranslations('GMap.EditForm.HoverCard');
 
     const [ error, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')
@@ -55,7 +58,7 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                     
                     <Flex justify='between'>
                         <Flex align='center'>
-                            <Text>{translationProps.editFormTitle}</Text> 
+                            <Text>{t('title')}</Text>
                             <HoverCard.Root >
                                 <HoverCard.Trigger>
                                     <Button ml='1' mr='1' size='1'>?</Button>
@@ -63,10 +66,10 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                                 <HoverCard.Content className={style.uploadFormInfoHover} >
                                     <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} mr={{initial: '4', xs: '4', sm: '4', }} >
                                         <Flex direction='column' gap='2' width='90%'>
-                                            <Text size={{initial: '2', xs: '2', sm:'2', md: '2', lg:'3', xl: '3'}}>{">"}{translationProps.eHoverOne}</Text>
-                                            <Text size={{initial: '2', xs: '2', sm:'2', md: '2', lg:'3', xl: '3'}}>{">"}{translationProps.eHoverTwo}</Text>
-                                            
-                                            <Text size={{initial: '2', xs: '2', sm:'2', md: '2', lg:'3', xl: '3'}}>{">"}{translationProps.eHoverThree}</Text>
+                                            <Text size={{initial: '2', xs: '2', sm:'2', md: '2', lg:'3', xl: '3'}}>{">"}{tHover('one')}</Text>
+                                            <Text size={{initial: '2', xs: '2', sm:'2', md: '2', lg:'3', xl: '3'}}>{">"}{tHover('two')}</Text>
+
+                                            <Text size={{initial: '2', xs: '2', sm:'2', md: '2', lg:'3', xl: '3'}}>{">"}{tHover('three')}</Text>
                                         </Flex>
                                     </Card>
 
@@ -76,13 +79,13 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
                         </Flex>
                         <Button size='1' variant="surface" onClick={toggleEditForm}>X</Button>
                     </Flex>
-                    
+
                     <form action={submit}>
                         <TextField.Root mb='2' name='species' placeholder={species} size='3'  />
                         <TextField.Root mb='2' name='gps_long' placeholder='Position Longtitude' size='3' value={lng} />
                         <TextField.Root mb='2' name='gps_lat' placeholder='Position Latitude' size='3' value={lat}/>
                         <TextField.Root className={style.hiddenInput} name='imageId' value={imageId} style={{display: 'none'}}  />
-                        <SubmitButton>{translationProps.updateButton}</SubmitButton>
+                        <SubmitButton>{t('updatebutton')}</SubmitButton>
                        
                     </form>
                     {error && <p>{error}</p>}

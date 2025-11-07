@@ -16,22 +16,15 @@ import { StaticImageData } from 'next/image';
 import { Button, Switch, Tooltip, TextField, Flex, Box } from '@radix-ui/themes';
 import style from './mapMarker.module.css'
 
-import { TranslationTypes } from '../../layout';
+import { useTranslations } from 'next-intl';
 
-export interface imageData{
-  [x: string]: any;
- 
-  id:  number,
-  user_id: number,
-  species_name: string,
-  gps_lat: number,
-  gps_long: number,
-  image_path: string
-}
+import { images } from '@prisma/client';
 
 
 
-export default function Gmap({getImageData, loadingGif, session, translationProps}: {getImageData: imageData, loadingGif: StaticImageData, session: number, translationProps: TranslationTypes}) {
+export default function Gmap({getImageData, loadingGif, session}: {getImageData: images[], loadingGif: StaticImageData, session: number}) {
+
+  const t = useTranslations('GMap');
 
 
 
@@ -78,10 +71,10 @@ export default function Gmap({getImageData, loadingGif, session, translationProp
   }
 
   // whether Edit Form is Visible
-  function toggleEditForm(text=undefined, id=undefined){
+  function toggleEditForm(){
     setEditForm(!editForm)
-    setImageId(id)
-    setSpecies(text)
+    setImageId(undefined)
+    setSpecies(undefined)
   }
 
 
@@ -118,25 +111,25 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
         
         <Flex p='1' justify='between'>
           <Flex align='center'>
-            <label className={style.findLabel}>{translationProps.allfinds}</label>
+            <label className={style.findLabel}>{t('allfinds')}</label>
             <Switch checked={!allChecked} onCheckedChange={() => setAllChecked(allChecked => !allChecked)} />
-            <label className={style.findLabel}>{translationProps.yourfinds}</label>
+            <label className={style.findLabel}>{t('yourfinds')}</label>
           </Flex>
-        
+
         </Flex>
         }
         <Flex align='center'>
           <form onSubmit={handleSubmit}>
 
-            <TextField.Root placeholder={translationProps.searchbar} onChange={event => setSearchParams(event.target.value)}>
+            <TextField.Root placeholder={t('searchbar')} onChange={event => setSearchParams(event.target.value)}>
               <TextField.Slot>
               <MagnifyingGlassIcon height="16" width="16" />
               </TextField.Slot>
             </TextField.Root>
-          
+
           </form>
-          {!session? null :  uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>{translationProps.addbutton}</Button> </Box>}
-          {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm} getData={getData} translationProps={translationProps} />: null }
+          {!session? null :  uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>{t('addbutton')}</Button> </Box>}
+          {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm} getData={getData} />: null }
           {session? null:<Tooltip className={style.toolTip}  content='Sign in for more map features'>
             <Button ml='1%'  radius='medium'>i</Button>
 
@@ -153,7 +146,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
       
       <div style={{ height: '90vh', width: '100%'  }}>
 
-        {uploadForm? <ImageUploadForm translationProps={translationProps} lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm} getData={getData}  />: null}
+        {uploadForm? <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm} getData={getData}  />: null}
         <Suspense fallback={<Loading/>}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI}}
@@ -164,7 +157,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
         >
      
     
-        {imageData.filter((data: { user_id: number; }) => {
+        {imageData.filter((data) => {
           if(!allChecked){
             if(data.user_id == session){
               return data
@@ -175,15 +168,15 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
             return data
           }
         })
-        .filter((data: { species_name: string; }) => {
+        .filter((data) => {
           if(!data){
             return data
           } else if(data.species_name.toLowerCase().includes(searchParams.toLowerCase())) {
             return data
           }
         }).map(data  => (
-          <MapMarker key={data.id} id={data.id} user_id={data.user_id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} ipath={data.image_path} session={session} loadingGif={loadingGif} toggleEditForm={toggleEditForm} translationProps={translationProps}  />
-        ))}  
+          <MapMarker key={data.id} id={data.id} user_id={data.user_id} lat={data.gps_lat} lng={data.gps_long} text={data.species_name} ipath={data.image_path} session={session} loadingGif={loadingGif} toggleEditForm={toggleEditForm}  />
+        ))}
 
         </GoogleMapReact>
       </Suspense>

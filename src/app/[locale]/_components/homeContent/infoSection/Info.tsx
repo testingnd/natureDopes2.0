@@ -3,32 +3,32 @@ import Image from 'next/image'
 
 import Logo from '@/public/images/Naturedopes-logo-removebg-preview.png'
 
-import { useMessages } from 'next-intl'
+import { useTranslations } from 'next-intl'
 
 
 export default function InfoSection(){
-   
 
-    const messages = useMessages()
+
+    const t = useTranslations('Home.InfoSection')
 
     return (
        <Flex width='80%' justify='center'>
             <Flex justify='center' direction='column'>
                 <Heading align='center' mb='5'>
-                    {messages.Home.InfoSection.enjoy}
+                    {t('enjoy')}
                 </Heading>
                 <Flex justify='center' pb='5'>
-                    <Image 
+                    <Image
                     src={Logo}
                     width={200}
                     alt='Nature Dopes Logo'
                 />
                 </Flex>
                 <Text align='center' mt='2' >
-                    {messages.Home.InfoSection.info1}
+                    {t('info1')}
                 </Text>
                 <Text align='center' mt='2' >
-                    {messages.Home.InfoSection.info2}
+                    {t('info2')}
                 </Text>
 
 
