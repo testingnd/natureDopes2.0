@@ -14,8 +14,9 @@ import { useTheme } from "next-themes";
 import { RiInstagramFill } from "react-icons/ri";
 
 import style from '../homecontent.module.css'
+import { Session } from "next-auth";
 
-export default function ContactForm({session}: {session: null | undefined | number}) {
+export default function ContactForm() {
 
 
 

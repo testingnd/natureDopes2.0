@@ -5,28 +5,29 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 
 import Link from "next/link";
 
-import { TranslationTypes } from "../../layout";
+import { useTranslations } from "next-intl";
 
 
 
-export default function Nav({translationProps}: {translationProps: TranslationTypes}){
+export default function Nav(){
+    const t = useTranslations('Navigation.NavMenu');
 
     return(
       <>
-        
+
         <DropdownMenu.Root>
         <DropdownMenu.Trigger>
         <Button variant="surface">
-       
+
             <RxHamburgerMenu size={30} />
         </Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
         <Link href='/' ><DropdownMenu.Item><Text size='3'><Strong>Home</Strong></Text></DropdownMenu.Item></Link>
-        <Link href="/map"><DropdownMenu.Item><Text size='3'><Strong>{translationProps.map}</Strong></Text></DropdownMenu.Item></Link>
-        <Link href='/gallery'><DropdownMenu.Item><Text size='3'><Strong>{translationProps.gallery}</Strong></Text></DropdownMenu.Item></Link>
-        
-        <Link href='/finder'><DropdownMenu.Item><Text size='3'><Strong>{translationProps.play}</Strong></Text></DropdownMenu.Item></Link>
+        <Link href="/map"><DropdownMenu.Item><Text size='3'><Strong>{t('map')}</Strong></Text></DropdownMenu.Item></Link>
+        <Link href='/gallery'><DropdownMenu.Item><Text size='3'><Strong>{t('gallery')}</Strong></Text></DropdownMenu.Item></Link>
+        <Link href='/finder'><DropdownMenu.Item><Text size='3'><Strong>{t('play')}</Strong></Text></DropdownMenu.Item></Link>
+        <Link href='/api-keys'><DropdownMenu.Item><Text size='3'><Strong>{t('apikeys')}</Strong></Text></DropdownMenu.Item></Link>
         </DropdownMenu.Content>
         </DropdownMenu.Root>
 

@@ -3,15 +3,15 @@ import { AuthOptions} from "next-auth"
 import  CredentialsProvider  from "next-auth/providers/credentials"
 import { prisma } from "@/src/app/[locale]/prisma";
 import { compare } from 'bcrypt'
+import './sessionTypes' // Import to register type extensions
 
 
 
 export const authOptions: AuthOptions = {
-
-    pages:{
-        signIn: 'api/auth/signin'
-    }
-    ,
+    pages: {
+        signIn: '/api/auth/signin',
+        error: '/api/auth/signin',
+    },
     callbacks: {
         /*session: ({session, token}) => {
             console.log('Session Callback', {session, token})
@@ -120,15 +120,11 @@ export const authOptions: AuthOptions = {
                     return null
                 }
 
-                if(user){
-
-                    return {
-                        id: user.id.toString(),
-                        email: user.email,
-                        name: user.username,   
-                    }
+                return {
+                    id: user.id.toString(),
+                    email: user.email,
+                    name: user.username,
                 }
-                
             }
         })
     ]

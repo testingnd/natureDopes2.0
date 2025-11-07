@@ -9,19 +9,17 @@ import { Container, Card, Box, Blockquote, Inset, Grid, Flex} from "@radix-ui/th
 
 //image component
 import IagonImage from "./IagonImage";
+import { images } from "@prisma/client";
 
-import { ImagesDataPrisma } from "../../page";
 
-export default function IagonGallery({imageDataPrisma, LoadingGif}: {imageDataPrisma: ImagesDataPrisma | null, LoadingGif: any}){
-
-    const [imageData, setImageData] = React.useState(imageDataPrisma)
+export default function IagonGallery({imageDataPrisma, LoadingGif}: {imageDataPrisma: images[] | null, LoadingGif: any}){
 
 
     return (
         <>
          <Flex justify='center' pl='6' pr='6'>
             <Grid columns={{lg:'4', md: '3' ,sm: '3', xs: '1' , initial: '1'}} gap='6' >
-                {imageData.map(data => 
+                { imageDataPrisma && imageDataPrisma.map(data => 
 
                             <Box key={data.id} maxHeight='auto' >
                                 <Card size={{lg: '2', md: '2', sm: '1', xs: '1', initial: '1'}} >

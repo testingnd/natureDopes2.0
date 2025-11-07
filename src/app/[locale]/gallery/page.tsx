@@ -4,20 +4,18 @@ import Image from "next/image"
 
 import MainGalleryComponent from "./_components/MainGalleryComponent"
 
-import { getServerSession, NextAuthOptions } from "next-auth"
+import { getServerSession, NextAuthOptions, Session } from "next-auth"
 import { authOptions } from "../_lib/authOptions"
 
 
 import LoadingGif from '@/public/images/nd -logo-gif.gif'
-
-import { TranslationTypes } from "../layout"
-import { getTranslations } from "next-intl/server"
-import { sessionTypes } from "../_lib/sessionTypes"
+import { images } from '@prisma/client'
 
 
 
 
-async function getPrismaData(sessionId: number){
+
+async function getPrismaData(sessionId: string){
  
   const res = await fetch(`${process.env.LIVESITE}/gallery/api/prismaData/${sessionId}`)
 
@@ -31,13 +29,9 @@ async function getPrismaData(sessionId: number){
   return res.json()
 }
 
-export type ImagesDataPrisma = {
-  id: number,
-  path: string,
-  species_name: string,
-  gps_long: number,
-  gps_lat: number,
-  user_id: number
+interface PrismaDataResponse {
+  prismaData?: images[]
+  error?: string
 }
 
 export type InstagramApiData = {
@@ -53,16 +47,9 @@ export type InstagramApiData = {
 export default async function PageRootGallery(){
 
     //check for session
-    const session: sessionTypes | null = await getServerSession(authOptions)
+    const session: Session | null = await getServerSession(authOptions)
 
     console.log(session)
-
-    const t = await getTranslations("Gallery")
-
-    const translationProps: TranslationTypes = {
-      nd: t("ndgallery"),
-      user: t("usergallery")
-    }
 
     let userId = null
 
@@ -70,10 +57,10 @@ export default async function PageRootGallery(){
       userId = session.user.id
   }
 
-    let imageDataPrisma: ImagesDataPrisma | null = null
-    let prismaError: string | null = null 
+    let imageDataPrisma: images[] | null = null
+    let prismaError: string | null = null
     if(session){
-      const {prismaData, error}: {prismaData: ImagesDataPrisma, error: string | null} = await getPrismaData(session.user.id)
+      const {prismaData, error}: PrismaDataResponse = await getPrismaData(session.user.id)
       
       if(prismaData){
         imageDataPrisma = prismaData
@@ -101,9 +88,9 @@ export default async function PageRootGallery(){
    
 
     return(
-        <>  
-       
-          <MainGalleryComponent error={error} prismaError={prismaError} igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} LoadingGif={LoadingGif} translationProps={translationProps} />
+        <>
+
+          <MainGalleryComponent error={error} prismaError={prismaError} igResponse={igResponse} imageDataPrisma={imageDataPrisma} session={userId} LoadingGif={LoadingGif} />
         
       
         </>

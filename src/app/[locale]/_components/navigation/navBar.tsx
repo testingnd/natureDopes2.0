@@ -12,21 +12,21 @@ import { LoginButton, LogoutButton } from '../../auth'
 // radix ui elements
 import { Text, Box, Link, Flex } from "@radix-ui/themes";
 
-import { sessionTypes } from "../../_lib/sessionTypes";
+import { Session } from "next-auth";
 
 // icons & images
 import { RxHome } from "react-icons/rx";
 import Image from "next/image";
 import logowob from '../../../../../public/images/Naturedopes-logo-removebg-preview.png'
 
-
-
-import {TranslationTypes} from '../../layout'
+import { useTranslations } from "next-intl";
 
 import { useTheme } from "next-themes";
 
 
-export default function NavBar({session, locale, translationProps}: {session: sessionTypes , locale: string, translationProps: TranslationTypes }){
+export default function NavBar({session, locale}: {session: Session | null, locale: string}){
+
+  const t = useTranslations('Navigation')
 
  
   
@@ -50,18 +50,18 @@ export default function NavBar({session, locale, translationProps}: {session: se
 
                 <Flex align='center' pl='1'>
 
-                  {!session? <LoginButton translationProps={translationProps} />:<LogoutButton translationProps={translationProps}  />  }
-             
-                  {session? <Box pl='4px' ><Text >{translationProps.user} {session.user.name}</Text></Box>: null }
+                  {!session? <LoginButton />:<LogoutButton />  }
+
+                  {session? <Box pl='4px' ><Text >{t('user')} {session.user.name}</Text></Box>: null }
                 </Flex>
-                
-              
+
+
               </Flex>
-            
-              
+
+
               <section className={style.navUserSection}>
                 <div>
-                  <Nav translationProps={translationProps} />
+                  <Nav />
                
                 </div>
                 {/*<div>

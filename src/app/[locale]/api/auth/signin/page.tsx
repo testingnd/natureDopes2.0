@@ -8,34 +8,44 @@ import { Flex , Text, Button, Card, Box, Heading, TextField, Avatar, AspectRatio
 
 import { signIn } from "next-auth/react";
 import { Label } from "@radix-ui/themes/dist/esm/components/context-menu.js";
+import { useLocale } from "next-intl";
 
 import { SubmitButton } from "../../../_components/buttons/SubmitButton";
-
-import logo from '../../../../../../public/images/Naturedopes-logo-removebg-preview.png'
-
 
 
 export default function SignIn() {
 
- 
+
     const[email, setEmail] = React.useState("")
     const[password, setPassword] = React.useState("")
-    const[error, setError] = React.useState()
+    const[error, setError] = React.useState<string | null>(null)
+    const locale = useLocale()
 
     const searhParams = useSearchParams()
     const errorMessage = searhParams.get('error')
 
-    const callbackUrl = searhParams.get('callbackUrl') || '/'
+    const callbackUrl = searhParams.get('callbackUrl') || `/${locale}`
 
 
     const signInHandler = async (e : React.FormEvent) => {
-        
-        
+
+
         e.preventDefault()
-       
-        await signIn("credentials" , {email, password, callbackUrl})
-        
-       
+        setError(null)
+
+        const result = await signIn("credentials" , {
+            email,
+            password,
+            callbackUrl,
+            redirect: false
+        })
+
+        if (result?.error) {
+            setError("Invalid email or password")
+        } else if (result?.ok) {
+            window.location.href = callbackUrl
+        }
+
       };
 
     
@@ -43,7 +53,7 @@ export default function SignIn() {
     return (
       
 
-      <Flex justify='center' pt='8'>
+      <Flex justify='center' pt='8' pb='8'>
 
         <Box width={{xs: '80vw', sm: '80vw', md: '50vw', lg: '50vw' , xl: '50vw'}}>
         <Card size='5' variant="classic" style={{boxShadow: 'var(--shadow-5)'}} >
@@ -52,7 +62,7 @@ export default function SignIn() {
               <Text mr='1'>Create an account?</Text><Link href='/register'><Button variant="surface" color="blue">Register</Button></Link>
           </Flex>
           
-          <form method="post" action="/api/auth/callback/credentials" onSubmit={signInHandler}>
+          <form onSubmit={signInHandler}>
           <Flex gap='2' direction='column' justify='between' align='stretch'>
 
                   <Flex gap='3' align='center' justify='center' direction='column'>
@@ -80,7 +90,7 @@ export default function SignIn() {
                     </Flex>
                   </Flex>
                   <SubmitButton>Sign in</SubmitButton>
-                  {errorMessage && <Text color="crimson">Invalid credentials</Text> }
+                  {(errorMessage || error) && <Text color="crimson">{error || "Invalid credentials"}</Text> }
               </Flex>
               </form>
         </Card>

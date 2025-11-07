@@ -22,10 +22,9 @@ import { authOptions } from './_lib/authOptions';
 import NavBar from './_components/navigation/navBar';
 import Footer from './_components/footer/Footer';
 
-import { getTranslations } from 'next-intl/server';
-
 import { useTheme } from 'next-themes';
-import { sessionTypes } from './_lib/sessionTypes';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
 const inter = Inter({
    weight: '800',
@@ -38,35 +37,14 @@ export const metadata: Metadata = {
   description: 'Nature Dopes ',
 }
 
-export interface TranslationTypes { 
-  [key: string]: string;
-}
-
 export default async function RootLayout({
   children, params: {locale}
 }: {
   children: React.ReactNode, params: {locale: string}
 }) {
 
-  const session: sessionTypes | null = await getServerSession(authOptions)
-
-  const t = await getTranslations("Navigation")
-  const tf = await getTranslations("Footer")
-
-
-  const translationProps: TranslationTypes = {
-    user: t('user'),
-    signin: t('signin'),
-    signout: t('signout'),
-    map: t('NavMenu.map'),
-    gallery: t('NavMenu.gallery'),
-    play: t('NavMenu.play')
-
-  }
-
-  const translationPropsFooter: TranslationTypes = {
-    poweredBy: tf('awattsdev')
-  }
+  const session = await getServerSession(authOptions)
+  const messages = await getMessages()
 
 
 
@@ -78,23 +56,25 @@ export default async function RootLayout({
       </head>
       <body >
        
-      <Providers> 
+      <Providers>
+        <NextIntlClientProvider messages={messages}>
          <ThemeProvider
               attribute='class'
               enableSystem={false}
               disableTransitionOnChange
               >
            <Theme data-is-root-theme='false' accentColor='green' grayColor='sage' scaling='100%' panelBackground='solid' >
-           
-            
-            <NavBar translationProps={translationProps} session={session} locale={locale} />
-          
+
+
+            <NavBar session={session} locale={locale} />
+
             {children}
 
-            <Footer translationPropsFooter={translationPropsFooter} />
+            <Footer />
             <Analytics />
           </Theme>
          </ThemeProvider>
+        </NextIntlClientProvider>
       </Providers>
       
       

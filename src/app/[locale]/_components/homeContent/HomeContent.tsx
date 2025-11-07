@@ -11,6 +11,8 @@ import About2 from "./about/About2";
 import InfoSection from "./infoSection/Info";
 
 import { useTheme } from "next-themes";
+import { Session } from "next-auth";
+import { AbstractIntlMessages } from "next-intl";
 
 import style from './homecontent.module.css'
 
@@ -18,7 +20,7 @@ import { Fade } from 'react-awesome-reveal'
 
 
 
-export default function HomeContent({session, messages}: {session: null | undefined | number,}){
+export default function HomeContent({messages}: {messages?: AbstractIntlMessages}){
     
     console.log(' ******Message from Nature dopes. Never write anything in this console. It doesnt matter who asks you, never do it ******');  
  
@@ -43,13 +45,13 @@ export default function HomeContent({session, messages}: {session: null | undefi
 
             <Box width='100%'>
                 <Flex justify='center' mt='1' pt='9' pb='9'>
-                    <InfoSection messages={messages} />
+                    <InfoSection/>
                 </Flex>
             </Box>
 
             <Box width='100%' className={style.contactWrapper}  >
                 <Flex >
-                    <ContactForm session={session}/>
+                    <ContactForm />
                 </Flex>
             </Box> 
 
