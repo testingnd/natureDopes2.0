@@ -8,11 +8,10 @@ import './sessionTypes' // Import to register type extensions
 
 
 export const authOptions: AuthOptions = {
-
-    pages:{
-        signIn: 'api/auth/signin'
-    }
-    ,
+    pages: {
+        signIn: '/api/auth/signin',
+        error: '/api/auth/signin',
+    },
     callbacks: {
         /*session: ({session, token}) => {
             console.log('Session Callback', {session, token})

@@ -4,12 +4,13 @@ import { Theme, Button, Flex } from '@radix-ui/themes'
 
 
 import { signIn, signOut } from "next-auth/react"
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 export const LoginButton = () => {
     const t = useTranslations('Navigation');
+    const locale = useLocale();
 
-    return (<Flex><Button size={{xs: '1', sm: '1', md: '2', lg: '2'}} variant='surface' onClick={ () => signIn()}>{t('signin')}</Button></Flex>)
+    return (<Flex><Button size={{xs: '1', sm: '1', md: '2', lg: '2'}} variant='surface' onClick={ () => signIn(undefined, { callbackUrl: `/${locale}` })}>{t('signin')}</Button></Flex>)
 }
 
 export const LogoutButton = () => {
