@@ -11,10 +11,13 @@ import { registerImageData } from "../../_lib/registerImageData";
 import { revalidateTag } from "next/cache";
 
 import { SubmitButton } from "@/src/app/[locale]/_components/buttons/SubmitButton";
-import { TranslationTypes } from "../../../layout";
+import { useTranslations } from "next-intl";
 
 
-export default function imageUploadForm({lng, lat, session, toggleUploadForm, getData, translationProps}: {lng: number | undefined, lat: number | undefined, session: number, toggleUploadForm: ReactEventHandler, getData: Function, translationProps: TranslationTypes}){
+export default function imageUploadForm({lng, lat, session, toggleUploadForm, getData}: {lng: number | undefined, lat: number | undefined, session: number, toggleUploadForm: ReactEventHandler, getData: Function}){
+
+    const t = useTranslations('GMap.UploadForm');
+    const tHover = useTranslations('GMap.UploadForm.HoverCard');
 
     const [ errors, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')
@@ -67,7 +70,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                     
                     <Flex justify='between'>
                         <Flex align='center'>
-                            <Text>{translationProps.uploadFormTitle}</Text> 
+                            <Text>{t('title')}</Text>
                             <HoverCard.Root >
                                 <HoverCard.Trigger>
                                     <Button ml='1' size='1'>i</Button>
@@ -75,10 +78,10 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                                 <HoverCard.Content className={style.uploadFormInfoHover}>
                                     <Card size={{xs: '1', sm: '1', md: '3', lg: '4', xl: '5'}} >
                                         <Flex direction='column' gap='2'>
-                                            <Text>{">"}{translationProps.hoverOne}</Text>
-                                            <Text>{">"}{translationProps.hoverTwo}</Text>
-                                            <Text>{">"}{translationProps.hoverThree}</Text>
-                                            <Text>{">"}{translationProps.hoverFour}</Text>
+                                            <Text>{">"}{tHover('one')}</Text>
+                                            <Text>{">"}{tHover('two')}</Text>
+                                            <Text>{">"}{tHover('three')}</Text>
+                                            <Text>{">"}{tHover('four')}</Text>
                                         </Flex>
                                     </Card>
 
@@ -88,9 +91,9 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                         </Flex>
                         <Button size='1' variant="surface" onClick={toggleUploadForm}>X</Button>
                     </Flex>
-                    
+
                     <form action={submit}>
-                        <TextField.Root mb='2' name='species' placeholder={translationProps.species} size='3'  />
+                        <TextField.Root mb='2' name='species' placeholder={t('species')} size='3'  />
                         <TextField.Root mb='2' name='gps_long' placeholder="Position Longtitude" size='3' value={lng} />
                         <TextField.Root mb='2' name='gps_lat' placeholder="Position Latitude" size='3' value={lat}/>
                         <input className={style.uploadFileButton} name='image_file' placeholder="Image" type="file" accept=".png, .jpg, .jpeg, .heic, .svg" onChange={(event) => {
@@ -103,10 +106,11 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                                 setError('')
                             }
 
-                       
+
+
                             }
-                        }}/>   
-                        <SubmitButton>{translationProps.uploadButton}</SubmitButton>
+                        }}/>
+                        <SubmitButton>{t('uploadbutton')}</SubmitButton>
                        {errors && <p>{errors}</p>}
                        { success && <p >{success}</p>}  
                     </form>

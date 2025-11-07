@@ -12,14 +12,14 @@ import IagonGallery from "./galleries/IagonGallery";
 import InstagramGallery from "./galleries/InstagramGallery";
 
 // importing types
-import {ImagesDataPrisma} from '../page'
+
 import { InstagramApiData } from "../page";
 import { useTranslations } from "next-intl";
-import { TranslationTypes } from "../../layout";
+import { images } from "@prisma/client";
 
-export default function MainGalleryComponent({session, igResponse, imageDataPrisma, LoadingGif, error, prismaError, translationProps}: {session: number|null, igResponse: InstagramApiData, imageDataPrisma: ImagesDataPrisma | null, LoadingGif: any, error: string, prismaError: string | null, translationProps: TranslationTypes}){
+export default function MainGalleryComponent({session, igResponse, imageDataPrisma, LoadingGif, error, prismaError}: {session: string|null, igResponse: InstagramApiData, imageDataPrisma: images[] | null, LoadingGif: any, error: string, prismaError: string | null}){
 
-    
+    const t = useTranslations('Gallery');
 
     const [galleryInView, setGalleryinView] = React.useState<boolean>(true)
 
@@ -36,7 +36,7 @@ export default function MainGalleryComponent({session, igResponse, imageDataPris
         {session?
             
                 <>
-                 <Flex gap='1'  ml={{initial: '2', xs:'2', sm:'3', md:'4', lg:'6', xl:'7'}}><Badge variant="surface" size='3'>{translationProps.nd}</Badge><Switch size='3' onClick={galleryToggle} /><Badge variant="surface" size='3'>{translationProps.user}</Badge></Flex> 
+                 <Flex gap='1'  ml={{initial: '2', xs:'2', sm:'3', md:'4', lg:'6', xl:'7'}}><Badge variant="surface" size='3'>{t('ndgallery')}</Badge><Switch size='3' onClick={galleryToggle} /><Badge variant="surface" size='3'>{t('usergallery')}</Badge></Flex> 
                  <Box mt='3' ml='1' mr='1'> 
                    
                 

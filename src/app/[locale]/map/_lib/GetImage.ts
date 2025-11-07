@@ -5,7 +5,7 @@
         export async function GetImage(path: string){
         
         const headers = new Headers();
-        headers.set("x-api-key", process.env.IAGON_API); 
+        headers.set("x-api-key", process.env.IAGON_API ?? ''); 
         headers.set("Content-Type", "application/json");  
           
         try {
