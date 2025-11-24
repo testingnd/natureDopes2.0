@@ -10,7 +10,7 @@ import { signIn } from "next-auth/react";
 import { Label } from "@radix-ui/themes/dist/esm/components/context-menu.js";
 import { useLocale } from "next-intl";
 
-import { SubmitButton } from "../../../_components/buttons/SubmitButton";
+import { SubmitButton } from "../_components/buttons/SubmitButton";
 
 
 export default function SignIn() {

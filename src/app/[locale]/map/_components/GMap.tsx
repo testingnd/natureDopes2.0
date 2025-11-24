@@ -71,10 +71,22 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
   }
 
   // whether Edit Form is Visible
-  function toggleEditForm(){
-    setEditForm(!editForm)
-    setImageId(undefined)
-    setSpecies(undefined)
+  function toggleEditForm(species?: string, id?: number, lng?: number, lat?: number){
+    if (species !== undefined && id !== undefined) {
+      // Opening form with data
+      setSpecies(species)
+      setImageId(id)
+      setLong(lng)
+      setLat(lat)
+      setEditForm(true)
+    } else {
+      // Closing form
+      setEditForm(false)
+      setImageId(undefined)
+      setSpecies(undefined)
+      setLong(undefined)
+      setLat(undefined)
+    }
   }
 
 
