@@ -47,7 +47,7 @@ export default function RegisterPage(){
                 { success && <p className={styles.successMessage}>{success}</p>}         
                 <div className={styles.backToSignIn}>
                     <h3>Have an account already?</h3>
-                    <Link href='./api/auth/signin' ><Text ml='2' color='blue'>Sign in</Text></Link>
+                    <Link href='./signin' ><Text ml='2' color='blue'>Sign in</Text></Link>
                 </div>
             </Card>
             </Box>

@@ -12,7 +12,7 @@ export default async function ApiKeysPage() {
 
   // Redirect if not authenticated
   if (!session) {
-    redirect("/api/auth/signin");
+    redirect("/signin");
   }
 
   const t = await getTranslations("ApiKeys");

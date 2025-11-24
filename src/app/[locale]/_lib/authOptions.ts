@@ -9,8 +9,8 @@ import './sessionTypes' // Import to register type extensions
 
 export const authOptions: AuthOptions = {
     pages: {
-        signIn: '/api/auth/signin',
-        error: '/api/auth/signin',
+        signIn: '/signin',
+        error: '/signin',
     },
     callbacks: {
         /*session: ({session, token}) => {
@@ -36,23 +36,25 @@ export const authOptions: AuthOptions = {
         },
         
         async jwt({token, user}){
-            
+
             if(user){
                 token.id = user.id
-                  
+
             }
-            
-              
-              
+
+
+
               return token
-              
+
           },
 
         async session({session, token, user}){
-           
-            session.user.id = token.id
-            
-            
+
+            if (token?.id) {
+                session.user.id = token.id
+            }
+
+
             return session
         }, 
         async signIn({ user, account, profile, email, credentials }) {
