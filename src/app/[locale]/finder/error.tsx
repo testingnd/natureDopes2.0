@@ -14,7 +14,7 @@ export default function Error({
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error('Map Error:', {
+    console.error('Finder Error:', {
       message: error.message,
       digest: error.digest,
       stack: error.stack,
@@ -45,7 +45,7 @@ export default function Error({
         <Heading align='center' size='6'>Something went wrong!</Heading>
 
         <Text align='center' color='gray'>
-          We're having trouble loading the map. Please try again or return to our homepage.
+          We're having trouble loading the finder game. Please try again or return to our homepage.
         </Text>
 
         <Flex gap='3' direction={{ initial: 'column', sm: 'row' }} width='100%' justify='center'>

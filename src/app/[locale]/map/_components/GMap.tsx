@@ -7,13 +7,13 @@ import MapMarker from './MapMarker'
 import ImageUploadForm from './forms/ImageUploadForm';
 import EditImageForm from './forms/EditImageForm';
 
-import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
+import { MagnifyingGlassIcon, CheckCircledIcon } from '@radix-ui/react-icons';
 
 import Loading from '@/src/app/[locale]/loading'
 
 import { StaticImageData } from 'next/image';
 
-import { Button, Switch, Tooltip, TextField, Flex, Box } from '@radix-ui/themes';
+import { Button, Switch, Tooltip, TextField, Flex, Box, Spinner, Callout } from '@radix-ui/themes';
 import style from './mapMarker.module.css'
 
 import { useTranslations } from 'next-intl';
@@ -22,7 +22,7 @@ import { images } from '@prisma/client';
 
 
 
-export default function Gmap({getImageData, loadingGif, session}: {getImageData: images[], loadingGif: StaticImageData, session: number}) {
+export default function Gmap({getImageData, loadingGif, session}: {getImageData: images[], loadingGif: StaticImageData, session: string | null}) {
 
   const t = useTranslations('GMap');
 
@@ -42,26 +42,56 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
   const[gps_long, setLong] = useState<number>()
   const[species_name, setSpecies] = useState<string>()
   const[imageId, setImageId] = useState<number>()
-  
+
 
   // whether upload form is visible
   const[uploadForm, setUploadForm]= useState<boolean>(false)
   const[editForm, setEditForm] = useState<boolean>(false)
 
+  // loading and success states for data refresh
+  const[isRefreshing, setIsRefreshing] = useState<boolean>(false)
+  const[refreshSuccess, setRefreshSuccess] = useState<boolean>(false)
+
   async function getData() {
-    const res = await fetch(`${process.env.LIVESITE}/map/api`)
-  
-    if (!res.ok) {
-     
-      return {
-        error: 'Find has been updated, please refresh browser'
+    setIsRefreshing(true)
+    setRefreshSuccess(false)
+
+    try {
+      // Construct API path from current location to handle locale automatically
+      const apiPath = `${window.location.pathname}/api`
+      const res = await fetch(apiPath, {
+        cache: 'no-store' // Always get fresh data
+      })
+
+      if (!res.ok) {
+        throw new Error('Failed to fetch map data')
       }
+
+      const newData = await res.json()
+
+      // Validate that we got an array
+      if (!Array.isArray(newData)) {
+        console.error('API returned non-array data:', newData)
+        throw new Error('Invalid data format from API')
+      }
+
+      setImageData(newData)
+
+      // Show success message briefly
+      setRefreshSuccess(true)
+      setTimeout(() => setRefreshSuccess(false), 3000)
+
+      return {
+        success: 'Map updated'
+      }
+    } catch (error) {
+      console.error('Error fetching map data:', error)
+      return {
+        error: 'Failed to update map. Please try again.'
+      }
+    } finally {
+      setIsRefreshing(false)
     }
-    const newData = await res.json()
-    setImageData(newData)
-    return {
-      success: 'Map updated'
-    } 
   }
   
 
@@ -101,7 +131,7 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
 function onClickMap({lat, lng}: {lat: number, lng: number}) {
   setLong(lng)
   setLat(lat)
-  console.log(lat, lng)
+
 }
 
 
@@ -117,10 +147,10 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
   return (
     // Important! Always set the container height explicitly
     <>
-      <Flex p='1' direction='column' width={{initial:'60%', xs: '60%', sm: '60%', md: '40%', lg:'40%', xl: '40%'}}>
-      
+      <Flex p='1' direction='column' width={{initial:'60%', xs: '60%', sm: '60%', md: '40%', lg:'40%', xl: '40%'}} gap='2'>
+
         { !session ? null :
-        
+
         <Flex p='1' justify='between'>
           <Flex align='center'>
             <label className={style.findLabel}>{t('allfinds')}</label>
@@ -130,6 +160,22 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
 
         </Flex>
         }
+
+        {/* Loading and success indicators */}
+        {isRefreshing && (
+          <Callout.Root color="blue" size="1">
+            <Callout.Icon><Spinner /></Callout.Icon>
+            <Callout.Text>Updating map...</Callout.Text>
+          </Callout.Root>
+        )}
+
+        {refreshSuccess && (
+          <Callout.Root color="green" size="1">
+            <Callout.Icon><CheckCircledIcon /></Callout.Icon>
+            <Callout.Text>Map updated successfully!</Callout.Text>
+          </Callout.Root>
+        )}
+
         <Flex align='center'>
           <form onSubmit={handleSubmit}>
 
@@ -139,8 +185,10 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
               </TextField.Slot>
             </TextField.Root>
 
+
+
           </form>
-          {!session? null :  uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm}>{t('addbutton')}</Button> </Box>}
+          {!session? null :  uploadForm ? null : <Box p='1'><Button onClick={toggleUploadForm} disabled={isRefreshing}>{t('addbutton')}</Button> </Box>}
           {editForm ? <EditImageForm species={species_name} lng={gps_long} lat={gps_lat} imageId={imageId} toggleEditForm={toggleEditForm} getData={getData} />: null }
           {session? null:<Tooltip className={style.toolTip}  content='Sign in for more map features'>
             <Button ml='1%'  radius='medium'>i</Button>
@@ -148,8 +196,6 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
           </Tooltip>
           }
         </Flex>
-        
-     
 
     </Flex>
 
@@ -158,10 +204,10 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
       
       <div style={{ height: '90vh', width: '100%'  }}>
 
-        {uploadForm? <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm} getData={getData}  />: null}
+        {uploadForm && session? <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm} getData={getData}  />: null}
         <Suspense fallback={<Loading/>}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI}}
+          bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI || '' }}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
           
@@ -169,9 +215,9 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
         >
      
     
-        {imageData.filter((data) => {
+        {Array.isArray(imageData) && imageData.filter((data) => {
           if(!allChecked){
-            if(data.user_id == session){
+            if(data.user_id.toString() == session){
               return data
             } else {
               return

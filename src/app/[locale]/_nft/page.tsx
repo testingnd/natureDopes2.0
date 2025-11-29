@@ -10,7 +10,7 @@ export default async function Page(){
     
     const session = await getServerSession(authOptions)
     //const {data: session, status } = useSession()
-   // console.log(session)
+   // 
 
     const user = parseInt(session?.user.id)
 

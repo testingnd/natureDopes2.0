@@ -5,7 +5,7 @@ import validator from 'validator';
 import { revalidateTag } from 'next/cache';
 
 
-export async function registerImageData(data: FormData, image_path: string, user_ids: number){
+export async function registerImageData(data: FormData, image_path: string, user_ids: string){
 
  const species_name = data.get('species') as string
  const gps_longs = data.get('gps_long') as string
@@ -16,7 +16,7 @@ export async function registerImageData(data: FormData, image_path: string, user
         errorPrisma: 'gps coordinates must be decimal numbers'
     }
  }
- if(!validator.isAlpha(species_name, ['en-GB'], {ignore: " ()-,éèà"})){
+ if(!validator.isAlpha(species_name, "en-GB", {ignore: " ()-,éèà."})){
     return {
         errorPrisma: 'Species names must only  contain letters '
     }

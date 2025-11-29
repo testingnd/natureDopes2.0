@@ -13,12 +13,10 @@ export async function GET(request: NextRequest){
  
     console.log(res.status)
     if(res.status == 400 || res.status == 500){
-        console.log('Problem1')
         return NextResponse.json({error: t('insta1') })
     }
 
     if(!res.ok){
-        console.log('Problem2')
         return NextResponse.json({error: 'Technical issue. If the problem persists please contact us' })
     }
 

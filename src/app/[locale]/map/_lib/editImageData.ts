@@ -8,7 +8,6 @@ import { revalidateTag } from 'next/cache';
 
 export async function editImageData(data: FormData){
 
- console.log(data)   
  const species_name = data.get('species') as string
  const gps_longs = data.get('gps_long') as string
  const gps_lats = data.get('gps_lat') as string
@@ -19,7 +18,7 @@ export async function editImageData(data: FormData){
         errorPrisma: 'gps coordinates must be decimal numbers'
     }
  }
- if(!validator.isAlpha(species_name, ['en-GB'], {ignore: " '-()éèà"})){
+ if(!validator.isAlpha(species_name, 'en-GB', {ignore: " '-()éèà"})){
     return {
         errorPrisma: 'Species names must only  contain letters '
     }
@@ -41,9 +40,7 @@ export async function editImageData(data: FormData){
         }
 
     })
-
     console.log(newImageData)
-
  } catch(error: any){
 
     console.log(error)

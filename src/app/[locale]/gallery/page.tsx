@@ -49,8 +49,6 @@ export default async function PageRootGallery(){
     //check for session
     const session: Session | null = await getServerSession(authOptions)
 
-    console.log(session)
-
     let userId = null
 
     if(session){

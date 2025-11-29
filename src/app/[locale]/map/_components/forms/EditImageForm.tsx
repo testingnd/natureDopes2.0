@@ -24,13 +24,11 @@ export default function EditImageForm({species, lng, lat, imageId, toggleEditFor
    
 // handler to refresh data dynamically after marker edit
   async function refreshData(){
-    const {error, success} = await getData()
+    const {error} = await getData()
     if (error) {
         setError(error)
         
     }
-    if(success)
-    console.log(success)
     
   }
 

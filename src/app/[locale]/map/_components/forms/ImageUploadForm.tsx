@@ -14,7 +14,7 @@ import { SubmitButton } from "@/src/app/[locale]/_components/buttons/SubmitButto
 import { useTranslations } from "next-intl";
 
 
-export default function imageUploadForm({lng, lat, session, toggleUploadForm, getData}: {lng: number | undefined, lat: number | undefined, session: number, toggleUploadForm: ReactEventHandler, getData: Function}){
+export default function imageUploadForm({lng, lat, session, toggleUploadForm, getData}: {lng: number | undefined, lat: number | undefined, session: string, toggleUploadForm: ReactEventHandler, getData: Function}){
 
     const t = useTranslations('GMap.UploadForm');
     const tHover = useTranslations('GMap.UploadForm.HoverCard');
@@ -24,12 +24,11 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
 
     // handler to refresh data dynamically after marker edit
   async function refreshData(){
-    const {error, success} = await getData()
+    const {error} = await getData()
     if (error) {
         setError(error)
     }
-    if(success)
-    console.log(success)
+
   }
    
 
@@ -38,7 +37,7 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
         setError('')
         
         const {error, path} = await iagonUpload(data)
-        path ? console.log(path): null
+      
         if(error){
             setError(error)
             return

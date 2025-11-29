@@ -3,6 +3,7 @@
 
 import React, { MouseEventHandler, ReactEventHandler } from "react";
 import Image, { StaticImageData } from "next/image";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 
 import style from './mapMarker.module.css'
@@ -23,7 +24,7 @@ export interface mapMarkerProps {
     lng: number,
     text: string,
     ipath: string,
-    session: number,
+    session: string | null,
     loadingGif: StaticImageData,
     toggleEditForm: MouseEventHandler | Function
 }
@@ -33,7 +34,7 @@ export default function MapMarker({id, user_id, lat, lng, text, ipath, session, 
 const t = useTranslations('GMap');
 
 const [isShown, setIsShown] = React.useState<boolean>(false);
-const [iagonPath, setIagonPath]= React.useState<string|null|StaticImageData>(null)
+const [iagonPath, setIagonPath]= React.useState<string|StaticImport>("")
 const [toggle, setToggle] = React.useState<boolean>(false)
 
 
@@ -48,7 +49,7 @@ const toggleIs= () => {
   async function getImageApi(ipath: string){
         
        setToggle(current => !current);
-        console.log(ipath)
+       
         if(iagonPath){
             return
         } else{
@@ -75,9 +76,9 @@ const toggleIs= () => {
         <Box onMouseEnter={changePointer} onMouseLeave={leavePointer} onTouchStart={changePointer} onClick={() => {getImageApi(ipath)}}>
             
         
-            {toggle? null: session == user_id ? <RiFlowerFill size={15} color="#115511" />: <RiFlowerFill size={15} color="green"/>}
+            {toggle? null: session == user_id.toString() ? <RiFlowerFill size={15} color="#115511" />: <RiFlowerFill size={15} color="green"/>}
                 
-            {isShown ? <Box className={style.markerTextSnippet}><Flex justify='between'><Text>{text}</Text>{ session == user_id? <Button className={style.editButton} onClick={ () => toggleEditForm(text, id, lng, lat)} size='1' ml='1' >{t('editbutton')}</Button>: null}</Flex></Box >: <Box className={style.markerTextSnippet} ></Box>}
+            {isShown ? <Box className={style.markerTextSnippet}><Flex justify='between'><Text>{text}</Text>{ session == user_id.toString()? <Button className={style.editButton} onClick={ () => toggleEditForm(text, id, lng, lat)} size='1' ml='1' >{t('editbutton')}</Button>: null}</Flex></Box >: <Box className={style.markerTextSnippet} ></Box>}
             {toggle ? <Image width={100} height={100} src={iagonPath} alt='Awaiting image...' />: null }
         </Box>
         </Flex>
