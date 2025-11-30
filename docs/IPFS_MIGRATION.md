@@ -379,3 +379,5 @@ If issues arise:
 - Should we run our own IPFS node for faster access?
 - Do we need image moderation before IPFS upload (content is permanent)?
 - What's our backup strategy if pinning service goes down?
+
+- 29-11-25 updated
