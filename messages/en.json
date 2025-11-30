@@ -44,6 +44,7 @@
             "species": "Species Name",
             "filesizeerror": "File with maximum size of 5MB is allowed",
             "uploadbutton": "Upload",
+            "clearLocation": "Clear location",
             "HoverCard": {
                 "one": "Enter Your Species Name",
                 "two": "Click on the map where you located it (Zoom in for accuracy)",

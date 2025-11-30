@@ -8,12 +8,12 @@ import { useFormStatus } from 'react-dom'
 
 
 
-export const SubmitButton = ({ children }: { children: ReactNode }) => {
+export const SubmitButton = ({disabled,  children }: {disabled?: boolean, children: ReactNode }) => {
 
     const { pending } = useFormStatus()
     return (
       
-      <Button type="submit" disabled={pending}>
+      <Button type="submit" disabled={pending || disabled}>
         {pending ? <Spinner /> : children}
       </Button>
      

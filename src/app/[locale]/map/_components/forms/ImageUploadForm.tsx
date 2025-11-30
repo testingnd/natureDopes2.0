@@ -4,6 +4,7 @@ import {ReactEventHandler, useState} from "react";
 
 
 import { Card, Flex, Button, TextField, Text, HoverCard } from "@radix-ui/themes";
+import { CrossCircledIcon } from "@radix-ui/react-icons";
 import style from './uploadForm.module.css'
 
 import { iagonUpload } from "../../_lib/uploadImageIagon";
@@ -14,13 +15,14 @@ import { SubmitButton } from "@/src/app/[locale]/_components/buttons/SubmitButto
 import { useTranslations } from "next-intl";
 
 
-export default function imageUploadForm({lng, lat, session, toggleUploadForm, getData}: {lng: number | undefined, lat: number | undefined, session: string, toggleUploadForm: ReactEventHandler, getData: Function}){
+export default function imageUploadForm({lng, lat, session, toggleUploadForm, getData, clearSelection}: {lng: number | undefined, lat: number | undefined, session: string, toggleUploadForm: ReactEventHandler, getData: Function, clearSelection: () => void}){
 
     const t = useTranslations('GMap.UploadForm');
     const tHover = useTranslations('GMap.UploadForm.HoverCard');
 
     const [ errors, setError] = useState<string | undefined>('')
     const [success, setSuccess] = useState<string | undefined>('')
+    const [speciesName, setSpeciesName] = useState<string>('')
 
     // handler to refresh data dynamically after marker edit
   async function refreshData(){
@@ -92,14 +94,37 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
                     </Flex>
 
                     <form action={submit}>
-                        <TextField.Root mb='2' name='species' placeholder={t('species')} size='3'  />
-                        <TextField.Root mb='2' name='gps_long' placeholder="Position Longtitude" size='3' value={lng} />
-                        <TextField.Root mb='2' name='gps_lat' placeholder="Position Latitude" size='3' value={lat}/>
+                        <TextField.Root
+                            mb='2'
+                            name='species'
+                            placeholder={t('species')}
+                            size='3'
+                            value={speciesName}
+                            onChange={(e) => setSpeciesName(e.target.value)}
+                        />
+                        <TextField.Root mb='2' name='gps_long' placeholder="Position Longtitude" size='3' value={lng} readOnly />
+                        <TextField.Root mb='2' name='gps_lat' placeholder="Position Latitude" size='3' value={lat} readOnly />
+
+                        {/* Clear location button - removes temp marker and disables upload */}
+                        {(lng !== undefined && lat !== undefined) && (
+                          <Flex mb='2'>
+                            <Button
+                              type="button"
+                              size='2'
+                              variant='soft'
+                              color='gray'
+                              onClick={clearSelection}
+                            >
+                              <CrossCircledIcon /> {t('clearLocation')}
+                            </Button>
+                          </Flex>
+                        )}
+
                         <input className={style.uploadFileButton} name='image_file' placeholder="Image" type="file" accept=".png, .jpg, .jpeg, .heic, .svg" onChange={(event) => {
                             if (event.target.files && event.target.files[0]) {
                             if (event.target.files[0].size > 5 * 1000 * 1024) {
                                 setError("Photo with maximum size of 5MB is allowed");
-                                
+
                                 return false;
                             } else {
                                 setError('')
@@ -109,7 +134,9 @@ export default function imageUploadForm({lng, lat, session, toggleUploadForm, ge
 
                             }
                         }}/>
-                        <SubmitButton>{t('uploadbutton')}</SubmitButton>
+                        <SubmitButton disabled={!speciesName.trim() || lng === undefined || lat === undefined}>
+                            {t('uploadbutton')}
+                        </SubmitButton>
                        {errors && <p>{errors}</p>}
                        { success && <p >{success}</p>}  
                     </form>

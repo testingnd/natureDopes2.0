@@ -7,13 +7,13 @@ import MapMarker from './MapMarker'
 import ImageUploadForm from './forms/ImageUploadForm';
 import EditImageForm from './forms/EditImageForm';
 
-import { MagnifyingGlassIcon, CheckCircledIcon } from '@radix-ui/react-icons';
+import { MagnifyingGlassIcon, CheckCircledIcon, InfoCircledIcon, CrossCircledIcon, DotFilledIcon } from '@radix-ui/react-icons';
 
 import Loading from '@/src/app/[locale]/loading'
 
 import { StaticImageData } from 'next/image';
 
-import { Button, Switch, Tooltip, TextField, Flex, Box, Spinner, Callout } from '@radix-ui/themes';
+import { Button, Switch, Tooltip, TextField, Flex, Box, Spinner, Callout, Text } from '@radix-ui/themes';
 import style from './mapMarker.module.css'
 
 import { useTranslations } from 'next-intl';
@@ -36,6 +36,9 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
 
   //toggles if user would like to see all markers or just there own
   const [allChecked, setAllChecked]  = useState<boolean>(true)
+
+  //temporary gps coordinates for image upload
+  const [clickedPosition, setClickedPosition] = useState<{ lat: number, lng: number } | null>(null);
 
   // state for long/ lat positons for onclickMap function
   const[gps_lat, setLat] = useState<number>()
@@ -131,7 +134,14 @@ export default function Gmap({getImageData, loadingGif, session}: {getImageData:
 function onClickMap({lat, lng}: {lat: number, lng: number}) {
   setLong(lng)
   setLat(lat)
+  setClickedPosition({ lat, lng })
+}
 
+// clear location - removes temp marker and coordinates
+function clearSelection() {
+  setLat(undefined)
+  setLong(undefined)
+  setClickedPosition(null)
 }
 
 
@@ -204,7 +214,7 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
       
       <div style={{ height: '90vh', width: '100%'  }}>
 
-        {uploadForm && session? <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm} getData={getData}  />: null}
+        {uploadForm && session? <ImageUploadForm lng={gps_long} lat={gps_lat} session={session} toggleUploadForm={toggleUploadForm} getData={getData} clearSelection={clearSelection} />: null}
         <Suspense fallback={<Loading/>}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:  process.env.NEXT_PUBLIC_GOOGLEMAPAPI || '' }}
@@ -215,6 +225,22 @@ function onClickMap({lat, lng}: {lat: number, lng: number}) {
         >
      
     
+        {/* Temporary marker for clicked position */}
+        {clickedPosition && (
+          <DotFilledIcon
+            lat={clickedPosition.lat}
+            lng={clickedPosition.lng}
+            width={32}
+            height={32}
+            color="#3b82f6"
+            style={{
+              filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
+              marginLeft: '-16px',
+              marginTop: '-16px'
+            }}
+          />
+        )}
+
         {Array.isArray(imageData) && imageData.filter((data) => {
           if(!allChecked){
             if(data.user_id.toString() == session){
