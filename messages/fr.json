@@ -41,6 +41,7 @@
             "species": "Nom de l'espèce",
             "filesizeerror": "Un fichier d'une taille maximale de 5 Mo est autorisé",
             "uploadbutton": "Téléchargez",
+            "clearLocation": "Effacer l'emplacement",
             "HoverCard": {
                 "one": "Entrez le nom de votre espèce",
                 "two": "Cliquez la carte où vous l'avez localisé (Zoomez pour plus de précision)",

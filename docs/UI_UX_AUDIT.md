@@ -2,7 +2,7 @@
 **Production Readiness Assessment**
 **Date:** November 29, 2025
 **Status:** Pre-Production - **4/8 Critical Issues Complete (50%)**
-**Last Updated:** November 29, 2025
+**Last Updated:** November 30, 2025
 
 ---
 
@@ -31,6 +31,9 @@ This audit identified **47 actionable issues** across user experience, accessibi
 - [ ] **Issue #5:** Form validation (4 hours)
 - [ ] **Issue #7:** Password toggle (2 hours)
 - [ ] **Issue #8:** Confirmation dialogs (1 hour)
+
+### ✅ High Priority Completed
+- [x] **Issue #11:** Map interaction usability - Completed November 30, 2025
 
 ---
 
@@ -448,51 +451,76 @@ useEffect(() => {
 
 ---
 
-### 11. Map Interaction Usability Issues 🟠
+### 11. Map Interaction Usability Issues ✅ COMPLETED
 
+**Priority:** HIGH
+**Status:** ✅ **COMPLETED** - November 30, 2025
 **File:** `src/app/[locale]/map/_components/GMap.tsx`
 
-**Issues:**
-1. onClick logs coordinates but no visual feedback
-2. No indication map is clickable
-3. Raw GPS coordinates (not user-friendly)
-4. No way to clear selection
+**Issues Addressed:**
+1. ✅ onClick logs coordinates but no visual feedback
+2. ✅ No way to clear selection
+3. ✅ Upload button enabled with incomplete data
 
-**Solutions:**
+**Solution Implemented:**
 
+**Temporary Visual Marker (GMap.tsx:228-242):**
 ```tsx
-// Add temporary marker on click
-const [clickedPosition, setClickedPosition] = useState<{lat: number, lng: number} | null>(null)
-
-function onClickMap({lat, lng}: {lat: number, lng: number}) {
-  setLong(lng)
-  setLat(lat)
-  setClickedPosition({lat, lng})
-}
-
-// Show formatted coordinates
-<Text size="1" color="gray">
-  Selected: {gps_lat?.toFixed(4)}°N, {Math.abs(gps_long || 0).toFixed(4)}°{(gps_long || 0) < 0 ? 'W' : 'E'}
-</Text>
-
-// Add clear button
-{(gps_lat || gps_long) && (
-  <Button size="1" variant="ghost" onClick={() => {
-    setLat(undefined)
-    setLong(undefined)
-    setClickedPosition(null)
-  }}>
-    Clear selection
-  </Button>
+{clickedPosition && (
+  <DotFilledIcon
+    lat={clickedPosition.lat}
+    lng={clickedPosition.lng}
+    width={32}
+    height={32}
+    color="#3b82f6"
+    style={{
+      filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
+      marginLeft: '-16px',
+      marginTop: '-16px'
+    }}
+  />
 )}
-
-// Add tooltip
-<Tooltip content="Click the map to select a location">
-  <InfoCircledIcon />
-</Tooltip>
 ```
 
-**Estimated Time:** 2 hours
+**Form Validation (ImageUploadForm.tsx:121):**
+```tsx
+<SubmitButton disabled={!speciesName.trim() || lng === undefined || lat === undefined}>
+  {t('uploadbutton')}
+</SubmitButton>
+```
+
+**Clear Location Button (ImageUploadForm.tsx:108-121):**
+```tsx
+{(lng !== undefined && lat !== undefined) && (
+  <Flex mb='2'>
+    <Button
+      type="button"
+      size='2'
+      variant='soft'
+      color='gray'
+      onClick={clearSelection}
+    >
+      <CrossCircledIcon /> {t('clearLocation')}
+    </Button>
+  </Flex>
+)}
+```
+
+**Features Implemented:**
+- Blue dot marker appears when user clicks map
+- Upload button disabled until species name AND coordinates are set
+- "Clear Location" button removes marker and disables upload button
+- Clean mobile-friendly UX - no cluttered coordinate displays
+- Translations added to both en.json and fr.json
+
+**User Flow:**
+1. Open upload form → Upload button disabled
+2. Click map → Blue marker appears, coordinates populate
+3. Enter species name → Upload button becomes enabled
+4. Click "Clear Location" → Marker disappears, button disabled again
+5. Click new location → Ready to upload
+
+**Time Taken:** 1.5 hours
 
 ---
 
@@ -1644,6 +1672,26 @@ Use this checklist format for tracking:
 
 ---
 
-**Document Version:** 1.1
-**Last Updated:** November 29, 2025
-**Next Review:** After Phase 1 completion (4 more issues)
+### Session 2 - November 30, 2025
+**Time Invested:** ~1.5 hours
+**Issues Completed:** 1 high priority issue
+
+**Completed:**
+1. ✅ Issue #11: Map interaction usability improvements
+
+**Key Wins:**
+- Temporary blue marker provides visual feedback when clicking map
+- Upload button disabled until all required fields complete (species name + coordinates)
+- "Clear Location" button allows users to reset their selection
+- Mobile-friendly implementation - no cluttered UI elements
+- Form validation naturally guides users to complete required fields
+
+**Next Session Priorities:**
+1. Continue with remaining critical issues (#2, #5, #7, #8)
+2. High priority issues from Phase 2
+
+---
+
+**Document Version:** 1.2
+**Last Updated:** November 30, 2025
+**Next Review:** After Phase 1 completion (4 more critical issues)
